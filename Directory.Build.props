@@ -21,12 +21,13 @@
   </PropertyGroup>
 
   <!--
-    既定は AGPL-3.0-or-later。商用公開で AGPL と商用のデュアルライセンスにする手順は
-    _documents/ライセンス.md を参照する。切り替えるときは PackageLicenseExpression を
-    PackageLicenseFile へ置き換える（NuGet は LicenseRef-* を含む式を受け付けない）。
+    ライセンスは LGPL-3.0-or-later（ライブラリなので、AGPL ではなく LGPL を選んでいる）。
+    本文は LICENSE（LGPL）と COPYING（LGPL が参照する GPL）。_documents/ライセンス.md を参照する。
   -->
   <PropertyGroup>
-    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.Template</RepositoryUrl>
+    <Company>PMC Co.,Ltd.</Company>
+    <Copyright>Copyright (C) PMC Co.,Ltd.</Copyright>
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.DotNetClient</RepositoryUrl>
   </PropertyGroup>
 </Project>

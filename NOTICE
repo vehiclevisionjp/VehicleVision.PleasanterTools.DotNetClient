@@ -1,5 +1,6 @@
-VehicleVision.PleasanterTools.Template
-SPDX-License-Identifier: AGPL-3.0-or-later
+VehicleVision.PleasanterTools.DotNetClient
+SPDX-License-Identifier: LGPL-3.0-or-later
+Copyright (C) PMC Co.,Ltd.
 
 開発運用と Actions の構成、および指示同期・参照更新スクリプトは次を参考にしています。
 VehicleVision.PleasanterTools.Questionnaire

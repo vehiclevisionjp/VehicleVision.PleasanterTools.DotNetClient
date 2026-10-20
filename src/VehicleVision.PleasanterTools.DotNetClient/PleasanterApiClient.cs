@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-namespace VehicleVision.PleasanterTools.Template.Core;
+namespace VehicleVision.PleasanterTools.DotNetClient;
 
 /// <summary>Pleasanter の応答をどう扱うか。</summary>
 /// <remarks>分類を誤ると、直らないものを再送し続けるか、直るものを捨てる。</remarks>
@@ -38,6 +38,7 @@ public sealed record PleasanterResponse(
     string? Message = null,
     JsonNode? Body = null)
 {
+    /// <summary>成功したか（エラーの分類が <see cref="PleasanterErrorKind.None"/>）。</summary>
     public bool IsSuccess => ErrorKind is PleasanterErrorKind.None;
 }
 
@@ -53,6 +54,9 @@ public sealed class PleasanterApiClient(
 {
     private static readonly JsonSerializerOptions SerializerOptions = new(JsonSerializerDefaults.Web);
 
+    /// <summary>固定の接続設定で作る。</summary>
+    /// <param name="httpClient">通信に使う <see cref="HttpClient"/>。</param>
+    /// <param name="options">接続設定。</param>
     public PleasanterApiClient(HttpClient httpClient, PleasanterOptions options)
         : this(httpClient, new StaticPleasanterOptionsProvider(options))
     {

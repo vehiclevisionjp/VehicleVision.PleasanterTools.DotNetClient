@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/VehicleVision.PleasanterTools.DotNetClient/VehicleVision.PleasanterTools.DotNetClient.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/VehicleVision.PleasanterTools.DotNetClient.Tests/VehicleVision.PleasanterTools.DotNetClient.Tests.csproj" />
+  </Folder>
+</Solution>

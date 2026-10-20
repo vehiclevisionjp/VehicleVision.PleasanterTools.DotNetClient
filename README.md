@@ -1,28 +1,29 @@
-# VehicleVision.PleasanterTools.Template
+# VehicleVision.PleasanterTools.DotNetClient
 
-Pleasanter 向けツールを作るときの、社内用テンプレートリポジトリです。標準 Web API を叩く別アプリとして、C#／.NET 10 で作ります。
+Pleasanter の標準 Web API を呼ぶ、**.NET 向けのクライアントライブラリ**です（NuGet パッケージ `VehicleVision.PleasanterTools.DotNetClient`）。
 
-## 含まれるもの
-
-- 最小の Pleasanter API クライアント（`src/VehicleVision.PleasanterTools.Template.Core`）
-- 接続確認の CLI（`src/VehicleVision.PleasanterTools.Template.Cli`）
-- 単体テスト（`tests/`）
-- 参照専用の Pleasanter 本体ソース（`_reference/Implem.Pleasanter`、サブモジュール）
-- CI、CodeQL、依存の脆弱性検査、リリース、参照ソースの定期更新（`.github/workflows/`）
-- AI エージェント向けの共通指示（`.github/copilot-instructions.md`、`AGENTS.md`、`CLAUDE.md`）
+> **開発中です。** いまあるのは最小のクライアント（接続設定と、API の呼び出し・エラーの分類）だけです。範囲と方針は [アーキテクチャ方針](_documents/アーキテクチャ方針.md) にあります。
 
 ## 使い方
 
-接続確認の CLI を動かすには、接続先を環境変数で渡します。
-
-```bash
-export PLEASANTER_BASE_URL=https://pleasanter.example.com
-export PLEASANTER_API_KEY=...
-dotnet run --project src/VehicleVision.PleasanterTools.Template.Cli -- check
+```csharp
+var options = new PleasanterOptions
+{
+    BaseUrl = "https://pleasanter.example.com",
+    ApiKey = Environment.GetEnvironmentVariable("PLEASANTER_API_KEY")!,
+};
+var client = new PleasanterApiClient(new HttpClient(), options);
 ```
 
-新しいツールの作り方は [開発ガイド](_documents/開発ガイド.md) を参照してください。
+API キーは、環境変数や Git 管理外の設定から読んでください。コードや設定ファイルへ書かないでください。
+
+## 方針
+
+- **Pleasanter 本体のコードは取り込みません。** 本体は AGPL v3 で、取り込むと LGPL で配布できなくなります
+- クライアントは再試行しません。応答を分類して返し、再送するかは呼び出し側が決めます
 
 ## ライセンス
 
-既定は AGPL-3.0-or-later です（[LICENSE](LICENSE)）。商用公開で AGPL と商用のデュアルライセンスにする手順は [ライセンス](_documents/ライセンス.md) を参照してください。依存のライセンスは [NOTICE](NOTICE) にあります。
+[LGPL-3.0-or-later](LICENSE) です（LGPL が参照する GPL の本文は [COPYING](COPYING)）。
+このライブラリを使うアプリのライセンスは、LGPL に縛られません。このライブラリ自体を改変して配布するときは、その改変を LGPL で公開してください。詳しくは [ライセンス](_documents/ライセンス.md) を参照してください。
+依存のライセンスは [NOTICE](NOTICE) にあります。開発環境と運用は [開発ガイド](_documents/開発ガイド.md) と [開発運用](_documents/開発運用.md) にあります。

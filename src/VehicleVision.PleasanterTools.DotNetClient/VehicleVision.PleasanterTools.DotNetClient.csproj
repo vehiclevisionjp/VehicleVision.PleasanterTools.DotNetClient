@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>VehicleVision.PleasanterTools.DotNetClient</PackageId>
+    <Description>Pleasanter の標準 Web API を呼ぶ .NET 向けクライアントライブラリ。</Description>
+    <PackageTags>pleasanter;vehiclevision;api;client;dotnet</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="VehicleVision.PleasanterTools.DotNetClient.Tests" />
+  </ItemGroup>
+
+</Project>

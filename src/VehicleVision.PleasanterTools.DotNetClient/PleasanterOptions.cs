@@ -1,8 +1,10 @@
-namespace VehicleVision.PleasanterTools.Template.Core;
+namespace VehicleVision.PleasanterTools.DotNetClient;
 
 /// <summary>Pleasanter の接続設定を呼び出し時に解決する。</summary>
 public interface IPleasanterOptionsProvider
 {
+    /// <summary>接続設定を取得する。</summary>
+    /// <param name="cancellationToken">取り消し。</param>
     Task<PleasanterOptions> GetAsync(CancellationToken cancellationToken = default);
 }
 
@@ -48,6 +50,7 @@ public sealed class PleasanterOptions
 public sealed class StaticPleasanterOptionsProvider(PleasanterOptions options)
     : IPleasanterOptionsProvider
 {
+    /// <inheritdoc />
     public Task<PleasanterOptions> GetAsync(CancellationToken cancellationToken = default) =>
         Task.FromResult(options);
 }
