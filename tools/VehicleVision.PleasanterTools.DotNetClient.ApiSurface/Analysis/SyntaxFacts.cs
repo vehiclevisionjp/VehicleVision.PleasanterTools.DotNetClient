@@ -37,15 +37,26 @@ internal static partial class SyntaxFacts
             case PredefinedTypeSyntax:
                 yield break;
             case NullableTypeSyntax n:
-                foreach (var x in TypeNames(n.ElementType)) yield return x;
+                foreach (var x in TypeNames(n.ElementType))
+                {
+                    yield return x;
+                }
+
                 yield break;
             case ArrayTypeSyntax a:
-                foreach (var x in TypeNames(a.ElementType)) yield return x;
+                foreach (var x in TypeNames(a.ElementType))
+                {
+                    yield return x;
+                }
+
                 yield break;
             case TupleTypeSyntax t:
                 foreach (var e in t.Elements)
                 {
-                    foreach (var x in TypeNames(e.Type)) yield return x;
+                    foreach (var x in TypeNames(e.Type))
+                    {
+                        yield return x;
+                    }
                 }
                 yield break;
             case NameSyntax name:
@@ -54,7 +65,10 @@ internal static partial class SyntaxFacts
                 {
                     foreach (var arg in g.TypeArgumentList.Arguments)
                     {
-                        foreach (var x in TypeNames(arg)) yield return x;
+                        foreach (var x in TypeNames(arg))
+                        {
+                            yield return x;
+                        }
                     }
                 }
                 yield break;
