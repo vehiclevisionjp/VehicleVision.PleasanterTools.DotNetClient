@@ -28,6 +28,11 @@ https://github.com/xunit/visualstudio.xunit/blob/main/License.txt
 coverlet.collector — MIT
 https://github.com/coverlet-coverage/coverlet/blob/master/LICENSE
 
+開発用ツールの直接依存（tools/。配布物には含めない）:
+Microsoft.CodeAnalysis.CSharp — MIT（推移的依存の Microsoft.CodeAnalysis.Common・Microsoft.CodeAnalysis.Analyzers も MIT）
+https://github.com/dotnet/roslyn/blob/main/License.txt
+（nuget.org の nuspec の license 式で確認。参照日: 2026-10-21）
+
 推移的依存と実際の版は各プロジェクトの packages.lock.json に記録する。
 
 開発用（実行環境へ配布しない）:

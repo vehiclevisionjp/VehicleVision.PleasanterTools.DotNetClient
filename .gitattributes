@@ -2,3 +2,6 @@
 *.sh text eol=lf
 *.yml text eol=lf
 *.md text eol=lf
+api-surface/*.json text eol=lf
+# ツールが生成する API 面の表（PR の差分では折りたたむ）
+api-surface/** linguist-generated=true
