@@ -4,6 +4,7 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/VehicleVision.PleasanterTools.DotNetClient.ApiSurface.Tests/VehicleVision.PleasanterTools.DotNetClient.ApiSurface.Tests.csproj" />
+    <Project Path="tests/VehicleVision.PleasanterTools.DotNetClient.Generator.Tests/VehicleVision.PleasanterTools.DotNetClient.Generator.Tests.csproj" />
     <Project Path="tests/VehicleVision.PleasanterTools.DotNetClient.Tests/VehicleVision.PleasanterTools.DotNetClient.Tests.csproj" />
   </Folder>
   <Folder Name="/tools/">
