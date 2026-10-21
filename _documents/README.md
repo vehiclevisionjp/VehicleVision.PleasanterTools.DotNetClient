@@ -7,3 +7,4 @@
 - [ライセンス](ライセンス.md): LGPL-3.0-or-later と、守ること
 - [API 面の抽出](API面の抽出.md): Pleasanter の版ごとの API 面を抽出し、版の差分表を作る仕組み（結果は [api-surface](../api-surface/history.md)）
 - [調査メモ: API 定義の場所](調査メモ_API定義の場所.md): Pleasanter のソースのどこで API が定義されているか
+- [クライアントの生成と版の判定](クライアントの生成と版の判定.md): API 面の表からクライアントを生成する仕組みと、接続先の版で使える機能を判定する方法（Issue #20）
