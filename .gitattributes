@@ -5,3 +5,5 @@
 api-surface/*.json text eol=lf
 # ツールが生成する API 面の表（PR の差分では折りたたむ）
 api-surface/** linguist-generated=true
+# 生成器が api-surface/history.json から作るクライアントのコード（PR の差分では折りたたむ。改行は LF にそろえる）
+src/VehicleVision.PleasanterTools.DotNetClient/Generated/** text eol=lf linguist-generated=true
