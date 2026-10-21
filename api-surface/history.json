@@ -10344,7 +10344,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -10357,7 +10357,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -10370,7 +10370,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 2
           }
         }
       ]
@@ -10383,7 +10383,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 6
           }
         }
       ]
@@ -10396,7 +10396,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 5
           }
         }
       ]
@@ -10409,7 +10409,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -10422,7 +10422,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 2
           }
         }
       ]
@@ -10435,7 +10435,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -10448,7 +10448,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 3
           }
         }
       ]
@@ -10461,7 +10461,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 4
           }
         }
       ]
@@ -10825,7 +10825,7 @@
         {
           "since": "Pleasanter_1.5.6.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -10838,7 +10838,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 2
           }
         }
       ]
@@ -10851,7 +10851,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -10864,7 +10864,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -11319,7 +11319,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -11332,7 +11332,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -11341,11 +11341,25 @@
       "key": "enum:Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputDate",
       "category": "enum",
       "since": "Pleasanter_1.4.0.0",
+      "changes": [
+        {
+          "tag": "Pleasanter_1.4.10.0",
+          "facets": [
+            "value"
+          ]
+        }
+      ],
       "revisions": [
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 3
+          }
+        },
+        {
+          "since": "Pleasanter_1.4.10.0",
+          "value": {
+            "value": 4
           }
         }
       ]
@@ -11354,11 +11368,25 @@
       "key": "enum:Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputDateTime",
       "category": "enum",
       "since": "Pleasanter_1.4.0.0",
+      "changes": [
+        {
+          "tag": "Pleasanter_1.4.10.0",
+          "facets": [
+            "value"
+          ]
+        }
+      ],
       "revisions": [
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 4
+          }
+        },
+        {
+          "since": "Pleasanter_1.4.10.0",
+          "value": {
+            "value": 5
           }
         }
       ]
@@ -11367,11 +11395,25 @@
       "key": "enum:Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputDept",
       "category": "enum",
       "since": "Pleasanter_1.4.0.0",
+      "changes": [
+        {
+          "tag": "Pleasanter_1.4.10.0",
+          "facets": [
+            "value"
+          ]
+        }
+      ],
       "revisions": [
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 6
+          }
+        },
+        {
+          "since": "Pleasanter_1.4.10.0",
+          "value": {
+            "value": 7
           }
         }
       ]
@@ -11380,11 +11422,25 @@
       "key": "enum:Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputUser",
       "category": "enum",
       "since": "Pleasanter_1.4.0.0",
+      "changes": [
+        {
+          "tag": "Pleasanter_1.4.10.0",
+          "facets": [
+            "value"
+          ]
+        }
+      ],
       "revisions": [
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 5
+          }
+        },
+        {
+          "since": "Pleasanter_1.4.10.0",
+          "value": {
+            "value": 6
           }
         }
       ]
@@ -11397,7 +11453,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 2
           }
         }
       ]
@@ -11410,7 +11466,7 @@
         {
           "since": "Pleasanter_1.4.10.0",
           "value": {
-            "value": null
+            "value": 3
           }
         }
       ]
@@ -11501,7 +11557,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -11514,7 +11570,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 2
           }
         }
       ]
@@ -11527,7 +11583,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -11540,7 +11596,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -11553,7 +11609,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 4
           }
         }
       ]
@@ -11566,7 +11622,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 3
           }
         }
       ]
@@ -11579,7 +11635,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -11592,7 +11648,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 2
           }
         }
       ]
@@ -11657,7 +11713,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -11670,7 +11726,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -12502,7 +12558,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 3
           }
         }
       ]
@@ -12515,7 +12571,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 0
           }
         }
       ]
@@ -12528,7 +12584,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 2
           }
         }
       ]
@@ -12541,7 +12597,7 @@
         {
           "since": "Pleasanter_1.4.0.0",
           "value": {
-            "value": null
+            "value": 1
           }
         }
       ]
@@ -52708,7 +52764,7 @@
             "kind": "class",
             "bases": [
               "Implem.Pleasanter.Interfaces.IConvertable",
-              "Implem.Pleasanter.Libraries.DataTypes.Attachment"
+              "List<Implem.Pleasanter.Libraries.DataTypes.Attachment>"
             ],
             "attributes": []
           }
@@ -53040,7 +53096,7 @@
           "value": {
             "kind": "class",
             "bases": [
-              "Implem.Pleasanter.Libraries.ServerScripts.ServerScriptModelResponse"
+              "List<Implem.Pleasanter.Libraries.ServerScripts.ServerScriptModelResponse>"
             ],
             "attributes": []
           }
@@ -53627,7 +53683,7 @@
           "value": {
             "kind": "class",
             "bases": [
-              "Implem.Pleasanter.Libraries.Settings.Link"
+              "List<Implem.Pleasanter.Libraries.Settings.Link>"
             ],
             "attributes": [
               "Serializable"
@@ -53680,7 +53736,7 @@
           "value": {
             "kind": "class",
             "bases": [
-              "Implem.Pleasanter.Libraries.Settings.LinkAction"
+              "List<Implem.Pleasanter.Libraries.Settings.LinkAction>"
             ],
             "attributes": []
           }
@@ -53729,7 +53785,7 @@
           "value": {
             "kind": "class",
             "bases": [
-              "Implem.Pleasanter.Libraries.Settings.Lookup"
+              "List<Implem.Pleasanter.Libraries.Settings.Lookup>"
             ],
             "attributes": []
           }

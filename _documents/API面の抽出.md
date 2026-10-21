@@ -67,6 +67,8 @@ C# の構文解析に **Roslyn（`Microsoft.CodeAnalysis.CSharp`、MIT）** を�
 | 応答 | 辿ったメソッドの中の `ApiResults.X(…)` の `X`、`ApiResults.Get(response: new { … })` のメンバー名、辿ったメソッドの戻り値の型のうち名前が `ApiModel` で終わるもの |
 | モデル | リクエスト・応答の型と `ApiResponse` を起点に、公開のインスタンスのプロパティ・フィールドの型を辿る。`[NonSerialized]`・`[JsonIgnore]`・`[IgnoreDataMember]` のメンバーは記録するが、その型は辿らない |
 | メンバー | 名前・プロパティかフィールドか・書かれたとおりの型・参照先の型・null 可否・既定値・読み取り専用か・属性 |
+| 列挙値 | 書かれた値。値を書いていないメンバーは、C# の規則（先頭は 0、以降は直前の値 + 1）で決めた値を記録する。直前の値が数値として取れない（式など）ときは `null`。Issue #20 で追加（それまでは書かれていない値をすべて `null` にしていた） |
+| 基底の型 | ソースにある型は完全名。ソースに無い総称型（`List<T>` など）は、外側の名前を残して型引数だけを完全名にする（例: `List<Implem.Pleasanter.Libraries.DataTypes.Attachment>`）。Issue #20 で変更（それまでは型引数の完全名だけを書いていた） |
 | 既定値 | `App_Data/Parameters/Api.json` の値 |
 
 呼び出しの辿り方（`ExtractorOptions` で変えられる）:

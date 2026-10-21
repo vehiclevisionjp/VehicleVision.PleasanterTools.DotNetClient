@@ -5323,13 +5323,16 @@
       "members": [],
       "enumValues": [
         {
-          "name": "asc"
+          "name": "asc",
+          "value": 0
         },
         {
-          "name": "desc"
+          "name": "desc",
+          "value": 1
         },
         {
-          "name": "release"
+          "name": "release",
+          "value": 2
         }
       ]
     },
@@ -5344,25 +5347,32 @@
       "members": [],
       "enumValues": [
         {
-          "name": "Normal"
+          "name": "Normal",
+          "value": 0
         },
         {
-          "name": "History"
+          "name": "History",
+          "value": 1
         },
         {
-          "name": "HistoryWithoutFlag"
+          "name": "HistoryWithoutFlag",
+          "value": 2
         },
         {
-          "name": "NormalAndDeleted"
+          "name": "NormalAndDeleted",
+          "value": 3
         },
         {
-          "name": "NormalAndHistory"
+          "name": "NormalAndHistory",
+          "value": 4
         },
         {
-          "name": "Deleted"
+          "name": "Deleted",
+          "value": 5
         },
         {
-          "name": "All"
+          "name": "All",
+          "value": 6
         }
       ]
     },
@@ -5544,7 +5554,7 @@
       ],
       "bases": [
         "Implem.Pleasanter.Interfaces.IConvertable",
-        "Implem.Pleasanter.Libraries.DataTypes.Attachment"
+        "List<Implem.Pleasanter.Libraries.DataTypes.Attachment>"
       ],
       "attributes": [],
       "members": [],
@@ -6479,7 +6489,8 @@
       "members": [],
       "enumValues": [
         {
-          "name": "Filter"
+          "name": "Filter",
+          "value": 0
         }
       ]
     },
@@ -6490,7 +6501,7 @@
         "Implem.Pleasanter/Libraries/ServerScripts/ServerScriptModelResponses.cs"
       ],
       "bases": [
-        "Implem.Pleasanter.Libraries.ServerScripts.ServerScriptModelResponse"
+        "List<Implem.Pleasanter.Libraries.ServerScripts.ServerScriptModelResponse>"
       ],
       "attributes": [],
       "members": [],
@@ -6571,13 +6582,16 @@
       "members": [],
       "enumValues": [
         {
-          "name": "Count"
+          "name": "Count",
+          "value": 0
         },
         {
-          "name": "Total"
+          "name": "Total",
+          "value": 1
         },
         {
-          "name": "Average"
+          "name": "Average",
+          "value": 2
         }
       ]
     },
@@ -9476,28 +9490,36 @@
       "members": [],
       "enumValues": [
         {
-          "name": "CopyValue"
+          "name": "CopyValue",
+          "value": 0
         },
         {
-          "name": "CopyDisplayValue"
+          "name": "CopyDisplayValue",
+          "value": 1
         },
         {
-          "name": "InputValue"
+          "name": "InputValue",
+          "value": 2
         },
         {
-          "name": "InputValueFormula"
+          "name": "InputValueFormula",
+          "value": 3
         },
         {
-          "name": "InputDate"
+          "name": "InputDate",
+          "value": 4
         },
         {
-          "name": "InputDateTime"
+          "name": "InputDateTime",
+          "value": 5
         },
         {
-          "name": "InputUser"
+          "name": "InputUser",
+          "value": 6
         },
         {
-          "name": "InputDept"
+          "name": "InputDept",
+          "value": 7
         }
       ]
     },
@@ -9857,13 +9879,16 @@
       "members": [],
       "enumValues": [
         {
-          "name": "Value"
+          "name": "Value",
+          "value": 0
         },
         {
-          "name": "Text"
+          "name": "Text",
+          "value": 1
         },
         {
-          "name": "TextMini"
+          "name": "TextMini",
+          "value": 2
         }
       ]
     },
@@ -9933,19 +9958,24 @@
       "members": [],
       "enumValues": [
         {
-          "name": "NotSet"
+          "name": "NotSet",
+          "value": 0
         },
         {
-          "name": "Addition"
+          "name": "Addition",
+          "value": 1
         },
         {
-          "name": "Subtraction"
+          "name": "Subtraction",
+          "value": 2
         },
         {
-          "name": "Multiplication"
+          "name": "Multiplication",
+          "value": 3
         },
         {
-          "name": "Division"
+          "name": "Division",
+          "value": 4
         }
       ]
     },
@@ -10302,7 +10332,7 @@
         "Implem.Pleasanter/Libraries/Settings/Join.cs"
       ],
       "bases": [
-        "Implem.Pleasanter.Libraries.Settings.Link"
+        "List<Implem.Pleasanter.Libraries.Settings.Link>"
       ],
       "attributes": [
         "Serializable"
@@ -10558,7 +10588,7 @@
         "Implem.Pleasanter/Libraries/Settings/LinkActions.cs"
       ],
       "bases": [
-        "Implem.Pleasanter.Libraries.Settings.LinkAction"
+        "List<Implem.Pleasanter.Libraries.Settings.LinkAction>"
       ],
       "attributes": [],
       "members": [],
@@ -10636,10 +10666,12 @@
       "members": [],
       "enumValues": [
         {
-          "name": "Value"
+          "name": "Value",
+          "value": 0
         },
         {
-          "name": "DisplayName"
+          "name": "DisplayName",
+          "value": 1
         }
       ]
     },
@@ -10650,7 +10682,7 @@
         "Implem.Pleasanter/Libraries/Settings/Lookups.cs"
       ],
       "bases": [
-        "Implem.Pleasanter.Libraries.Settings.Lookup"
+        "List<Implem.Pleasanter.Libraries.Settings.Lookup>"
       ],
       "attributes": [],
       "members": [],
@@ -14606,16 +14638,20 @@
       "members": [],
       "enumValues": [
         {
-          "name": "None"
+          "name": "None",
+          "value": 0
         },
         {
-          "name": "Required"
+          "name": "Required",
+          "value": 1
         },
         {
-          "name": "ReadOnly"
+          "name": "ReadOnly",
+          "value": 2
         },
         {
-          "name": "Hidden"
+          "name": "Hidden",
+          "value": 3
         }
       ]
     },

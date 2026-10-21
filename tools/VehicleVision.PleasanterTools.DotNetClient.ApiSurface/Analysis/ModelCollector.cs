@@ -1,3 +1,4 @@
+using System.Text.Json.Nodes;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -98,20 +99,26 @@ internal sealed class ModelCollector
                 foreach (var b in baseList.Types)
                 {
                     var resolved = Require(b.Type, context);
-                    bases.Add(resolved.Count > 0 ? resolved[0] : SyntaxFacts.TypeText(b.Type));
+                    bases.Add(BaseName(b.Type, resolved));
                 }
             }
             if (decl is EnumDeclarationSyntax e)
             {
+                // 値を書いていないメンバーは、C# の規則（先頭は 0、以降は直前の値 + 1）で値が決まる。
+                // 直前の値が数値として取れないとき（式など）は、決められないので null のままにする
+                decimal? previous = null;
+                var first = true;
                 foreach (var m in e.Members)
                 {
                     var value = m.EqualsValue?.Value switch
                     {
-                        null => null,
+                        null => first ? JsonValue.Create(0) : previous is { } p ? JsonValue.Create(p + 1) : null,
                         LiteralExpressionSyntax lit => SyntaxFacts.LiteralValue(lit),
                         var other => SyntaxFacts.DefaultOf(other, null),
                     };
                     enumValues.Add(new EnumValue(m.Identifier.ValueText, value));
+                    previous = NumberOf(value);
+                    first = false;
                 }
                 continue;
             }
@@ -151,6 +158,38 @@ internal sealed class ModelCollector
             EnumValues = enumValues,
         };
     }
+
+    /// <summary>
+    /// 基底の型の名前。ソースにある型ならその完全名。
+    /// ソースに無い総称型（<c>List&lt;Attachment&gt;</c> など）は、外側の名前を残し、型引数だけを完全名にする
+    /// （型引数の完全名だけを書くと、「その型を継承する」と読めてしまうため）。
+    /// </summary>
+    private static string BaseName(TypeSyntax type, IReadOnlyList<string> resolved)
+    {
+        var generic = type switch
+        {
+            GenericNameSyntax g => g,
+            QualifiedNameSyntax { Right: GenericNameSyntax rg } => rg,
+            _ => null,
+        };
+        if (generic is not null)
+        {
+            var outerIsSource = resolved.Count > 0 && resolved[0].EndsWith("." + generic.Identifier.ValueText, StringComparison.Ordinal);
+            if (!outerIsSource)
+            {
+                var args = generic.TypeArgumentList.Arguments;
+                return resolved.Count == args.Count
+                    ? $"{generic.Identifier.ValueText}<{string.Join(",", resolved)}>"
+                    : SyntaxFacts.TypeText(type);
+            }
+        }
+        return resolved.Count > 0 ? resolved[0] : SyntaxFacts.TypeText(type);
+    }
+
+    private static decimal? NumberOf(JsonNode? value)
+        => value is JsonValue v && decimal.TryParse(v.ToJsonString(), System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var d)
+            ? d
+            : null;
 
     private MemberModel Member(
         string name,

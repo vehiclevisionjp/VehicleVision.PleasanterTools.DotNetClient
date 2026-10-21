@@ -99,7 +99,7 @@ public sealed class SurfaceExtractorTests
         Assert.Equal(["Sample.App.Models.BaseApiModel"], t.Bases);
         Assert.Equal(["Serializable"], t.Attributes);
         Assert.Equal(
-            ["Cache", "Computed", "Count", "Details", "Flag", "Id", "Kind", "Number", "TableType", "Title", "Version"],
+            ["Cache", "Computed", "Count", "Details", "Flag", "Id", "Kind", "More", "Number", "TableType", "Title", "Version"],
             m.Keys);
         Assert.Equal((true, "string"), (m["Title"].Nullable!.Value, m["Title"].Type));
         Assert.Equal((true, "int?"), (m["Count"].Nullable!.Value, m["Count"].Type));
@@ -134,9 +134,14 @@ public sealed class SurfaceExtractorTests
 
         var kinds = TypeOf(s, "Sample.App.Models.ThingApiModel.Kinds");
         Assert.Equal("enum", kinds.Kind);
-        Assert.Equal(["A", "B"], kinds.EnumValues.Select(v => v.Name));
-        Assert.Null(kinds.EnumValues[0].Value);
+        Assert.Equal(["A", "B", "C"], kinds.EnumValues.Select(v => v.Name));
+        // 値を書いていないメンバーは、C# の規則（先頭は 0、以降は直前 + 1）で決まる
+        Assert.Equal(0m, decimal.Parse(kinds.EnumValues[0].Value!.ToJsonString(), System.Globalization.CultureInfo.InvariantCulture));
         Assert.Equal(5m, kinds.EnumValues[1].Value!.GetValue<decimal>());
+        Assert.Equal(6m, decimal.Parse(kinds.EnumValues[2].Value!.ToJsonString(), System.Globalization.CultureInfo.InvariantCulture));
+
+        // ソースに無い総称型を継承するときは、外側の名前を残す（型引数の型を継承するとは読ませない）
+        Assert.Equal(["List<Sample.App.Models.Detail>"], TypeOf(s, "Sample.App.Models.DetailList").Bases);
         Assert.Equal(["JsonProperty(\"name\")"], TypeOf(s, "Sample.App.Models.Detail").Members[0].Attributes);
     }
 
