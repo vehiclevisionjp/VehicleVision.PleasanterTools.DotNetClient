@@ -10,6 +10,8 @@ internal sealed class CodeWriter
 
     public CodeWriter Line(string line = "")
     {
+        // 生成器のソースが CRLF で取り出されても（raw 文字列の改行）、出力は LF にする
+        line = line.TrimEnd('\r');
         if (line.Length > 0)
         {
             _text.Append(' ', _indent * 4).Append(line);
