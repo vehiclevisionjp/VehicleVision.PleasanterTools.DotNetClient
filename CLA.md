@@ -7,9 +7,7 @@
 CLA は、将来の商用提供を含むライセンス選択の余地を残すための許諾です。
 この同意書の導入により、商用ライセンスの提供を開始するものではありません。
 
-**法務確認事項:** 草案の許諾先「株式会社ビークルビジョン」は、
-本ライブラリの名義「株式会社ピー・エム・シー ITソリューション事業部」と異なります。
-対象ソフトウェア名だけを置換し、許諾先を含む条文は Template の草案から変更していません。
+許諾先は株式会社ピー・エム・シー ITソリューション事業部です（2026-10-22 のユーザー指示）。
 
 **日本語を正とします。** 参考のために他言語へ訳す場合も、
 内容に齟齬があるときは日本語の記述が優先します。
@@ -38,7 +36,7 @@ CLA は、将来の商用提供を含むライセンス選択の余地を残す�
 
 「本ソフトウェア」とは VehicleVision.PleasanterTools.DotNetClient を、
 「貢献」とはあなたが本ソフトウェアへ提出する著作物（コード・文書・図・設定を含む）を指します。
-「当社」とは株式会社ビークルビジョンを指します。
+「当社」とは株式会社ピー・エム・シー ITソリューション事業部を指します。
 
 ### 1.1 著作権の許諾
 
@@ -98,6 +96,8 @@ CLA は、将来の商用提供を含むライセンス選択の余地を残す�
 [CONTRIBUTING.md](CONTRIBUTING.md) の「CLA へ署名する」を参照してください。
 
 参照元: [Template の CLA][template-cla]（コミット `60ad8ae`、2026-10-22 参照）。
-対象ソフトウェア名の置換と、LGPL の位置づけ・法務確認事項の説明を追加しています。
+対象ソフトウェア名の置換と、LGPL の位置づけの説明を追加しています。
+許諾先は [Questionnaire の CLA][questionnaire-cla] と統一しています（2026-10-22 参照）。
 
 [template-cla]: https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.Template/blob/60ad8ae/CLA.md
+[questionnaire-cla]: https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.Questionnaire/blob/33d77eb7247340fd682c08c78845e0e29b94df74/CLA.md
