@@ -507,6 +507,10 @@
 | `Implem.Pleasanter.Libraries.Models.Versions.AfterUpdateActionTypes#ReturnToList` | `1.4.23.0` | | |
 | `Implem.Pleasanter.Libraries.ServerScripts.ServerScriptModelResponse.Types#Filter` | `1.5.6.0` | | |
 | `Implem.Pleasanter.Libraries.Settings.DashboardPartType#Index` | `1.4.1.0` | | |
+| `Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputDate` | `1.4.0.0` | | `1.4.10.0`（value） |
+| `Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputDateTime` | `1.4.0.0` | | `1.4.10.0`（value） |
+| `Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputDept` | `1.4.0.0` | | `1.4.10.0`（value） |
+| `Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputUser` | `1.4.0.0` | | `1.4.10.0`（value） |
 | `Implem.Pleasanter.Libraries.Settings.DataChange.Types#InputValueFormula` | `1.4.10.0` | | |
 | `Implem.Pleasanter.Libraries.Settings.Notification.Types#LineWorks` | `1.5.1.0` | | |
 | `Implem.Pleasanter.Libraries.Settings.Process.AfterProcessStatusChangeActionTypes#Default` | `1.4.23.0` | | |
@@ -532,7 +536,7 @@
 
 | 分類 | 件数 |
 | --- | --- |
-| enum | 165 |
+| enum | 161 |
 | member | 1868 |
 | parameter | 5 |
 | route | 5 |

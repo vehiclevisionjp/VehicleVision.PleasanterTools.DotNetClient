@@ -38,6 +38,9 @@ jobs:
         run: dotnet build --no-restore -c Release
       - name: テストする
         run: dotnet test --no-build -c Release --logger trx --results-directory TestResults
+      # api-surface/history.json から生成したクライアントのコードが、コミットされたものと一致するか（_documents/クライアントの生成と版の判定.md）
+      - name: 生成物が最新かを確かめる
+        run: dotnet run --project tools/VehicleVision.PleasanterTools.DotNetClient.Generator --no-build -c Release -- check
       # 配布できる形（NuGet パッケージ）になっているかを、公開しなくても確かめる
       - name: パッケージを作る
         run: dotnet pack --no-build -c Release -o artifacts

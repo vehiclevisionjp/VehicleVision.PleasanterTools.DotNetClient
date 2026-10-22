@@ -1,0 +1,34 @@
+{
+  "$comment": "生成で人が決めること。仕組みと理由は _documents/クライアントの生成と版の判定.md。history.json のエンドポイントは、すべて「生成する」か、ここに理由つきで書いた「対象外」のどちらかになる。",
+  "minimumVersion": "Pleasanter_1.4.0.0",
+  "excludedAreas": {
+    "scim": "SCIM。本文の型が history.json に無い（…ByApi の形を取らないため未抽出）。認証も別（CheckScimContextAttributes）",
+    "legacy": "旧来の Api_* コントローラ。規約ルーティングのどれに当たるか（URL）を確かめていない"
+  },
+  "excludedEndpoints": {
+    "POST api/demo/register": "デモ環境の利用登録の口。設定（Parameters.Service.DemoApi）で有効なときだけ動き、本文の型も取れていない"
+  },
+  "recordTypes": [
+    "Implem.Pleasanter.Models.IssueApiModel",
+    "Implem.Pleasanter.Models.ResultApiModel",
+    "Implem.Pleasanter.Models.SiteApiModel",
+    "Implem.Pleasanter.Models.WikiApiModel",
+    "Implem.Pleasanter.Models.Issues.IssueBulkUpsertApiModel",
+    "Implem.Pleasanter.Models.Results.ResultBulkUpsertApiModel"
+  ],
+  "extraTypes": [
+    "Implem.Pleasanter.Libraries.Responses.ApiResponse"
+  ],
+  "clientManagedMembers": [
+    "ApiKey",
+    "ApiVersion"
+  ],
+  "renames": [
+    {
+      "type": "Implem.Pleasanter.Libraries.DataTypes.Attachment",
+      "from": "Extention",
+      "to": "Extension",
+      "version": "Pleasanter_1.4.7.0"
+    }
+  ]
+}

@@ -147,6 +147,7 @@ internal static class Fixture
                 public decimal Version { get; set; } = Parameters.Api.Version;
                 public Kinds Kind { get; set; } = Kinds.B;
                 public List<Detail> Details { get; set; } = new List<Detail>();
+                public DetailList More { get; set; }
                 public Sqls.TableTypes TableType { get; set; }
                 public string Computed => Title;
                 public int Number = -1;
@@ -159,7 +160,12 @@ internal static class Fixture
                 {
                     A,
                     B = 5,
+                    C,
                 }
+            }
+
+            public class DetailList : List<Detail>
+            {
             }
 
             public class BaseApiModel

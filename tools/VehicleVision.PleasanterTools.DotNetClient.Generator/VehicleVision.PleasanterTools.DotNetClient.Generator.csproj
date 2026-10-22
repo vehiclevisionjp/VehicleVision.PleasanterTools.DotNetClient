@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    api-surface/history.json から、クライアントのモデルとメソッドを生成する開発用ツール（Issue #20）。
+    配布物（NuGet パッケージ）には含めない。依存は .NET の標準ライブラリだけ。
+    仕組みは _documents/クライアントの生成と版の判定.md。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>VehicleVision.PleasanterTools.DotNetClient.Generator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="VehicleVision.PleasanterTools.DotNetClient.Generator.Tests" />
+  </ItemGroup>
+
+</Project>
