@@ -27,8 +27,9 @@
     本文は LICENSE（LGPL）と COPYING（LGPL が参照する GPL）。_documents/ライセンス.md を参照する。
   -->
   <PropertyGroup>
-    <Company>PMC Co.,Ltd.</Company>
-    <Copyright>Copyright (C) PMC Co.,Ltd.</Copyright>
+    <Company>PMC Co., Ltd. IT Solution Div.</Company>
+    <Authors>PMC Co., Ltd. IT Solution Div.</Authors>
+    <Copyright>Copyright (C) PMC Co., Ltd. IT Solution Div.</Copyright>
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.DotNetClient</RepositoryUrl>
   </PropertyGroup>
