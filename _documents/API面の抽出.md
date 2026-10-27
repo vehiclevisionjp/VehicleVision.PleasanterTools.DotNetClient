@@ -10,7 +10,9 @@ Pleasanter の版ごとの API 面（エンドポイント・リクエストと�
 
 - ツールは、Pleasanter のソースを**実行時にデータとして読むだけ**で、プロジェクト参照・コピー・リンクはしない。ビルドにも配布物（NuGet パッケージ）にも入らない（`IsPackable=false`）
 - 出力に入れるのは、**識別子・型名・パス・属性名・リテラルの値**という事実だけ。ソースの文章（コメント）やコードの断片は入れない。初期化子がリテラルでも識別子の連なりでもないときは、中身を書かずに `{"unextracted": true}` とする
-- Pleasanter のソースは、リポジトリの外の一時ディレクトリへ取得する（`_reference` のサブモジュールは触らない）
+- Pleasanter のタグ別ソースは、リポジトリの外の一時ディレクトリへ取得する。
+  AI の事実確認用の取得先（`_reference/Implem.Pleasanter` または `PLEASANTER_REFERENCE_DIR`）は触らない。
+  `sync-reference.sh` による `main` の浅い取得とは用途が異なり、この抽出を CI の本体取得には使わない
 
 ## 使い方（再現の手順）
 
@@ -29,8 +31,12 @@ dotnet $TOOL run --repo $WORK --out-dir api-surface
 
 # 1 つの版だけ（タグ、または展開済みのディレクトリ）
 dotnet $TOOL extract --repo $WORK --tag Pleasanter_1.5.9.0 --out <ファイル>
+bash scripts/sync-reference.sh
 dotnet $TOOL extract --source-dir _reference/Implem.Pleasanter --out <ファイル>
 ```
+
+`--source-dir` の例は既定先を使う。`PLEASANTER_REFERENCE_DIR` 指定時は、その取得先を直接渡す。
+抽出結果の事実を文書へ記録するときも、完全な SHA・ソースへの固定リンク・参照日を残す。
 
 - `prepare` は、`git init` した作業リポジトリへ、`Pleasanter_*` のタグ（`--min` 以上）を**履歴 1 件・ファイル本体なし**（`--depth 1 --filter=blob:none`）で取得し、
   `Implem.Pleasanter`・`Implem.Libraries` の `*.cs` と `App_Data/Parameters/Api.json` の本体だけを、ID を指定してまとめて取得する
