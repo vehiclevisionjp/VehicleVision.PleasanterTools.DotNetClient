@@ -12,9 +12,9 @@
 5. CI をスキップするコミット指定を使わない。実装変更後は Release ビルドと影響するテストを実行する。
 6. Pleasanter 本体は AGPL v3 の参照専用ソース。必要時に取得し、Git では追跡しない。
    コピー・流用・リンク・プロジェクト参照せず、ビルドや配布物へ含めない。
-   **本ライブラリは LGPL-3.0-or-later。AGPL のコードを取り込むと、LGPL で配布できなくなる。**
+   **本ライブラリは LGPL＋AGPL＋商用の 3 層。AGPL のコードを取り込むと、LGPL と商用ライセンスで提供できなくなる。**
 7. API キーとパスワードはコード・設定ファイル・ログ・公開ファイル・ブラウザへ出さない。環境変数か Git 管理外の設定から読む。未検証を動作済みとして説明しない。
-8. 依存 OSS は寛容ライセンス（MIT / BSD 系 / Apache-2.0）に限定する。追加時にライセンスを一次情報で確認し、NOTICE とロックファイルを更新する。**利用者が LGPL のまま使えるよう、GPL・AGPL の依存を入れない。**
+8. 依存 OSS は寛容ライセンス（MIT / BSD 系 / Apache-2.0）に限定する。追加時にライセンスを一次情報で確認し、NOTICE とロックファイルを更新する。**3 層で提供し続けられるよう、GPL・AGPL 等のコピーレフトの依存を入れない。**
 9. 作業前に [共通指示](../.github/copilot-instructions.md) の全文を読む。外部仕様は一次情報で確認し、出典と参照日を残す。
 10. README は利用者向けの取扱説明・製品説明の入口にする。ビルド・テスト・CI・エージェント運用など開発者向けの説明は [開発ガイド](../_documents/開発ガイド.md) と [開発運用](../_documents/開発運用.md) に分離する。
 11. `if` / `else` / `for` / `foreach` / `while` / `using` / `lock` などの本文の `{}` を省略しない（1 行で済む本文も同じ）。C# は `.editorconfig` とビルドで、TypeScript・Svelte は ESLint の `curly` で強制する。
@@ -23,7 +23,8 @@
 ## プロジェクト
 
 Pleasanter の標準 Web API を呼ぶ **.NET 向けのクライアントライブラリ**（NuGet パッケージ `VehicleVision.PleasanterTools.DotNetClient`）。C#／.NET 10。
-**ライセンスは LGPL-3.0-or-later**（ライブラリなので、利用するアプリのライセンスを縛らない）。
+**ライセンスは 3 層**（個人・非営利団体・教育機関は LGPL-3.0-or-later。それ以外の法人は AGPL-3.0-or-later か商用ライセンス。[LICENSING.md](../LICENSING.md)）。
+Core（VehicleVision.PleasanterTools.Core）には現在依存せず、依存を加えるときはライセンスの整合を見直す。
 現状と未決定事項は [アーキテクチャ方針](../_documents/アーキテクチャ方針.md) を確認する。
 
 ## 作業の進め方

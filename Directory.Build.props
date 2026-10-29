@@ -23,14 +23,18 @@
   </PropertyGroup>
 
   <!--
-    ライセンスは LGPL-3.0-or-later（ライブラリなので、AGPL ではなく LGPL を選んでいる）。
-    本文は LICENSE（LGPL）と COPYING（LGPL が参照する GPL）。_documents/ライセンス.md を参照する。
+    ライセンスは 3 層（LGPL-3.0-or-later OR AGPL-3.0-or-later OR LicenseRef-PMC-Commercial）。
+    LGPL を選べる利用者（個人・非営利団体・教育機関）の限定は LICENSING.md が定める。
+    NuGet の PackageLicenseExpression は LicenseRef-* を扱えず、利用者の限定も表せないので、
+    式は使わず PackageLicenseFile で LICENSING.md を指す（nuget.org に本文が表示される）。
+    本文は LICENSE（LGPL）・COPYING（LGPL が参照する GPL）・LICENSE-AGPL・LICENSE-COMMERCIAL.md。
+    _documents/ライセンス.md を参照する。同梱する文書は、パッケージ側の .csproj で指定する。
   -->
   <PropertyGroup>
     <Company>PMC Co., Ltd. IT Solution Div.</Company>
     <Authors>PMC Co., Ltd. IT Solution Div.</Authors>
     <Copyright>Copyright (C) PMC Co., Ltd. IT Solution Div.</Copyright>
-    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    <PackageLicenseFile>LICENSING.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.DotNetClient</RepositoryUrl>
   </PropertyGroup>
 </Project>
