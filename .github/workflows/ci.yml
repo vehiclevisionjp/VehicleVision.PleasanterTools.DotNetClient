@@ -15,7 +15,7 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
 jobs:
   build-test:
-    name: ビルドと単体テスト
+    name: build-test
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -38,17 +38,12 @@ jobs:
         run: dotnet build --no-restore -c Release
       - name: テストする
         run: dotnet test --no-build -c Release --logger trx --results-directory TestResults
-      - name: 配布物を作成する
-        id: package
-        shell: pwsh
-        run: ./scripts/package.ps1
-      - name: 配布物を残す
-        uses: actions/upload-artifact@v7
-        with:
-          name: 配布物
-          path: ${{ steps.package.outputs.directory }}/
-          if-no-files-found: error
-          retention-days: 30
+      # api-surface/history.json から生成したクライアントのコードが、コミットされたものと一致するか（_documents/クライアントの生成と版の判定.md）
+      - name: 生成物が最新かを確かめる
+        run: dotnet run --project tools/VehicleVision.PleasanterTools.DotNetClient.Generator --no-build -c Release -- check
+      # 配布できる形（NuGet パッケージ）になっているかを、公開しなくても確かめる
+      - name: パッケージを作る
+        run: dotnet pack --no-build -c Release -o artifacts
       - name: テスト結果を残す
         if: always()
         uses: actions/upload-artifact@v7
@@ -57,7 +52,7 @@ jobs:
           path: TestResults/*.trx
           if-no-files-found: warn
   instructions:
-    name: 指示と参照の検査
+    name: instructions
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -66,4 +61,5 @@ jobs:
           submodules: false
           persist-credentials: false
       - run: bash scripts/sync-agents.sh --check
+      - run: bash scripts/test-sync-reference.sh
       - run: bash scripts/reference-isolation-check.sh

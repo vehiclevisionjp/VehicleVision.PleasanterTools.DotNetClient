@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>VehicleVision.PleasanterTools.DotNetClient</PackageId>
+    <Description>Pleasanter の標準 Web API を呼ぶ .NET 向けクライアントライブラリ。</Description>
+    <PackageTags>pleasanter;vehiclevision;api;client;dotnet</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- README とライセンス関連の文書をパッケージの直下へ同梱する（PackageReadmeFile は README.md。PackageLicenseFile は LICENSING.md。Directory.Build.props 参照） -->
+  <ItemGroup>
+    <None Include="../../README.md;../../LICENSING.md;../../LICENSE-COMMERCIAL.md;../../LICENSE;../../COPYING;../../LICENSE-AGPL;../../NOTICE" Pack="true" PackagePath="" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="VehicleVision.PleasanterTools.DotNetClient.Tests" />
+  </ItemGroup>
+
+</Project>

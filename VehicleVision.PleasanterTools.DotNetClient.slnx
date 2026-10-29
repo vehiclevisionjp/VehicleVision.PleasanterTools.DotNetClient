@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/VehicleVision.PleasanterTools.DotNetClient/VehicleVision.PleasanterTools.DotNetClient.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/VehicleVision.PleasanterTools.DotNetClient.ApiSurface.Tests/VehicleVision.PleasanterTools.DotNetClient.ApiSurface.Tests.csproj" />
+    <Project Path="tests/VehicleVision.PleasanterTools.DotNetClient.Generator.Tests/VehicleVision.PleasanterTools.DotNetClient.Generator.Tests.csproj" />
+    <Project Path="tests/VehicleVision.PleasanterTools.DotNetClient.Tests/VehicleVision.PleasanterTools.DotNetClient.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/VehicleVision.PleasanterTools.DotNetClient.ApiSurface/VehicleVision.PleasanterTools.DotNetClient.ApiSurface.csproj" />
+    <Project Path="tools/VehicleVision.PleasanterTools.DotNetClient.Generator/VehicleVision.PleasanterTools.DotNetClient.Generator.csproj" />
+  </Folder>
+</Solution>

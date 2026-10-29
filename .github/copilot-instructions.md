@@ -10,16 +10,22 @@
 3. Issue を作ってから変更し、PR 本文に `Closes #N` を書く。初期リポジトリ作成のみ直接配置する。
 4. 作業中の PR は Draft とし、タイトルに `WIP:` を付ける。Draft 解除はレビュー可能、WIP 除去はマージ可能の合図。
 5. CI をスキップするコミット指定を使わない。実装変更後は Release ビルドと影響するテストを実行する。
-6. Pleasanter 本体は AGPL v3 の参照専用サブモジュール。コピー・流用・リンク・プロジェクト参照せず、ビルドや配布物へ含めない。
+6. Pleasanter 本体は AGPL v3 の参照専用ソース。必要時に取得し、Git では追跡しない。
+   コピー・流用・リンク・プロジェクト参照せず、ビルドや配布物へ含めない。
+   **本ライブラリは LGPL＋AGPL＋商用の 3 層。AGPL のコードを取り込むと、LGPL と商用ライセンスで提供できなくなる。**
 7. API キーとパスワードはコード・設定ファイル・ログ・公開ファイル・ブラウザへ出さない。環境変数か Git 管理外の設定から読む。未検証を動作済みとして説明しない。
-8. 依存 OSS は寛容ライセンス（MIT / BSD 系 / Apache-2.0）に限定する。追加時にライセンスを一次情報で確認し、NOTICE とロックファイルを更新する。商用ライセンスとのデュアル提供を後から選べる状態を保つため。
+8. 依存 OSS は寛容ライセンス（MIT / BSD 系 / Apache-2.0）に限定する。追加時にライセンスを一次情報で確認し、NOTICE とロックファイルを更新する。**3 層で提供し続けられるよう、GPL・AGPL 等のコピーレフトの依存を入れない。**
 9. 作業前に [共通指示](../.github/copilot-instructions.md) の全文を読む。外部仕様は一次情報で確認し、出典と参照日を残す。
 10. README は利用者向けの取扱説明・製品説明の入口にする。ビルド・テスト・CI・エージェント運用など開発者向けの説明は [開発ガイド](../_documents/開発ガイド.md) と [開発運用](../_documents/開発運用.md) に分離する。
+11. `if` / `else` / `for` / `foreach` / `while` / `using` / `lock` などの本文の `{}` を省略しない（1 行で済む本文も同じ）。C# は `.editorconfig` とビルドで、TypeScript・Svelte は ESLint の `curly` で強制する。
 <!-- AGENT-RULES:END -->
 
 ## プロジェクト
 
-Pleasanter 向けツールのテンプレート。C#／.NET 10 で、標準 Web API を叩く別アプリとして作る。`src/*.Core` が最小の API クライアント、`src/*.Cli` が接続確認の CLI。新しいツールは [開発ガイド](../_documents/開発ガイド.md) の手順でこのテンプレートから作る。現状と未決定事項は [アーキテクチャ方針](../_documents/アーキテクチャ方針.md) を確認する。
+Pleasanter の標準 Web API を呼ぶ **.NET 向けのクライアントライブラリ**（NuGet パッケージ `VehicleVision.PleasanterTools.DotNetClient`）。C#／.NET 10。
+**ライセンスは 3 層**（個人・非営利団体・教育機関は LGPL-3.0-or-later。それ以外の法人は AGPL-3.0-or-later か商用ライセンス。[LICENSING.md](../LICENSING.md)）。
+Core（VehicleVision.PleasanterTools.Core）には現在依存せず、依存を加えるときはライセンスの整合を見直す。
+現状と未決定事項は [アーキテクチャ方針](../_documents/アーキテクチャ方針.md) を確認する。
 
 ## 作業の進め方
 
@@ -31,6 +37,13 @@ Issue → `develop` から作業ブランチ → 実装と検証 → push → Dr
 
 Claude や Codex が外部記憶を必要とするときは、本リポジトリ名に `.ClaudeMemory` を付けた Internal リポジトリ（例: `<リポジトリ名>.ClaudeMemory`）を作って管理する。本体へ記憶ファイルを置かない。正式な規約は常にこのファイルへ残し、記憶と食い違ったら記憶側を直す。規約を変えたら記憶に古い記述が無いか確認する。
 
-Pleasanter の挙動は `_reference/Implem.Pleasanter` の実ソースと実機で確認する。実機未検証ならその旨を残す。
+Pleasanter の挙動を確かめる前に、`bash scripts/sync-reference.sh` で
+`_reference/Implem.Pleasanter` を上流の `main` の先頭へ更新する。
+`PLEASANTER_REFERENCE_DIR` を指定した場合は、その取得先を直接読む（ローカルへのリンクは作らない）。
+これは AI の事実確認用であり、CI から取得しない。実ソースと実機で確認し、実機未検証ならその旨を残す。
+文書には確認した完全なコミット SHA・ソースへの固定リンク・参照日を併記する。
+再確認していない過去の根拠を、自動で最新の SHA や参照日へ置き換えない。
+取得スクリプトの英語コンソール出力は規約 1 の例外とする。
+API 面のタグ別抽出は、従来どおり別の一時取得先を使う（[API 面の抽出](../_documents/API面の抽出.md)）。
 
 詳細は [開発運用](../_documents/開発運用.md)、[参照ソース](../_reference/README.md)、[ライセンス](../_documents/ライセンス.md) を読む。

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Pleasanter の API 面を、タグごとのソースから抽出する開発用ツール（Issue #18）。
+    配布物（NuGet パッケージ）には含めない。Pleasanter のソースは実行時にデータとして読むだけで、
+    プロジェクト参照・コピーはしない（_documents/API面の抽出.md）。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>VehicleVision.PleasanterTools.DotNetClient.ApiSurface</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Roslyn の構文解析だけを使う（MIT）。https://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp/5.9.0 -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="VehicleVision.PleasanterTools.DotNetClient.ApiSurface.Tests" />
+  </ItemGroup>
+
+</Project>

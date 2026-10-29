@@ -1,11 +1,16 @@
-VehicleVision.PleasanterTools.Template
-SPDX-License-Identifier: AGPL-3.0-or-later
+VehicleVision.PleasanterTools.DotNetClient
+SPDX-License-Identifier: LGPL-3.0-or-later OR AGPL-3.0-or-later OR LicenseRef-PMC-Commercial
+Copyright (C) PMC Co., Ltd. IT Solution Div.
+
+本ソフトウェアは 3 層（LGPL・AGPL・商用）で提供されます。LGPL を選べる利用者の範囲
+（個人・非営利団体・教育機関）は LICENSING.md が定めます。詳細は LICENSING.md を参照してください。
 
 開発運用と Actions の構成、および指示同期・参照更新スクリプトは次を参考にしています。
 VehicleVision.PleasanterTools.Questionnaire
 VehicleVision.PleasanterTools.McpOAuthWrapper
 VehicleVision.PleasanterTools.IndexCreator
-いずれも vehiclevisionjp の AGPL-3.0-or-later リポジトリ（Questionnaire は商用とのデュアルライセンス）。
+いずれも vehiclevisionjp のリポジトリ（参照元の提供条件は AGPL-3.0-or-later を基本とし、Questionnaire は商用とのデュアル）。
+本ライブラリ自身の提供条件は、上の SPDX 表記のとおりで、参照元とは異なる。
 参照日: 2026-10-12
 
 参照専用サブモジュール:
@@ -26,6 +31,11 @@ xunit.runner.visualstudio — Apache-2.0
 https://github.com/xunit/visualstudio.xunit/blob/main/License.txt
 coverlet.collector — MIT
 https://github.com/coverlet-coverage/coverlet/blob/master/LICENSE
+
+開発用ツールの直接依存（tools/。配布物には含めない）:
+Microsoft.CodeAnalysis.CSharp — MIT（推移的依存の Microsoft.CodeAnalysis.Common・Microsoft.CodeAnalysis.Analyzers も MIT）
+https://github.com/dotnet/roslyn/blob/main/License.txt
+（nuget.org の nuspec の license 式で確認。参照日: 2026-10-21）
 
 推移的依存と実際の版は各プロジェクトの packages.lock.json に記録する。
 
