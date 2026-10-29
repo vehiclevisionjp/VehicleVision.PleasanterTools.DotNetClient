@@ -35,6 +35,7 @@
     <Authors>PMC Co., Ltd. IT Solution Div.</Authors>
     <Copyright>Copyright (C) PMC Co., Ltd. IT Solution Div.</Copyright>
     <PackageLicenseFile>LICENSING.md</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.DotNetClient</RepositoryUrl>
   </PropertyGroup>
 </Project>
