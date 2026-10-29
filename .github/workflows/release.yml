@@ -1,9 +1,9 @@
 # タグ vX.Y.Z で nuget.org へ公開する。
-# 手順は _documents/リリース手順書.md。
+# 手順は _documents/リリース手順.md。
 #
 # 認証は Trusted Publishing（GitHub Actions の OIDC）。**長期の API キーは持たない。**
 # NuGet/login が OIDC トークンを nuget.org へ渡して、1 時間有効の API キーを受け取る。
-# 前提（管理者の作業。_documents/リリース手順書.md「nuget.org の準備」）:
+# 前提（管理者の作業。_documents/リリース手順.md「nuget.org の準備」）:
 #   - nuget.org の Trusted Publishing に、このリポジトリ・このワークフロー（release.yml）のポリシーがあること
 #   - 変数 NUGET_ORG_USER（組織の変数。Core へ共有）に、公開用の共用アカウントの nuget.org プロフィール名
 #     （メールアドレスではない）が入っていること
@@ -50,7 +50,7 @@ jobs:
         run: |
           git fetch origin master
           if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/master; then
-            echo "::error title=master に含まれないコミットです::タグは master の HEAD に打つこと（_documents/リリース手順書.md）"
+            echo "::error title=master に含まれないコミットです::タグは master の HEAD に打つこと（_documents/リリース手順.md）"
             exit 1
           fi
 
@@ -72,7 +72,7 @@ jobs:
           NUGET_ORG_USER: ${{ vars.NUGET_ORG_USER }}
         run: |
           if [ -z "$NUGET_ORG_USER" ]; then
-            echo "::error title=変数 NUGET_ORG_USER が未設定です::組織の変数 NUGET_ORG_USER（Core へ共有）に、公開用の共用アカウントの nuget.org プロフィール名（メールアドレスではない）を登録すること（_documents/リリース手順書.md）"
+            echo "::error title=変数 NUGET_ORG_USER が未設定です::組織の変数 NUGET_ORG_USER（Core へ共有）に、公開用の共用アカウントの nuget.org プロフィール名（メールアドレスではない）を登録すること（_documents/リリース手順.md）"
             exit 1
           fi
 
