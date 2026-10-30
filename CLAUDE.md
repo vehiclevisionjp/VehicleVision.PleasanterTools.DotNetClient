@@ -11,4 +11,4 @@ CI では取得せず、ビルドや NuGet パッケージにも含めない。
 文書には確認した完全なコミット SHA・ソースへの固定リンク・参照日を残す。実機未検証なら明記する。
 API 面のタグ別抽出は、従来どおり別の一時取得先を使う。正式な編集元は `.github/copilot-instructions.md`。
 
-外部記憶は、必要になった時点で `<リポジトリ名>.ClaudeMemory`（Internal）を作って管理する。現時点では作っていない。作ったらここへ URL を書く。
+外部記憶は、個別のリポジトリを作らず、Internal の `VehicleVision.PleasanterTools.ClaudeMemory` に `DotNetClient/` フォルダを作って管理する。現時点ではフォルダを作っていない。
