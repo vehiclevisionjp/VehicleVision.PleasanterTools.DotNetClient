@@ -53,13 +53,13 @@ API キーは、環境変数や Git 管理外の設定から読んでくださ�
 
 | | ライセンス | 想定する利用者・利用 |
 | --- | --- | --- |
-| A | [LGPL-3.0-or-later](LICENSE)（LGPL が参照する GPL は [COPYING](COPYING)） | 個人・非営利団体・教育機関 |
-| B | [AGPL-3.0-or-later](LICENSE-AGPL) | それ以外の法人が、AGPL の義務を守って利用する場合 |
-| C | [株式会社ピー・エム・シー ITソリューション事業部の商用ライセンス](LICENSE-COMMERCIAL.md) | それ以外の法人が、AGPL の義務を負わずに利用したい場合（個別契約） |
+| A | [LGPL-3.0-or-later](LICENSE)（LGPL が参照する GPL は [COPYING](COPYING)） | 個人・非営利団体・教育機関が、営利事業に使わない場合 |
+| B | [AGPL-3.0-or-later](LICENSE-AGPL) | 営利事業に使う場合（企業・営利団体・個人の営利利用・公的機関）に、AGPL の義務を守って利用するとき |
+| C | [株式会社ピー・エム・シー ITソリューション事業部の商用ライセンス](LICENSE-COMMERCIAL.md) | 営利事業に使う場合（B と同じ）に、AGPL の義務を負わずに利用したいとき（個別契約） |
 
 SPDX 表記: `LGPL-3.0-or-later OR AGPL-3.0-or-later OR LicenseRef-PMC-Commercial`
 
-A の対象かどうか迷うときは、利用の前に問い合わせてください。
+A は、法人の種類ではなく利用の目的で決めます（個人の仕事での利用や公的機関は A ではありません）。判断の目安と、迷うときの問い合わせは [LICENSING.md](LICENSING.md) を参照してください。
 **Pleasanter 本体（AGPL v3）を取り込まないことが、B・C の提供の前提です。** 依存も寛容ライセンスに限っています。
 依存のライセンスは [NOTICE](NOTICE) にあります。開発環境と運用は [開発ガイド](_documents/開発ガイド.md) と [開発運用](_documents/開発運用.md) にあります。
 貢献を取り込む前に [CLA（草案）](CLA.md) への署名が必要です（3 層で提供するため）。手続きは [貢献のしかた](CONTRIBUTING.md) を参照してください。
