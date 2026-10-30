@@ -62,4 +62,4 @@ SPDX 表記: `LGPL-3.0-or-later OR AGPL-3.0-or-later OR LicenseRef-PMC-Commercia
 A の対象かどうか迷うときは、利用の前に問い合わせてください。
 **Pleasanter 本体（AGPL v3）を取り込まないことが、B・C の提供の前提です。** 依存も寛容ライセンスに限っています。
 依存のライセンスは [NOTICE](NOTICE) にあります。開発環境と運用は [開発ガイド](_documents/開発ガイド.md) と [開発運用](_documents/開発運用.md) にあります。
-貢献を取り込む前に [CLA（草案）](CLA.md) への署名が必要です（3 層で提供するため）。手続きは [貢献のしかた](CONTRIBUTING.md) を参照してください。
+貢献を取り込む前に [CLA](CLA.md) への署名が必要です（3 層で提供するため）。手続きは [貢献のしかた](CONTRIBUTING.md) を参照してください。
