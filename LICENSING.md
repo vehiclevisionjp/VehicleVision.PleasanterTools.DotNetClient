@@ -1,5 +1,8 @@
 # ライセンスについて（3 層の提供）
 
+<!-- license:begin release=none -->
+<!-- license:end release -->
+
 対象ソフトウェアは **VehicleVision.PleasanterTools.DotNetClient**
 
 Copyright (C) PMC Co., Ltd. IT Solution Div.
@@ -12,7 +15,7 @@ Copyright (C) PMC Co., Ltd. IT Solution Div.
 | --- | --- | --- | --- |
 | A | **GNU LGPL v3 以降**（LGPL-3.0-or-later） | [`LICENSE`](LICENSE)（LGPL が参照する GPL は [`COPYING`](COPYING)） | **個人・非営利団体・教育機関**が、**営利事業に使わない**場合 |
 | B | **GNU AGPL v3 以降**（AGPL-3.0-or-later） | [`LICENSE-AGPL`](LICENSE-AGPL) | **営利事業に使う**場合（企業・営利団体・個人の営利利用・公的機関）に、AGPL の義務を守って利用するとき |
-| C | **株式会社ピー・エム・シー ITソリューション事業部の商用ライセンス**（LicenseRef-PMC-Commercial） | [`LICENSE-COMMERCIAL.md`](LICENSE-COMMERCIAL.md) | **営利事業に使う**場合（B と同じ）に、AGPL の義務を負わずに利用したいとき（個別契約） |
+| C | **株式会社ピー・エム・シー ITソリューション事業部の商用ライセンス**（LicenseRef-PMC-Commercial） | [`LICENSE-COMMERCIAL.md`](LICENSE-COMMERCIAL.md) | AGPL の義務を負わずに利用したいとき（個別契約。法人に限らず、誰でも契約できます） |
 
 SPDX 表記： `LGPL-3.0-or-later OR AGPL-3.0-or-later OR LicenseRef-PMC-Commercial`
 
@@ -53,22 +56,27 @@ A かどうかは、**誰が使うか**ではなく、**利用が営利事業に
 
 ### B. AGPL v3 を選ぶ場合（営利事業に使う場合・公的機関）
 
-追加の契約や費用は不要です。ただし AGPL の義務が生じます。特に重要なのは
-**ネットワーク越しの利用にも及ぶ第 13 条**です。
+追加の契約や費用は不要です。ただし AGPL の義務が生じます。
 
-- 本ソフトウェアを改変して**ネットワーク経由でサービス提供する場合、
+- 本ソフトウェアを改変して**配布する場合、その改変版のソースコードを提供する義務**が生じます
+- 本ソフトウェアを改変して**ネットワーク経由で他者に提供する場合（第 13 条）、
   その利用者に対して改変版のソースコードを提供する義務**が生じます
-- 本ソフトウェアと結合した著作物を配布する場合、その全体を AGPL で提供する必要があります。
-  **ライブラリなので、本ソフトウェアを組み込んだアプリ全体が、AGPL の対象になり得ます**
+- 本ソフトウェアと結合した著作物を配布する場合、その全体を AGPL で提供する必要があります
 
-社内利用であっても義務の有無を確認してください。
+<!-- license:begin usage=library -->
+**本ソフトウェアは、各アプリケーションへ組み込んで使う共通部品（ライブラリ）です。
+組み込んだアプリケーションをネットワーク越しにサービスとして提供する場合は、
+その全体が AGPL の対象になり得る**点に注意してください。
+<!-- license:end usage -->
 
-### C. 商用ライセンスを選ぶ場合（営利事業に使う場合・公的機関）
+組織の内部での利用や受託での提供など、義務の有無が分かりにくい場面は確認してください。
+
+### C. 商用ライセンスを選ぶ場合
 
 AGPL の義務（ソースコード開示・コピーレフト）を負わずに利用できます。
-条件は個別契約で定めます。次のような場合はこちらを検討してください。
+条件は個別契約で定めます。契約できる相手は法人に限りません。次のような場合はこちらを検討してください。
 
-- 改変版のソースコードを公開したくない
+- 改変版のソースコードを公開したくない（ネットワーク経由で提供する場合を含む）
 - 自社の proprietary な製品・システムに組み込みたい
 - AGPL の義務範囲について社内の法務判断が難しい
 - 保守・サポート・SLA を契約に含めたい
@@ -76,32 +84,65 @@ AGPL の義務（ソースコード開示・コピーレフト）を負わずに
 **お問い合わせ：** 株式会社ピー・エム・シー ITソリューション事業部
 （連絡先は [`LICENSE-COMMERCIAL.md`](LICENSE-COMMERCIAL.md) を参照）
 
+<!-- license:begin nuget=on -->
 ## NuGet パッケージでの表示
 
 NuGet の `PackageLicenseExpression` は `LicenseRef-*` を扱えず、利用者の範囲の限定も表せません。
 そのため NuGet パッケージは、ライセンス表示として **本書（`LICENSING.md`）を指します**。
 パッケージには、本書と上の全文（`LICENSE`・`COPYING`・`LICENSE-AGPL`・`LICENSE-COMMERCIAL.md`）、`NOTICE` を同梱します。
+<!-- license:end nuget -->
 
-## Pleasanter との関係
+## Pleasanter との関係（3 層の前提）
 
-本ソフトウェアは Pleasanter（株式会社インプリム, AGPL v3）とは
-**独立した別のライブラリ**として開発しています。次の事実を確認しています。
+本ソフトウェアは Pleasanter（株式会社インプリム, AGPL v3）の
+**独立した別のソフトウェア**です。
 
-- Pleasanter とは、**標準 Web API 越しにのみ通信**します
+- 本体のソースコードを **複製・改変・リンク・プロジェクト参照していません**。Pleasanter のアセンブリも参照しません
+- Pleasanter の派生著作物ではありません
+  <!-- license:begin connection=api-only -->
+- Pleasanter とは **標準 Web API 越しにのみ通信**します。DB へ直接接続しません
+  <!-- license:end connection -->
+  <!-- license:begin reference=on -->
 - [`_reference/Implem.Pleasanter`](_reference/README.md) は**事実確認のための参照専用**で、
-  Git では追跡せず、ビルド対象にも配布物にも含めません。
-  混ざりは `scripts/reference-isolation-check.sh` が CI で検査します
-- 本体のコードのコピー・流用・リンク・プロジェクト参照は、規約で禁止しています。
-  プロジェクト参照は、ソリューション内にありません
-- API 面の抽出ツール（`tools/`、配布しない）は、Pleasanter のソースを実行時にデータとして読み、
-  識別子・型名・パス・版などの事実だけを出力します
+  ビルド対象にも配布物にも含めません
+  <!-- license:end reference -->
 
-**本体のコードを一切流用していないことは、開発者への確認が済んでいません。**
-上は規約と検査の事実であり、不流用の保証ではありません。確認が済むまで、断定しません。
+本ソフトウェアは、Pleasanter 本体の AGPL の**汚染を受けておらず、受け入れるつもりもありません。**
+そのため、本ソフトウェアのライセンスは Pleasanter のライセンスに拘束されず、
+**著作権者である株式会社ピー・エム・シー ITソリューション事業部が自由に決定できます。
+これが 3 層の提供を成立させている前提です。**
 
-> **AGPL の Pleasanter のコードを取り込まないこと。** 取り込むと、本ソフトウェアを
-> LGPL（A）や商用ライセンス（C）で提供できなくなる恐れがあります。Pleasanter の著作権は当社にありません。
+> **AGPL 側だけを見て「どうせ AGPL なのだから本体を取り込んでもよい」と考えないこと。**
+> Pleasanter の著作権は当社にないため、**取り込んだ瞬間に A（LGPL）と C（商用ライセンス）を
+> 提供できなくなります。** 3 層のうち、AGPL 以外の層が壊れます。
 
+<!-- license:begin pleasanter-note=free -->
+本体のコードは、複製も流用もしていません。API の名前・型・ルートなどの事実は、静的解析で抽出して使っています。
+API 面の抽出ツール（`tools/`、配布しない）は、Pleasanter のソースを実行時にデータとして読み、
+識別子・型名・パス・版などの事実だけを出力します。生成するコード（`src/` 配下の `Generated/`）に入るのは、その事実だけで、
+本体のロジックやコメントは含みません。
+
+本体のコードの取り込みは、規約で禁止しています。混ざりは `scripts/reference-isolation-check.sh` が CI で検査します。
+<!-- license:end pleasanter-note -->
+
+## 依存ソフトウェアについて
+
+本ソフトウェアが利用する OSS は **寛容ライセンス（MIT / BSD 系 / Apache-2.0）** に
+限定します。一覧は [`NOTICE`](NOTICE) を参照してください。推移的依存と実際の版は `packages.lock.json` にあります。
+
+<!-- license:begin deps-note=free -->
+NuGet パッケージの依存は、標準ライブラリだけです。`Microsoft.Data.SqlClient.SNI.runtime` など、
+第三者の独自の許諾を要する部品は配布しません。
+<!-- license:end deps-note -->
+
+これは意図的な制約です。**コピーレフト系（GPL / AGPL / SSPL 等）の依存が 1 つでも入ると、
+B・C の提供や、利用者が選ぶ層の自由が崩れます。** 依存を追加する際は必ずライセンスを確認してください。
+（A の LGPL 自体は、本ソフトウェアの提供条件であり、依存ではありません。）
+
+<!-- license:begin sni=off -->
+<!-- license:end sni -->
+
+<!-- license:begin core=none -->
 ## Core との関係
 
 当社の共通部品 **VehicleVision.PleasanterTools.Core** とは、現時点で**依存関係がありません**。
@@ -111,15 +152,7 @@ NuGet の `PackageLicenseExpression` は `LicenseRef-*` を扱えず、利用者
 **Core のパッケージへ依存を加える時点で、ライセンスの整合を見直します。**
 たとえば、Core 側の商用ライセンスとの関係や、必要なら Core 側での例外許諾を確認します。
 それまでは、Core のライセンスを本ソフトウェアへ及ぼす仕組みは設けていません。
-
-## 依存ソフトウェアについて
-
-本ソフトウェアが利用する OSS は **すべて寛容ライセンス（MIT / BSD 系 / Apache-2.0）** に
-限定します。一覧は [`NOTICE`](NOTICE) を参照してください。
-
-これは意図的な制約です。**コピーレフト系（GPL / AGPL / SSPL 等）の依存が 1 つでも入ると、
-B・C の提供や、利用者が選ぶ層の自由が崩れます。** 依存を追加する際は必ずライセンスを確認してください。
-（A の LGPL 自体は、本ソフトウェアの提供条件であり、依存ではありません。）
+<!-- license:end core -->
 
 ## 貢献を受け取るとき
 
@@ -129,4 +162,4 @@ B・C の提供や、利用者が選ぶ層の自由が崩れます。** 依存�
 **署名のない貢献を 1 つでも取り込むと、その部分だけ 3 層で提供できなくなる。**
 後から気付いても、当人全員から同意を集め直すか、該当コードを書き直すしかない。
 
-手続きは [`CLA.md`](CLA.md) と [`CONTRIBUTING.md`](CONTRIBUTING.md) を参照。
+手続きは [`CLA.md`](CLA.md) と [`CONTRIBUTING.md`](CONTRIBUTING.md) を参照してください。

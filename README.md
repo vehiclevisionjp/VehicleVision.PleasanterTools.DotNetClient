@@ -55,7 +55,7 @@ API キーは、環境変数や Git 管理外の設定から読んでくださ�
 | --- | --- | --- |
 | A | [LGPL-3.0-or-later](LICENSE)（LGPL が参照する GPL は [COPYING](COPYING)） | 個人・非営利団体・教育機関が、営利事業に使わない場合 |
 | B | [AGPL-3.0-or-later](LICENSE-AGPL) | 営利事業に使う場合（企業・営利団体・個人の営利利用・公的機関）に、AGPL の義務を守って利用するとき |
-| C | [株式会社ピー・エム・シー ITソリューション事業部の商用ライセンス](LICENSE-COMMERCIAL.md) | 営利事業に使う場合（B と同じ）に、AGPL の義務を負わずに利用したいとき（個別契約） |
+| C | [株式会社ピー・エム・シー ITソリューション事業部の商用ライセンス](LICENSE-COMMERCIAL.md) | AGPL の義務を負わずに利用したいとき（個別契約。法人に限らず、誰でも契約できます） |
 
 SPDX 表記: `LGPL-3.0-or-later OR AGPL-3.0-or-later OR LicenseRef-PMC-Commercial`
 
