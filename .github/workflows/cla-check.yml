@@ -20,7 +20,7 @@ concurrency:
 jobs:
   cla:
     name: cla
-    # 公開リポジトリへの貢献を対象とする。
+    # internal の Template 自身は対象外。新しい公開リポジトリではそのまま動く。
     if: github.event.repository.visibility == 'public'
     runs-on: ubuntu-latest
     timeout-minutes: 10
