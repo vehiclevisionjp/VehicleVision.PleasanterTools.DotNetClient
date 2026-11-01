@@ -128,7 +128,8 @@ API 面の抽出ツール（`tools/`、配布しない）は、Pleasanter のソ
 ## 依存ソフトウェアについて
 
 本ソフトウェアが利用する OSS は **寛容ライセンス（MIT / BSD 系 / Apache-2.0）** に
-限定します。一覧は [`NOTICE`](NOTICE) を参照してください。推移的依存と実際の版は `packages.lock.json` にあります。
+限定します。一覧は [`NOTICE`](NOTICE) を参照してください。依存の宣言（パッケージ参照）は各 csproj にあり、
+`packages.lock.json` を置いているリポジトリでは、推移的依存と実際の版もそこで確認できます。
 
 <!-- license:begin deps-note=free -->
 NuGet パッケージの依存は、標準ライブラリだけです。`Microsoft.Data.SqlClient.SNI.runtime` など、
