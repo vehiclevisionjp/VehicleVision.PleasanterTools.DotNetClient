@@ -170,7 +170,7 @@ public sealed class OtherEndpointTests(ContractFixture fixture)
     }
 
     [ContractFact]
-    public async Task メール送信の口は_reference_に表の種類を入れて届く()
+    public async Task メール送信の口は表の種類を入れて届く()
     {
         var site = await fixture.CreateResultsSiteAsync("契約-mail-" + ContractFixture.Unique());
         try
