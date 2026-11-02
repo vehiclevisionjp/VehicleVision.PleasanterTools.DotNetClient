@@ -24,7 +24,7 @@ TOOL=tools/VehicleVision.PleasanterTools.DotNetClient.ApiSurface/bin/Release/net
 WORK=<リポジトリの外の短いパス>   # 例: C:/Users/<名前>/AppData/Local/Temp/plref
 
 # 2) タグと、抽出に要るファイルの本体だけを取得する（ネットワークを使う。2026-10-21 時点で 66 タグ・約 13 MB・数十秒）
-dotnet $TOOL prepare --repo $WORK --min 1.4.0.0
+dotnet $TOOL prepare --repo $WORK --min 1.4.0.0   # 1.3.x まで広げるときは --min 1.3.0.0（Issue #71。下の「1.3.x への拡張」）
 
 # 3) 全タグを抽出し、api-surface/ へ書く（ネットワークを使わない。約 3 分）
 dotnet $TOOL run --repo $WORK --out-dir api-surface
@@ -38,6 +38,7 @@ dotnet $TOOL extract --source-dir _reference/Implem.Pleasanter --out <ファイ�
 `--source-dir` の例は既定先を使う。`PLEASANTER_REFERENCE_DIR` 指定時は、その取得先を直接渡す。
 抽出結果の事実を文書へ記録するときも、完全な SHA・ソースへの固定リンク・参照日を残す。
 
+- `--min`・`--max` は、対象の版の範囲（両端を含む。`--max` は省略すると最新まで）。`prepare` と `run` に同じ範囲を渡す。上流に新しいタグが出ても、`--max` で範囲を固定すれば同じ結果になる
 - `prepare` は、`git init` した作業リポジトリへ、`Pleasanter_*` のタグ（`--min` 以上）を**履歴 1 件・ファイル本体なし**（`--depth 1 --filter=blob:none`）で取得し、
   `Implem.Pleasanter`・`Implem.Libraries` の `*.cs` と `App_Data/Parameters/Api.json` の本体だけを、ID を指定してまとめて取得する
 - `run`・`extract` は `GIT_NO_LAZY_FETCH=1` で読む。本体が足りなければ、ネットワークへ出ずに失敗する（`prepare` を先に実行する）
@@ -111,7 +112,7 @@ C# の構文解析に **Roslyn（`Microsoft.CodeAnalysis.CSharp`、MIT）** を�
 
 - `tags`: 対象の版（古い順）。`Since`・`Until` はこの中の版を指す
 - `items[].key`: `endpoint:POST api/items/{id}/get`・`type:<完全名>`・`member:<型の完全名>#<名前>`・`enum:<型の完全名>#<名前>`・`parameter:Api.<名前>`・`route:<名前>`
-- `items[].since`: 最初に現れた版。**対象の最初の版（1.4.0.0）なら「その版以前から在る」**
+- `items[].since`: 最初に現れた版。**対象の最初の版（`history.json` では 1.4.0.0。`from-1.3.0.0/` では 1.3.0.0）なら「その版以前から在る」**
 - `items[].until`: 無くなった版（**その版からは無い**。排他）。最新の版に在れば無い
 - `items[].intervals`: 途中で無くなって戻ったものだけ。区間の一覧
 - `items[].changes`: 中身が変わった版と、変わった要素の名前（`type`・`nullable`・`rateLimiting` など）
@@ -138,3 +139,16 @@ C# の構文解析に **Roslyn（`Microsoft.CodeAnalysis.CSharp`、MIT）** を�
 ## 更新するとき
 
 新しい Pleasanter のタグが出たら、`prepare` と `run` をやり直し、`api-surface/` の差分を確かめてコミットする。抽出の規則に合わない形（ファイルの移動・新しい書き方）が出たら、[調査メモ](調査メモ_API定義の場所.md) を直してから `ExtractorOptions` を変える。
+
+## 1.3.x への拡張（Issue #70・#71）
+
+サポートの下限を 1.4.0.0 から 1.3.0.0 へ広げる準備として、`Pleasanter_1.3.0.0`〜`Pleasanter_1.5.9.0`（159 版）を同じ抽出器で抽出した。結果は [`api-surface/from-1.3.0.0/`](../api-surface/from-1.3.0.0/history.md) にある。
+
+- 手順: `prepare --min 1.3.0.0 --max 1.5.9.0`、`run --min 1.3.0.0 --max 1.5.9.0 --out-dir api-surface/from-1.3.0.0 --doc-link ../../_documents/API面の抽出.md`（`latest.json` は `api-surface/latest.json` と同一なので置かない）。**取得は 2026-11-02、1.3.x は約 1 分**
+- 上流のタグは `Pleasanter_1.3.0.0`（`adb98d15cdc7b8be6d2fe7a8a5f6fe7aa83bc7d8`）〜`Pleasanter_1.3.50.2`（`c602fd6e63c008a3742088fe8f6dd8b0c18a8022`）。1.2.x 以前は対象外
+- **抽出器のコードは変えていない**（`--max` の追加だけ）。1.3.x のソースの配置が 1.4.x と同じで（`Controllers/Api/`・`Controllers/Api_*`・属性ルーティング）、そのまま抽出できた。`ambiguousTypes`・`unresolvedTypes` は 1.3.x の全版で 0 件
+- **1.4.x の出力は変わらない。** 同じ実行で出た 1.5.9.0 の全体は、コミット済みの `api-surface/latest.json` と 1 バイトも違わない。`api-surface/history.json` は、この Issue では触っていない（生成器の入力のまま。下限の意味を変えるのは Issue #72）
+- 突き合わせ（2026-11-02）: エンドポイントの数が、`Controllers/Api/`・`Api_*` の `[Http*]` の数と一致した（1.3.0.0 は 35、1.3.5.0 は 39、1.3.50.2 は 52。1.3.50.2 と 1.4.0.0 は同数）。`createsite` などの 4 つが 1.3.4.0 で入ること（1.3.3.3 の `ItemsController` に無く、1.3.4.0 に有る）。1.3.0.0 の `Libraries/Requests/Api.cs` のメンバー
+- 1.3.x の間（1.3.0.1〜1.3.50.2）で現れたのは、エンドポイント 17（`createsite`・`getsite`・`updatesite`・`deletesite` が 1.3.4.0、`upsert` が 1.3.10.0、`depts` の 3 つが 1.3.25.0、`demo/register` が 1.3.30.0、`backgroundtasks` の 2 つが 1.3.32.0、`synchronizesummaries` が 1.3.33.0、`items/{id}/import` が 1.3.47.0、`depts`・`groups`・`users` の `import` が 1.3.48.0、`updatesitesettings` が 1.3.50.0）、型 66、メンバー 755、列挙値 123、`Api` のパラメータ 2。無くなったのは、列挙値 `Sqls.TableTypes#Match`（1.3.31.0）とメンバー `SiteSettings#LinkedSsDataSetHash`（1.3.10.0）
+- **気づいたこと（Issue #73・#74 で扱う）**: `App_Data/Parameters/Api.json` の `Version`（`ApiVersion` の既定 1.1 の元）は 1.3.13.0 から。1.3.0.0〜1.3.12.0 の `Api.ApiVersion` の既定は 1.000。`Compatibility_1_3_12` も 1.3.13.0 から
+- 実機では確かめていない（ソースからの抽出）
