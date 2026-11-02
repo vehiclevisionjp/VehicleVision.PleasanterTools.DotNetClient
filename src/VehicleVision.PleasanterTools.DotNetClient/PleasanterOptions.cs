@@ -31,7 +31,7 @@ public enum UnknownServerVersionBehavior
 public sealed class PleasanterOptions
 {
     /// <summary>API のバージョンの既定。</summary>
-    /// <remarks>Pleasanter の <c>App_Data/Parameters/Api.json</c> の <c>Version</c> と同じ値（1.4.0.0〜1.5.9.0 で変わっていない）。</remarks>
+    /// <remarks>Pleasanter の <c>App_Data/Parameters/Api.json</c> の <c>Version</c> と同じ値（1.3.13.0〜1.5.9.0 で変わっていない。1.3.12.0 以前は <c>Api.json</c> に <c>Version</c> が無く、サーバー側の既定は 1.000。Issue #80）。</remarks>
     public const decimal DefaultApiVersion = 1.1m;
 
     /// <summary>1 回の呼び出しの上限の既定。</summary>
