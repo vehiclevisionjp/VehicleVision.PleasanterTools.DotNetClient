@@ -90,8 +90,8 @@ C# の構文解析に **Roslyn（`Microsoft.CodeAnalysis.CSharp`、MIT）** を�
 - **応答の匿名型のメンバーの型は未抽出。** 名前だけを取る。`Data` の要素の型は、`response.modelTypes`（辿ったメソッドの戻り値の型）を手がかりにする
 - **リクエストの型は「辿った処理が解釈する型」の和集合。** `api/items/{id}/create` はレコードの種類で振り分けられるため、`SiteApiModel`・`IssueApiModel`・`ResultApiModel`・`WikiApiModel` がすべて並ぶ。
   また、コントローラが内部で組み立てた本文を解釈するもの（`api/binaries/upload` の `UpdateByApi`）も含まれる
-- **名前の解決は推定。** 単純名が同じ型が複数あるときは、入れ子の関係・名前空間・using で決め、決まらなければ `ambiguousTypes` に残す（1.4.0.0〜1.5.9.0 では 0 件）。
-  ソースに無い型は辿らず、`unresolvedTypes` に残す（`string`・`List`・`Dictionary`・`DateTime` などのよく使う組み込みの型は数えない。1.4.0.0〜1.5.9.0 では 0 件）
+- **名前の解決は推定。** 単純名が同じ型が複数あるときは、入れ子の関係・名前空間・using で決め、決まらなければ `ambiguousTypes` に残す（1.3.0.0〜1.5.9.0 では 0 件）。
+  ソースに無い型は辿らず、`unresolvedTypes` に残す（`string`・`List`・`Dictionary`・`DateTime` などのよく使う組み込みの型は数えない。1.3.0.0〜1.5.9.0 では 0 件）
 - **null 可否**は、`?` 付き・値型（組み込みとソース内の enum・struct）・参照型（組み込みとソース内の class）から決める。Pleasanter は Nullable 参照型を無効にしているので、参照型は null を取りうる。どちらか分からないものは `null`（未判定）
 - **認証の確認は、コントローラのメソッドの中だけを見る。** `…Utilities` の中での権限の確認（例: テナントの管理者か）は未抽出。フィルタ（`CheckApiContextAttributes`）の中身も未抽出（属性名だけ）
 - **SCIM（`scim/v2/*`）は、エンドポイントとパラメータだけ。** 本文の型は、`…ByApi` の形を取らないため未抽出
