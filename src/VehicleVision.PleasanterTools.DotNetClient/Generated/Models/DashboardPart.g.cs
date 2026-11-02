@@ -9,57 +9,57 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DashboardPart</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DashboardPart</c>。Pleasanter 1.3.44.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.44.0")]
 public partial class DashboardPart
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? CalendarFromTo { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? CalendarGroupBy { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? CalendarShowStatus { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? CalendarSites { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public global::System.Collections.Generic.List<string>? CalendarSitesData { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? CalendarTimePeriod { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.SiteSettings.CalendarTypes? CalendarType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? Content { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::System.Collections.Generic.List<int>? Depts { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? DisableAsynchronousLoading { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? ExtendedCss { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::System.Collections.Generic.List<int>? Groups { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public int? Height { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? HtmlContent { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public int? Id { get; set; }
 
     [Since("1.4.1.0")]
@@ -95,57 +95,57 @@ public partial class DashboardPart
     [Since("1.4.0.0")]
     public string? KambanValue { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.QuickAccessLayout? QuickAccessLayout { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? QuickAccessSites { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.QuickAccessSite>? QuickAccessSitesData { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public bool? ShowTitle { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public long? SiteId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? TimeLineBody { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.TimeLineDisplayType? TimeLineDisplayType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public int? TimeLineItemCount { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? TimeLineSites { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::System.Collections.Generic.List<string>? TimeLineSitesData { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? TimeLineTitle { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public string? Title { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.DashboardPartType? Type { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::System.Collections.Generic.List<int>? Users { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.View? View { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public int? Width { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public int? X { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public int? Y { get; set; }
 }

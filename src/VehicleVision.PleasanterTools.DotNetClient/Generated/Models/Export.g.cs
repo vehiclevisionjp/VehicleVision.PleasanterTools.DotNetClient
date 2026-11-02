@@ -9,83 +9,83 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class Export
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export.DelimiterTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export.DelimiterTypes</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+    [Since("1.3.0.0")]
     public enum DelimiterTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Comma = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Tab = 1,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export.ExecutionTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export.ExecutionTypes</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+    [Since("1.3.0.0")]
     public enum ExecutionTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Direct = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         MailNotify = 1,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export.Types</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Export.Types</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+    [Since("1.3.0.0")]
     public enum Types
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Csv = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Json = 1,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.ExportColumn>? Columns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Export.DelimiterTypes? DelimiterType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.1.0")]
     public global::System.Collections.Generic.List<int>? Depts { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? EncloseDoubleQuotes { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Export.ExecutionTypes? ExecutionType { get; set; }
 
     [Since("1.4.18.0")]
     public bool? ExportCommentsJsonFormat { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.1.0")]
     public global::System.Collections.Generic.List<int>? Groups { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? Header { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Link>? Join { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Name { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Export.Types? Type { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.1.0")]
     public global::System.Collections.Generic.List<int>? Users { get; set; }
 }

@@ -9,26 +9,26 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.AutoNumbering</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.AutoNumbering</c>。Pleasanter 1.3.32.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.32.0")]
 public partial class AutoNumbering
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.32.0")]
     public string? ColumnName { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.32.0")]
     public int? Default { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.32.0")]
     public string? Format { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.32.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Column.AutoNumberingResetTypes? ResetType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.32.0")]
     public int? Step { get; set; }
 }

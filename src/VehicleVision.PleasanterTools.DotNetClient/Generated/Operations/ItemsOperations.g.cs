@@ -14,30 +14,30 @@ public sealed class ItemsOperations
 {
     private readonly PleasanterApiClient _client;
 
-    private static readonly PleasanterEndpoint Endpoint0 = new("Items.BulkDeleteAsync（POST api/items/{id}/bulkdelete）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint0 = new("Items.BulkDeleteAsync（POST api/items/{id}/bulkdelete）", "1.3.0.0", null);
     private static readonly PleasanterEndpoint Endpoint1 = new("Items.BulkUpsertAsync（POST api/items/{id}/bulkupsert）", "1.4.6.0", null);
-    private static readonly PleasanterEndpoint Endpoint2 = new("Items.CopySitePackageAsync（POST api/items/{id}/copysitepackage）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint3 = new("Items.CreateAsync（POST api/items/{id}/create）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint4 = new("Items.CreateSiteAsync（POST api/items/{id}/createsite）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint5 = new("Items.DeleteAsync（POST api/items/{id}/delete）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint6 = new("Items.DeleteSiteAsync（POST api/items/{id}/deletesite）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint7 = new("Items.ExportAsync（POST api/items/{id}/export）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint8 = new("Items.GetAsync（POST api/items/{id}/get）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint2 = new("Items.CopySitePackageAsync（POST api/items/{id}/copysitepackage）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint3 = new("Items.CreateAsync（POST api/items/{id}/create）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint4 = new("Items.CreateSiteAsync（POST api/items/{id}/createsite）", "1.3.4.0", null);
+    private static readonly PleasanterEndpoint Endpoint5 = new("Items.DeleteAsync（POST api/items/{id}/delete）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint6 = new("Items.DeleteSiteAsync（POST api/items/{id}/deletesite）", "1.3.4.0", null);
+    private static readonly PleasanterEndpoint Endpoint7 = new("Items.ExportAsync（POST api/items/{id}/export）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint8 = new("Items.GetAsync（POST api/items/{id}/get）", "1.3.0.0", null);
     private static readonly PleasanterEndpoint Endpoint9 = new("Items.GetClosestSiteIdAsync（POST api/items/{id}/getclosestsiteid）", "1.4.5.0", null);
-    private static readonly PleasanterEndpoint Endpoint10 = new("Items.GetSiteAsync（POST api/items/{id}/getsite）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint11 = new("Items.ImportAsync（POST api/items/{id}/import）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint10 = new("Items.GetSiteAsync（POST api/items/{id}/getsite）", "1.3.4.0", null);
+    private static readonly PleasanterEndpoint Endpoint11 = new("Items.ImportAsync（POST api/items/{id}/import）", "1.3.47.0", null);
     private static readonly PleasanterEndpoint Endpoint12 = new("Items.MoveSiteAsync（POST api/items/{id}/movesite）", "1.5.9.0", null);
-    private static readonly PleasanterEndpoint Endpoint13 = new("Items.SynchronizeSummariesAsync（POST api/items/{id}/synchronizesummaries）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint14 = new("Items.UpdateAsync（POST api/items/{id}/update）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint15 = new("Items.UpdateSiteAsync（POST api/items/{id}/updatesite）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint16 = new("Items.UpdateSiteSettingsAsync（POST api/items/{id}/updatesitesettings）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint17 = new("Items.UpsertAsync（POST api/items/{id}/upsert）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint13 = new("Items.SynchronizeSummariesAsync（POST api/items/{id}/synchronizesummaries）", "1.3.33.0", null);
+    private static readonly PleasanterEndpoint Endpoint14 = new("Items.UpdateAsync（POST api/items/{id}/update）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint15 = new("Items.UpdateSiteAsync（POST api/items/{id}/updatesite）", "1.3.4.0", null);
+    private static readonly PleasanterEndpoint Endpoint16 = new("Items.UpdateSiteSettingsAsync（POST api/items/{id}/updatesitesettings）", "1.3.50.0", null);
+    private static readonly PleasanterEndpoint Endpoint17 = new("Items.UpsertAsync（POST api/items/{id}/upsert）", "1.3.10.0", null);
 
     internal ItemsOperations(PleasanterApiClient client) => _client = client;
 
     /// <summary><c>POST api/Items/{id}/BulkDelete</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>ApiHeavy</c>（最新の版での指定）。</para>
@@ -47,7 +47,7 @@ public sealed class ItemsOperations
     /// <param name="recordSelector">本文（<c>Pleasanter.Libraries.Requests.RecordSelector</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> BulkDeleteAsync(long id, ApiDeleteOption? apiDeleteOption = null, RecordSelector? recordSelector = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint0, $"api/Items/{PleasanterApiClient.Segment(id)}/BulkDelete", [apiDeleteOption, recordSelector], null, cancellationToken);
@@ -95,7 +95,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/CopySitePackage</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は包み（StatusCode・LimitPerDate・LimitRemaining・Response）。<c>Response</c> はメンバー名（Data）だけが取れていて、型付けしていない。</para>
     /// <para>レート制限 <c>ApiHeavy</c>（最新の版での指定）。</para>
@@ -104,7 +104,7 @@ public sealed class ItemsOperations
     /// <param name="sitePackage">本文（<c>Pleasanter.Models.Sites.SitePackageApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse<PleasanterEnvelope<ItemsCopySitePackageResponse>>> CopySitePackageAsync(long id, SitePackageApiModel? sitePackage = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync<PleasanterEnvelope<ItemsCopySitePackageResponse>>(Endpoint2, $"api/Items/{PleasanterApiClient.Segment(id)}/CopySitePackage", [sitePackage], null, cancellationToken);
@@ -112,7 +112,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Create</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -122,7 +122,7 @@ public sealed class ItemsOperations
     /// <param name="issue">本文（<c>Pleasanter.Models.IssueApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> CreateAsync(long id, IssueApiModel issue, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(issue);
@@ -131,7 +131,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Create</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -141,7 +141,7 @@ public sealed class ItemsOperations
     /// <param name="result">本文（<c>Pleasanter.Models.ResultApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> CreateAsync(long id, ResultApiModel result, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(result);
@@ -150,7 +150,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Create</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -160,7 +160,7 @@ public sealed class ItemsOperations
     /// <param name="site">本文（<c>Pleasanter.Models.SiteApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> CreateAsync(long id, SiteApiModel site, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(site);
@@ -169,7 +169,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Create</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -179,7 +179,7 @@ public sealed class ItemsOperations
     /// <param name="wiki">本文（<c>Pleasanter.Models.WikiApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> CreateAsync(long id, WikiApiModel wiki, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(wiki);
@@ -188,7 +188,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/CreateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -198,7 +198,7 @@ public sealed class ItemsOperations
     /// <param name="issue">本文（<c>Pleasanter.Models.IssueApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> CreateSiteAsync(long id, IssueApiModel issue, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(issue);
@@ -207,7 +207,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/CreateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -217,7 +217,7 @@ public sealed class ItemsOperations
     /// <param name="result">本文（<c>Pleasanter.Models.ResultApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> CreateSiteAsync(long id, ResultApiModel result, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(result);
@@ -226,7 +226,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/CreateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -236,7 +236,7 @@ public sealed class ItemsOperations
     /// <param name="site">本文（<c>Pleasanter.Models.SiteApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> CreateSiteAsync(long id, SiteApiModel site, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(site);
@@ -245,7 +245,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/CreateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -255,7 +255,7 @@ public sealed class ItemsOperations
     /// <param name="wiki">本文（<c>Pleasanter.Models.WikiApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> CreateSiteAsync(long id, WikiApiModel wiki, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(wiki);
@@ -264,7 +264,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Delete</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は ApiKey・ApiVersion だけ（辿った処理が本文を型として読んでいない）。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -272,7 +272,7 @@ public sealed class ItemsOperations
     /// <param name="id">ルートの <c>{id}</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> DeleteAsync(long id, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint5, $"api/Items/{PleasanterApiClient.Segment(id)}/Delete", [], null, cancellationToken);
@@ -280,7 +280,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/DeleteSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は ApiKey・ApiVersion だけ（辿った処理が本文を型として読んでいない）。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -288,7 +288,7 @@ public sealed class ItemsOperations
     /// <param name="id">ルートの <c>{id}</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> DeleteSiteAsync(long id, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint6, $"api/Items/{PleasanterApiClient.Segment(id)}/DeleteSite", [], null, cancellationToken);
@@ -296,7 +296,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Export</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は包み（StatusCode・LimitPerDate・LimitRemaining・Response）。<c>Response</c> はメンバー名（Content・Name）だけが取れていて、型付けしていない。</para>
     /// <para>レート制限 <c>ApiHeavy</c>（最新の版での指定）。</para>
@@ -305,7 +305,7 @@ public sealed class ItemsOperations
     /// <param name="export">本文（<c>Pleasanter.Libraries.Requests.ExportApi</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse<PleasanterEnvelope<ItemsExportResponse>>> ExportAsync(long id, ExportApi? export = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync<PleasanterEnvelope<ItemsExportResponse>>(Endpoint7, $"api/Items/{PleasanterApiClient.Segment(id)}/Export", [export], null, cancellationToken);
@@ -313,7 +313,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Get</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は包み（StatusCode・LimitPerDate・LimitRemaining・Response）。<c>Response</c> はメンバー名（Data・Offset・PageSize・TotalCount）だけが取れていて、型付けしていない。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -322,7 +322,7 @@ public sealed class ItemsOperations
     /// <param name="api">本文（<c>Pleasanter.Libraries.Requests.Api</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse<PleasanterEnvelope<ItemsGetResponse>>> GetAsync(long id, Api? api = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync<PleasanterEnvelope<ItemsGetResponse>>(Endpoint8, $"api/Items/{PleasanterApiClient.Segment(id)}/Get", [api], null, cancellationToken);
@@ -349,7 +349,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/GetSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は包み（StatusCode・LimitPerDate・LimitRemaining・Response）。<c>Response</c> はメンバー名（Data・Offset・PageSize・TotalCount）だけが取れていて、型付けしていない。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -358,7 +358,7 @@ public sealed class ItemsOperations
     /// <param name="api">本文（<c>Pleasanter.Libraries.Requests.Api</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse<PleasanterEnvelope<ItemsGetSiteResponse>>> GetSiteAsync(long id, Api? api = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync<PleasanterEnvelope<ItemsGetSiteResponse>>(Endpoint10, $"api/Items/{PleasanterApiClient.Segment(id)}/GetSite", [api], null, cancellationToken);
@@ -366,7 +366,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Import</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.47.0 から在る。</para>
     /// <para>フォームの parameters に本文の JSON（ApiKey・ApiVersion を含む）を入れ、ファイルを添付して送る。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>ApiHeavy</c>（最新の版での指定）。</para>
@@ -376,7 +376,7 @@ public sealed class ItemsOperations
     /// <param name="import">本文（<c>Pleasanter.Libraries.Requests.ImportApi</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.47.0")]
     public Task<PleasanterResponse> ImportAsync(long id, PleasanterFile file, ImportApi? import = null, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(file);
@@ -404,7 +404,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/SynchronizeSummaries</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.33.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -414,7 +414,7 @@ public sealed class ItemsOperations
     /// <param name="site">本文（<c>Pleasanter.Models.SiteApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.33.0")]
     public Task<PleasanterResponse> SynchronizeSummariesAsync(long id, SiteApiModel site, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(site);
@@ -423,7 +423,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Update</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -433,7 +433,7 @@ public sealed class ItemsOperations
     /// <param name="issue">本文（<c>Pleasanter.Models.IssueApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> UpdateAsync(long id, IssueApiModel issue, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(issue);
@@ -442,7 +442,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Update</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -452,7 +452,7 @@ public sealed class ItemsOperations
     /// <param name="result">本文（<c>Pleasanter.Models.ResultApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> UpdateAsync(long id, ResultApiModel result, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(result);
@@ -461,7 +461,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Update</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -471,7 +471,7 @@ public sealed class ItemsOperations
     /// <param name="site">本文（<c>Pleasanter.Models.SiteApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> UpdateAsync(long id, SiteApiModel site, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(site);
@@ -480,7 +480,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Update</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -490,7 +490,7 @@ public sealed class ItemsOperations
     /// <param name="wiki">本文（<c>Pleasanter.Models.WikiApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> UpdateAsync(long id, WikiApiModel wiki, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(wiki);
@@ -499,7 +499,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/UpdateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -509,7 +509,7 @@ public sealed class ItemsOperations
     /// <param name="issue">本文（<c>Pleasanter.Models.IssueApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> UpdateSiteAsync(long id, IssueApiModel issue, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(issue);
@@ -518,7 +518,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/UpdateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -528,7 +528,7 @@ public sealed class ItemsOperations
     /// <param name="result">本文（<c>Pleasanter.Models.ResultApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> UpdateSiteAsync(long id, ResultApiModel result, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(result);
@@ -537,7 +537,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/UpdateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -547,7 +547,7 @@ public sealed class ItemsOperations
     /// <param name="site">本文（<c>Pleasanter.Models.SiteApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> UpdateSiteAsync(long id, SiteApiModel site, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(site);
@@ -556,7 +556,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/UpdateSite</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.4.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -566,7 +566,7 @@ public sealed class ItemsOperations
     /// <param name="wiki">本文（<c>Pleasanter.Models.WikiApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public Task<PleasanterResponse> UpdateSiteAsync(long id, WikiApiModel wiki, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(wiki);
@@ -575,7 +575,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/updatesitesettings</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.50.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -585,7 +585,7 @@ public sealed class ItemsOperations
     /// <param name="siteSettings">本文（<c>Pleasanter.Models.ApiSiteSettings.SiteSettingsApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public Task<PleasanterResponse> UpdateSiteSettingsAsync(long id, Api? api = null, SiteSettingsApiModel? siteSettings = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint16, $"api/Items/{PleasanterApiClient.Segment(id)}/updatesitesettings", [api, siteSettings], null, cancellationToken);
@@ -593,7 +593,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Upsert</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.10.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -604,7 +604,7 @@ public sealed class ItemsOperations
     /// <param name="api">本文（<c>Pleasanter.Libraries.Requests.Api</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.10.0")]
     public Task<PleasanterResponse> UpsertAsync(long id, IssueApiModel issue, Api? api = null, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(issue);
@@ -613,7 +613,7 @@ public sealed class ItemsOperations
 
     /// <summary><c>POST api/Items/{id}/Upsert</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.10.0 から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>本文の型は、レコード（サイト）の種類に合うものを選ぶ。history.json の本文の型の和集合から作った多重定義で、その種類で使えるかは確かめていない。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
@@ -624,7 +624,7 @@ public sealed class ItemsOperations
     /// <param name="api">本文（<c>Pleasanter.Libraries.Requests.Api</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.10.0")]
     public Task<PleasanterResponse> UpsertAsync(long id, ResultApiModel result, Api? api = null, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(result);

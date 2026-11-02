@@ -9,43 +9,43 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Security.Permissions.Types</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-[Since("1.4.0.0")]
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Security.Permissions.Types</c>。Pleasanter 1.3.4.0 から在る。</summary>
+[Since("1.3.4.0")]
 public enum PermissionsTypes : long
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     NotSet = 0,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Read = 1,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Create = 2,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Update = 4,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Delete = 8,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     SendMail = 16,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Export = 32,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Import = 64,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     ManageSite = 128,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     ManagePermission = 256,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     ManageTenant = 1073741824,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     ManageService = 2147483648,
 }

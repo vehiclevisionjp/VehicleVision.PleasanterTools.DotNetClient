@@ -9,43 +9,43 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Formula</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Formula</c>。Pleasanter 1.3.4.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.4.0")]
 public partial class Formula
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Formula.OperatorTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Formula.OperatorTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum OperatorTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         NotSet = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Addition = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Subtraction = 2,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Multiplication = 3,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Division = 4,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Formula>? Children { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? ColumnName { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Formula.OperatorTypes? OperatorType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public decimal? RawValue { get; set; }
 }

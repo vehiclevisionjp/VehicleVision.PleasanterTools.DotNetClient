@@ -9,35 +9,35 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Models.Sites.SitePackageApiModel</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Models.Sites.SitePackageApiModel</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class SitePackageApiModel : global::VehicleVision.PleasanterTools.DotNetClient.Models.BaseApiModel
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? IncludeColumnPermission { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? IncludeNotifications { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? IncludeRecordPermission { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? IncludeReminders { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? IncludeSitePermission { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.SelectedSite>? SelectedSites { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? SiteTitle { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public long? TargetSiteId { get; set; }
 }

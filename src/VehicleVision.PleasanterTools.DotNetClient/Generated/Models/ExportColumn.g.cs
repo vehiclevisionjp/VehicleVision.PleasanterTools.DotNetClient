@@ -9,55 +9,55 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ExportColumn</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ExportColumn</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class ExportColumn
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ExportColumn.Types</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ExportColumn.Types</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+    [Since("1.3.0.0")]
     public enum Types
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Value = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Text = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         TextMini = 2,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? ChoiceText { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? ChoiceValue { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? ColumnName { get; set; }
 
     [Since("1.4.18.0")]
     public bool? ExportJsonFormat { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Format { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? LabelText { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? OutputClassColumn { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public long? SiteId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.ExportColumn.Types? Type { get; set; }
 }

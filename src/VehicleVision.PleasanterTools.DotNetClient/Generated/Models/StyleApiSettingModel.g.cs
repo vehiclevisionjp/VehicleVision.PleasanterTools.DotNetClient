@@ -9,21 +9,21 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.StyleApiSettingModel</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.StyleApiSettingModel</c>。Pleasanter 1.3.50.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.50.0")]
 public partial class StyleApiSettingModel
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Body { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Delete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? Disabled { get; set; }
 
     [Since("1.5.7.0")]
@@ -32,48 +32,48 @@ public partial class StyleApiSettingModel
     [Since("1.5.7.0")]
     public int? DraftOutputMode { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? HtmlPositionType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleAll { get; set; }
 
     [Since("1.4.1.0")]
     public bool? StyleAnaly { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleBurnDown { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleCalendar { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleCrosstab { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleEdit { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleGantt { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleImageLib { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleIndex { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleKamban { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleNew { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? StyleTimeSeries { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Title { get; set; }
 }

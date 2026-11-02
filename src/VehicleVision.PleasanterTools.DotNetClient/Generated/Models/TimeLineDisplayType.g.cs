@@ -9,16 +9,16 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.TimeLineDisplayType</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-[Since("1.4.0.0")]
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.TimeLineDisplayType</c>。Pleasanter 1.3.44.0 から在る。</summary>
+[Since("1.3.44.0")]
 public enum TimeLineDisplayType
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     Simple = 0,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     Standard = 1,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     Detailed = 2,
 }

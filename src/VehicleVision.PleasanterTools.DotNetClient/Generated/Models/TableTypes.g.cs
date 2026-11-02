@@ -9,28 +9,34 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Libraries.DataSources.SqlServer.Sqls.TableTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-[Since("1.4.0.0")]
+/// <summary>Pleasanter の型 <c>Libraries.DataSources.SqlServer.Sqls.TableTypes</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+[Since("1.3.0.0")]
 public enum TableTypes
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     Normal = 0,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     History = 1,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     HistoryWithoutFlag = 2,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     NormalAndDeleted = 3,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     NormalAndHistory = 4,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     Deleted = 5,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
+    [ValueBefore("1.3.27.1", 6)]
+    [ValueBefore("1.3.31.0", 7)]
     All = 6,
+
+    [Since("1.3.27.1")]
+    [Until("1.3.31.0")]
+    Match = 6,
 }

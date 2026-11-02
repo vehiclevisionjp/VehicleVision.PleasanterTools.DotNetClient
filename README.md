@@ -2,7 +2,7 @@
 
 Pleasanter の標準 Web API を呼ぶ、**.NET 向けのクライアントライブラリ**です（NuGet パッケージ `VehicleVision.PleasanterTools.DotNetClient`）。
 
-> **開発中です。** API ごとのメソッドとモデルは、Pleasanter 1.4.0.0〜1.5.9.0 のソースから抽出した API 面の表をもとに生成しています。
+> **開発中です。** API ごとのメソッドとモデルは、Pleasanter 1.3.0.0〜1.5.9.0 のソースから抽出した API 面の表をもとに生成しています。
 > **実機の Pleasanter で確かめたのは、最新版（1.5.9.1、2026-11-02）の主要な口だけです**（[契約テスト](_documents/契約テスト.md)）。それ以外の版・口は未確認で、通常の単体テストは通信のフェイクだけです。範囲と方針は [アーキテクチャ方針](_documents/アーキテクチャ方針.md) にあります。
 
 ## 使い方
@@ -36,7 +36,7 @@ API キーは、環境変数や Git 管理外の設定から読んでくださ�
 接続先の版で使えない機能（後の版で増えたエンドポイントやメンバー）を呼ぶと、送る前に `PleasanterVersionNotSupportedException` になります。
 
 - 版は、最初の呼び出しの前に `api/utility/GetLicenseInfo` へ問い合わせて取ります。**取れるのは Pleasanter 1.4.21.0 以降**です
-- 1.4.0.0〜1.4.20.0 では、`PleasanterOptions.ServerVersion` に版を書いてください（例: `ServerVersion = new Version(1, 4, 6, 0)`）
+- 1.3.x〜1.4.20.0 では、`PleasanterOptions.ServerVersion` に版を書いてください（例: `ServerVersion = new Version(1, 4, 6, 0)`）
 - 版が分からないときは、既定では拒否せずに送ります（`UnknownServerVersion = UnknownServerVersionBehavior.Reject` で止められます）
 - 名前が変わった項目（添付ファイルの `Extension`。1.4.7.0 より前は `Extention`）は、新しい名前に統一し、旧い版へは旧い名前で送ります
 

@@ -3,8 +3,8 @@ namespace VehicleVision.PleasanterTools.DotNetClient;
 /// <summary>Since・Until と、サーバーの版から、使えるかを判定する。</summary>
 internal static class VersionGuard
 {
-    /// <summary>抽出の対象の最初の版。Since がこの版なら「この版以前から在る」。</summary>
-    public static readonly Version MinimumSupported = new(1, 4, 0, 0);
+    /// <summary>抽出の対象の最初の版（生成した表の下限。1.3.0.0）。Since がこの版なら「この版以前から在る」。</summary>
+    public static readonly Version MinimumSupported = new(GeneratedSurface.FirstVersion);
 
     /// <summary>使えなければ、投げる例外を返す。使えるなら <c>null</c>。</summary>
     /// <param name="member">機能の名前（例外の文言に使う）。</param>
