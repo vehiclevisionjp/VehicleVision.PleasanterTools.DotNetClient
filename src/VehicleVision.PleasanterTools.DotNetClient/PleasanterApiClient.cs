@@ -60,7 +60,7 @@ public sealed partial class PleasanterApiClient
     /// 接続先の版を返す。<see cref="PleasanterOptions.ServerVersion"/> があればそれ、
     /// 無ければ <c>api/utility/GetLicenseInfo</c> へ問い合わせた結果（接続先ごとに覚える）。分からなければ <c>null</c>。
     /// </summary>
-    /// <remarks>版が取れるのは Pleasanter 1.4.21.0 以降。それより前は <c>null</c> になる。</remarks>
+    /// <remarks>版が取れるのは Pleasanter 1.4.21.0 以降。それより前（1.3.x を含む）は <c>null</c> になる。</remarks>
     /// <param name="cancellationToken">取り消し。</param>
     public async Task<Version?> GetServerVersionAsync(CancellationToken cancellationToken = default)
     {

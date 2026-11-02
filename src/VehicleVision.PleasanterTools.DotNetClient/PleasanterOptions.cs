@@ -53,7 +53,7 @@ public sealed class PleasanterOptions
     /// 接続先の Pleasanter の版（例: <c>1.4.6.0</c>）。指定すると、サーバーへ問い合わせずにこの版で判定する。
     /// </summary>
     /// <remarks>
-    /// **1.4.0.0〜1.4.20.0 は、API で版を取れない**ので、版で使える機能を判定したいときは指定する
+    /// **1.3.x〜1.4.20.0 は、API で版を取れない**ので、版で使える機能を判定したいときは指定する
     /// （<c>_documents/クライアントの生成と版の判定.md</c>）。
     /// </remarks>
     public Version? ServerVersion { get; init; }
@@ -63,7 +63,7 @@ public sealed class PleasanterOptions
     /// </summary>
     /// <remarks>
     /// 問い合わせは、接続先ごとに 1 回（結果を覚える）。API キーが要る呼び出しで、1.5.6.0 からはレート制限の対象。
-    /// 版が取れるのは 1.4.21.0 以降。
+    /// 版が取れるのは 1.4.21.0 以降（1.3.x〜1.4.20.0 は、問い合わせが 404 などになり、版は不明のまま）。
     /// </remarks>
     public bool DetectServerVersion { get; init; } = true;
 
