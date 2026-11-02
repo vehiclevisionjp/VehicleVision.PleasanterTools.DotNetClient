@@ -1,0 +1,41 @@
+name: Contract
+# 実機の Pleasanter（Docker・公式イメージ・PostgreSQL）に対する契約テスト（Issue #68）。
+# **必須チェックにしない**（イメージの取得と Pleasanter の起動で数分かかり、外部のイメージの更新で揺れるため）。
+# 起動から後片付けまでは tests/contract/run.sh（手元でも同じもので動く。_documents/契約テスト.md）。
+on:
+  pull_request:
+    branches: [develop, master]
+    paths:
+      - 'src/**'
+      - 'tests/contract/**'
+      - 'tests/VehicleVision.PleasanterTools.DotNetClient.ContractTests/**'
+      - '.github/workflows/contract.yml'
+  schedule:
+    # 週 1 回（月曜 03:00 UTC）。上流のイメージの更新で壊れていないかを見る
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  DOTNET_NOLOGO: 'true'
+  DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+jobs:
+  contract:
+    name: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: false
+          persist-credentials: false
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+      - name: ロック済み依存を復元する
+        run: dotnet restore --locked-mode
+      - name: 契約テストを実行する（Pleasanter を起動し、終わったら止める）
+        run: bash tests/contract/run.sh
