@@ -179,6 +179,34 @@ public sealed class VersionTests
     }
 
     [Fact]
+    public async Task 版を取れない_1_3_x_は_ServerVersion_の明示で判定し_問い合わせない()
+    {
+        var handler = new FakeHandler();
+        var client = new PleasanterApiClient(new HttpClient(handler), Options("1.3.3.1", detect: true));
+
+        Assert.Equal(new Version(1, 3, 3, 1), await client.GetServerVersionAsync());
+        await Assert.ThrowsAsync<PleasanterVersionNotSupportedException>(
+            () => client.Items.CreateSiteAsync(0, new SiteApiModel { SiteSettings = new SiteSettings() }));
+        Assert.Empty(handler.Requests);
+    }
+
+    [Fact]
+    public async Task 版を取れない_1_3_x_の問い合わせは_404_で版は不明のまま_Attempt_は送る()
+    {
+        // 1.3.x には api/utility/GetLicenseInfo が無い（404）
+        var handler = new FakeHandler(r => r.Path == "/api/utility/GetLicenseInfo"
+            ? FakeHandler.Json(HttpStatusCode.NotFound, "{}")
+            : FakeHandler.Json(HttpStatusCode.OK, """{"Id":1,"StatusCode":200,"Message":"ok"}"""));
+        var client = new PleasanterApiClient(new HttpClient(handler), Options(null, detect: true));
+
+        Assert.Null(await client.GetServerVersionAsync());
+        var response = await client.Items.CreateSiteAsync(0, new SiteApiModel { SiteSettings = new SiteSettings() });
+
+        Assert.True(response.IsSuccess);
+        Assert.Single(handler.ApiRequests);
+    }
+
+    [Fact]
     public async Task 下限の版の範囲で無くなった列挙値は_その版以降のサーバーへ送らず_前の版では送る()
     {
         var handler = new FakeHandler();
