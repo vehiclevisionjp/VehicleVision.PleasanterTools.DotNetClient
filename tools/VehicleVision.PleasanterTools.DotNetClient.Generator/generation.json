@@ -1,6 +1,6 @@
 {
   "$comment": "生成で人が決めること。仕組みと理由は _documents/クライアントの生成と版の判定.md。history.json のエンドポイントは、すべて「生成する」か、ここに理由つきで書いた「対象外」のどちらかになる。",
-  "minimumVersion": "Pleasanter_1.4.0.0",
+  "minimumVersion": "Pleasanter_1.3.0.0",
   "excludedAreas": {
     "scim": "SCIM。本文の型が history.json に無い（…ByApi の形を取らないため未抽出）。認証も別（CheckScimContextAttributes）",
     "legacy": "旧来の Api_* コントローラ。規約ルーティングのどれに当たるか（URL）を確かめていない"

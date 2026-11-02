@@ -9,97 +9,97 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Reminder</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Reminder</c>。Pleasanter 1.3.4.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.4.0")]
 public partial class Reminder
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Reminder.ReminderTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Reminder.ReminderTypes</c>。Pleasanter 1.3.10.0 から在る。</summary>
+    [Since("1.3.10.0")]
     public enum ReminderTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         Mail = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         Slack = 2,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         ChatWork = 3,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         Line = 4,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         LineGroup = 5,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         Teams = 6,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         RocketChat = 7,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.10.0")]
         InCircle = 8,
 
         [Since("1.5.1.0")]
         LineWorks = 9,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Body { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Column { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? Condition { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? Disabled { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? ExcludeOverdue { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? From { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Line { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? NotSendHyperLink { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? NotSendIfNotApplicable { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? Range { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.10.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Reminder.ReminderTypes? ReminderType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? SendCompletedInPast { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.DateTime? StartDateTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Subject { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? To { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.10.0")]
     public string? Token { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.RepeatTypes? Type { get; set; }
 }

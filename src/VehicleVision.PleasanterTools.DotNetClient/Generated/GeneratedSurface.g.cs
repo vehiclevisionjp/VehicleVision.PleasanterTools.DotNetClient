@@ -10,7 +10,7 @@ namespace VehicleVision.PleasanterTools.DotNetClient;
 public static class GeneratedSurface
 {
     /// <summary>API 面の表の最初の版（これより古い版は、抽出していない）。</summary>
-    public const string FirstVersion = "1.4.0.0";
+    public const string FirstVersion = "1.3.0.0";
 
     /// <summary>API 面の表の最後の版（これより新しい版の変化は、生成に入っていない）。</summary>
     public const string LatestVersion = "1.5.9.0";

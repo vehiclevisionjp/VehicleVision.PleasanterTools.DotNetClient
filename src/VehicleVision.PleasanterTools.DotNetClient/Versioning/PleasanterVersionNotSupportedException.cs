@@ -48,7 +48,7 @@ public sealed class PleasanterVersionNotSupportedException : InvalidOperationExc
     /// <summary>使えない機能。</summary>
     public string Member { get; }
 
-    /// <summary>その機能が在る最初の版（<c>1.4.0.0</c> は「1.4.0.0 以前から」）。</summary>
+    /// <summary>その機能が在る最初の版（最初の版 <c>1.3.0.0</c> は「1.3.0.0 以前から」）。</summary>
     public Version? Since { get; }
 
     /// <summary>その機能が無くなった版（排他）。無くなっていなければ <c>null</c>。</summary>

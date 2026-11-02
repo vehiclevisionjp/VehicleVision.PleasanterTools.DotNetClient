@@ -9,16 +9,16 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Libraries.DataSources.SqlServer.SqlOrderBy.Types</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-[Since("1.4.0.0")]
+/// <summary>Pleasanter の型 <c>Libraries.DataSources.SqlServer.SqlOrderBy.Types</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+[Since("1.3.0.0")]
 public enum SqlOrderByTypes
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     asc = 0,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     desc = 1,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     release = 2,
 }

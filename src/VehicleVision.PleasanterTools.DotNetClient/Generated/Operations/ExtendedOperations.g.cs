@@ -14,13 +14,13 @@ public sealed class ExtendedOperations
 {
     private readonly PleasanterApiClient _client;
 
-    private static readonly PleasanterEndpoint Endpoint0 = new("Extended.SqlAsync（POST api/extended/sql）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint0 = new("Extended.SqlAsync（POST api/extended/sql）", "1.3.0.0", null);
 
     internal ExtendedOperations(PleasanterApiClient client) => _client = client;
 
     /// <summary><c>POST api/Extended/Sql</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は包み（StatusCode・LimitPerDate・LimitRemaining・Response）。<c>Response</c> はメンバー名（Data）だけが取れていて、型付けしていない。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -28,7 +28,7 @@ public sealed class ExtendedOperations
     /// <param name="extended">本文（<c>Pleasanter.Libraries.Requests.ExtendedApi</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse<PleasanterEnvelope<ExtendedSqlResponse>>> SqlAsync(ExtendedApi? extended = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync<PleasanterEnvelope<ExtendedSqlResponse>>(Endpoint0, $"api/Extended/Sql", [extended], null, cancellationToken);

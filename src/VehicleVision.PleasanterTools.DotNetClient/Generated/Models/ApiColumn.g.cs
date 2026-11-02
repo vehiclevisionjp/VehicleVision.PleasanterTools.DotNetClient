@@ -9,42 +9,42 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ApiColumn</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ApiColumn</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class ApiColumn
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ApiColumn.KeyDisplayTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ApiColumn.KeyDisplayTypes</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+    [Since("1.3.0.0")]
     public enum KeyDisplayTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         LabelText = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         ColumnName = 1,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ApiColumn.ValueDisplayTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.ApiColumn.ValueDisplayTypes</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+    [Since("1.3.0.0")]
     public enum ValueDisplayTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         DisplayValue = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Value = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Text = 2,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.ApiColumn.KeyDisplayTypes? KeyDisplayType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.ApiColumn.ValueDisplayTypes? ValueDisplayType { get; set; }
 }

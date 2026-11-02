@@ -17,7 +17,7 @@ public enum UnknownServerVersionBehavior
     Attempt,
 
     /// <summary>
-    /// 版を問わず使えるもの（1.4.0.0 以前から在り、無くなっていないもの）以外は、
+    /// 版を問わず使えるもの（1.3.0.0 以前から在り、無くなっていないもの）以外は、
     /// <see cref="PleasanterVersionNotSupportedException"/> を投げて送らない。
     /// </summary>
     Reject,

@@ -9,37 +9,37 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Lookup</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Lookup</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class Lookup
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Lookup.Types</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Lookup.Types</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
+    [Since("1.3.0.0")]
     public enum Types
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         Value = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.0.0")]
         DisplayName = 1,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? From { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.10.0")]
     public bool? Overwrite { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.15.0")]
     public bool? OverwriteForm { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? To { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Lookup.Types? Type { get; set; }
 }
