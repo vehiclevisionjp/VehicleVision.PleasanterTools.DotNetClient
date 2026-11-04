@@ -45,6 +45,19 @@ Copyright (C) PMC Co., Ltd. IT Solution Div.
 <!-- license:begin core-terms=off -->
 <!-- license:end core-terms -->
 
+<!-- license:begin dotnetclient-terms=library -->
+## 当社のアプリケーションに組み込まれた場合
+
+本ソフトウェアは、当社のアプリケーション（VehicleVision.PleasanterTools の各ツール）が組み込んで使う部品です。
+**当社のアプリケーションの商用契約を結んだ方には、そのアプリケーションに組み込まれた本ソフトウェアを、
+そのアプリケーションと同じ条件で提供します。** 条件は、各アプリケーションの `LICENSE-COMMERCIAL.md` と契約書によります。
+
+次の場合は、本書（商用ライセンス）の個別の契約によります。
+
+- 本ソフトウェアを単体で利用する場合
+- 当社のアプリケーション以外へ組み込む場合
+<!-- license:end dotnetclient-terms -->
+
 <!-- license:begin sni-terms=off -->
 <!-- license:end sni-terms -->
 
