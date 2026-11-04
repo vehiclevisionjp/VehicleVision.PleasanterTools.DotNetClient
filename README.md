@@ -31,6 +31,32 @@ API キーは、環境変数や Git 管理外の設定から読んでくださ�
 - 結果は `PleasanterResponse` で返し、失敗は例外にせず `ErrorKind` で分類します（クライアントは再試行しません）
 - 生成の対象外の口や、モデルに無い項目は `client.PostJsonAsync(path, body)` で呼べます
 
+## HttpClient の作り方（リダイレクトを辿らない）
+
+API キーはリクエストの本文に載ります。**既定の `HttpClient` は 3xx を自動で辿り、307・308 では本文（API キー）をリダイレクト先のホストへそのまま再送します。**
+クライアントは渡された `HttpClient` の設定を変えられないので、`PleasanterHttp` で作った辿らない `HttpClient`（`AllowAutoRedirect = false`、Cookie 無し）を使ってください。
+
+```csharp
+// 単純な用途: 1 つ作って使い回す
+using var http = PleasanterHttp.CreateClient();
+var client = new PleasanterApiClient(http, options);
+```
+
+IHttpClientFactory（`Microsoft.Extensions.Http`）を使うときは、主ハンドラーを差し替えます。
+
+```csharp
+services.AddHttpClient("pleasanter")
+    .ConfigurePrimaryHttpMessageHandler(PleasanterHttp.CreateHandler);
+services.AddTransient(sp => new PleasanterApiClient(
+    sp.GetRequiredService<IHttpClientFactory>().CreateClient("pleasanter"),
+    sp.GetRequiredService<IPleasanterOptionsProvider>()));
+```
+
+（この登録例は、ビルドと単体テストでは確かめていません。`Microsoft.Extensions.Http` は本ライブラリの依存ではありません）
+
+- 3xx を受けたときは再送せず、`StatusCode` が 3xx、`ErrorKind` が `Permanent` の結果で返ります。`BaseUrl` が正しい最終の URL か（https の入口か）を見直してください
+- 別のハンドラーを使う場合も、`HttpClientHandler.AllowAutoRedirect = false`（`SocketsHttpHandler` なら `AllowAutoRedirect = false`）にしてください
+
 ## Pleasanter の版
 
 接続先の版で使えない機能（後の版で増えたエンドポイントやメンバー）を呼ぶと、送る前に `PleasanterVersionNotSupportedException` になります。
