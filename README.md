@@ -32,6 +32,7 @@ API キーは、環境変数や Git 管理外の設定から読んでくださ�
 - **`BaseUrl` は通信の前に検査します。** API キーが本文に載るため、次を満たさない URL は `ArgumentException` で拒否します（例外の文言に API キーも URL も出しません）
   - `https` であること。`http` はループバック（`localhost`・`127.0.0.1`・`[::1]`）だけ使えます
   - 資格情報（`user:pass@`）・クエリ（`?`）・フラグメント（`#`）を含まないこと（パス `https://example.com/pleasanter` は使えます）
+  - **検証用の環境（コンテナ間の通信など）だけ**、`PleasanterOptions.AllowInsecureHttp = true`（環境変数 `PLEASANTER_ALLOW_INSECURE_HTTP=true`）で、ループバック以外の `http` も使えます。既定は無効です。**有効にすると API キーが平文で流れるので、本番では有効にしません。** 資格情報・クエリ・フラグメント・`http`／`https` 以外のスキームは、有効にしても拒否します
 - 生成の対象外の口や、モデルに無い項目は `client.PostJsonAsync(path, body)` で呼べます
 
 ## HttpClient の作り方（リダイレクトを辿らない）

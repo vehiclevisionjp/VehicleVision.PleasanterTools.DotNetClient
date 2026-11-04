@@ -54,6 +54,16 @@ public sealed class PleasanterOptions
     /// </remarks>
     public required string BaseUrl { get; init; }
 
+    /// <summary>
+    /// ループバック以外の <c>http</c> も許す。**検証用の環境（コンテナ間の通信など）だけで有効にする。** 既定は無効。
+    /// </summary>
+    /// <remarks>
+    /// 有効にすると、API キーを含むリクエストの本文が**平文**で流れる。本番では有効にしない。
+    /// 資格情報（<c>user:pass@</c>）・クエリ・フラグメント・<c>http</c>／<c>https</c> 以外のスキームは、有効にしても拒否する。
+    /// 環境変数 <c>PLEASANTER_ALLOW_INSECURE_HTTP</c> が <c>true</c> のとき、<see cref="FromEnvironment"/> が有効にする。
+    /// </remarks>
+    public bool AllowInsecureHttp { get; init; }
+
     /// <summary>API キー。**サーバ側だけが持つ。ブラウザへ渡さない。**</summary>
     public required string ApiKey { get; init; }
 
@@ -105,14 +115,14 @@ public sealed class PleasanterOptions
     /// <exception cref="ArgumentException"><see cref="BaseUrl"/> が上の条件を満たさない。</exception>
     public void Validate()
     {
-        if (BaseUrlProblem(BaseUrl) is { } problem)
+        if (BaseUrlProblem(BaseUrl, AllowInsecureHttp) is { } problem)
         {
             throw new ArgumentException($"BaseUrl が使えません: {problem}", nameof(BaseUrl));
         }
     }
 
     /// <summary>問題があればその理由（URL を含まない文言）、無ければ <c>null</c>。</summary>
-    internal static string? BaseUrlProblem(string? baseUrl)
+    internal static string? BaseUrlProblem(string? baseUrl, bool allowInsecureHttp = false)
     {
         if (string.IsNullOrWhiteSpace(baseUrl))
         {
@@ -139,7 +149,7 @@ public sealed class PleasanterOptions
             return "クエリ（?）とフラグメント（#）を含めないでください。";
         }
 
-        if (uri.Scheme == Uri.UriSchemeHttp && !uri.IsLoopback)
+        if (uri.Scheme == Uri.UriSchemeHttp && !uri.IsLoopback && !allowInsecureHttp)
         {
             return "http はループバック（localhost・127.0.0.1・[::1]）だけ使えます。https にしてください。";
         }
@@ -158,6 +168,7 @@ public sealed class PleasanterOptions
         ServerVersion = Environment.GetEnvironmentVariable("PLEASANTER_SERVER_VERSION") is { Length: > 0 } version
             ? Version.Parse(version)
             : null,
+        AllowInsecureHttp = string.Equals(Environment.GetEnvironmentVariable("PLEASANTER_ALLOW_INSECURE_HTTP"), "true", StringComparison.OrdinalIgnoreCase),
     };
 
     private static string Required(string name) =>
