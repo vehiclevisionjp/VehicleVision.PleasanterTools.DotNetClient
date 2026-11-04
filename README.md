@@ -65,6 +65,8 @@ services.AddTransient(sp => new PleasanterApiClient(
 接続先の版で使えない機能（後の版で増えたエンドポイントやメンバー）を呼ぶと、送る前に `PleasanterVersionNotSupportedException` になります。
 
 - 版は、最初の呼び出しの前に `api/utility/GetLicenseInfo` へ問い合わせて取ります。**取れるのは Pleasanter 1.4.21.0 以降**です
+- 問い合わせの結果は、接続先（`BaseUrl`）ごとに**プロセスで共通に**覚えます。クライアントを作り直しても（DI の `AddTransient` でも）毎回は問い合わせません。取れなかったとき（到達不能・認証失敗・5xx など）は、`ServerVersionRetryInterval`（既定 1 分）のあいだ問い合わせず、版は不明として扱います。1 回の問い合わせは `ServerVersionTimeout`（既定 10 秒）で打ち切ります
+- 問い合わせの通信を避けたいときは、`ServerVersion` を指定するか、`DetectServerVersion = false` にします
 - 1.3.x〜1.4.20.0 では、`PleasanterOptions.ServerVersion` に版を書いてください（例: `ServerVersion = new Version(1, 4, 6, 0)`）
 - 版が分からないときは、既定では拒否せずに送ります（`UnknownServerVersion = UnknownServerVersionBehavior.Reject` で止められます）
 - 名前が変わった項目（添付ファイルの `Extension`。1.4.7.0 より前は `Extention`）は、新しい名前に統一し、旧い版へは旧い名前で送ります

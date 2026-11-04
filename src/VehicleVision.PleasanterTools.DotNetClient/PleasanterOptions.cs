@@ -37,6 +37,12 @@ public sealed class PleasanterOptions
     /// <summary>1 回の呼び出しの上限の既定。</summary>
     public static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(30);
 
+    /// <summary>版の問い合わせの上限の既定。</summary>
+    public static readonly TimeSpan DefaultServerVersionTimeout = TimeSpan.FromSeconds(10);
+
+    /// <summary>版を取れなかったときに、次に問い合わせるまでの間隔の既定。</summary>
+    public static readonly TimeSpan DefaultServerVersionRetryInterval = TimeSpan.FromMinutes(1);
+
     /// <summary>ベース URL。末尾のスラッシュは付けない。</summary>
     /// <remarks>
     /// API キーはリクエストの本文に載るため、次を満たさない URL は、通信の前に <see cref="ArgumentException"/> で拒否する（<see cref="Validate"/>）。
@@ -70,10 +76,24 @@ public sealed class PleasanterOptions
     /// <see cref="ServerVersion"/> が無いとき、最初の呼び出しの前に <c>api/utility/GetLicenseInfo</c> で版を問い合わせるか（既定 <c>true</c>）。
     /// </summary>
     /// <remarks>
-    /// 問い合わせは、接続先ごとに 1 回（結果を覚える）。API キーが要る呼び出しで、1.5.6.0 からはレート制限の対象。
-    /// 版が取れるのは 1.4.21.0 以降（1.3.x〜1.4.20.0 は、問い合わせが 404 などになり、版は不明のまま）。
+    /// <para>問い合わせは API キーが要る呼び出しで、1.5.6.0 からはレート制限の対象。
+    /// 版が取れるのは 1.4.21.0 以降（1.3.x〜1.4.20.0 は、問い合わせが 404 などになり、版は不明のまま）。</para>
+    /// <para>結果は接続先（<see cref="BaseUrl"/>）ごとに、**プロセスで共通に**覚える（クライアントを作り直しても、DI の <c>AddTransient</c> でも、問い合わせ直さない）。
+    /// 版が取れた・版の無い応答・404 は、結論としてずっと覚える（<c>RefreshServerVersionAsync</c> で更新）。
+    /// 到達不能・認証失敗・5xx・JSON でない応答など、結論が出なかったときは <see cref="ServerVersionRetryInterval"/> のあいだ覚え、その間は問い合わせず、版は不明として扱う。
+    /// 1 回の問い合わせは <see cref="ServerVersionTimeout"/> で打ち切る。</para>
+    /// <para>追加の通信を避けたいときは、<see cref="ServerVersion"/> を指定するか、<c>false</c> にする（版で使えない機能の判定は、版が不明の扱い（<see cref="UnknownServerVersion"/>）になる）。</para>
     /// </remarks>
     public bool DetectServerVersion { get; init; } = true;
+
+    /// <summary>版を問い合わせるときの上限（既定 10 秒）。<see cref="Timeout"/> のほうが短ければ、そちら。</summary>
+    /// <remarks>到達できない接続先で、本来の呼び出しの前に <see cref="Timeout"/> の分だけ待たされないようにする。</remarks>
+    public TimeSpan ServerVersionTimeout { get; init; } = DefaultServerVersionTimeout;
+
+    /// <summary>
+    /// 版を取れなかったときに、次に問い合わせるまでの間隔（既定 1 分）。<see cref="TimeSpan.Zero"/> なら、呼び出しのたびに問い合わせる（従来の挙動）。
+    /// </summary>
+    public TimeSpan ServerVersionRetryInterval { get; init; } = DefaultServerVersionRetryInterval;
 
     /// <summary>接続先の版が分からないときの振る舞い（既定 <see cref="UnknownServerVersionBehavior.Attempt"/>）。</summary>
     public UnknownServerVersionBehavior UnknownServerVersion { get; init; } = UnknownServerVersionBehavior.Attempt;
