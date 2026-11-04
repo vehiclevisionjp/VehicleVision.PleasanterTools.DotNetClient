@@ -64,7 +64,7 @@ public sealed partial class PleasanterApiClient
     /// <param name="cancellationToken">取り消し。</param>
     public async Task<Version?> GetServerVersionAsync(CancellationToken cancellationToken = default)
     {
-        var options = await _optionsProvider.GetAsync(cancellationToken).ConfigureAwait(false);
+        var options = await GetOptionsAsync(cancellationToken).ConfigureAwait(false);
         return await ResolveServerVersionAsync(options, refresh: false, cancellationToken).ConfigureAwait(false);
     }
 
@@ -72,7 +72,7 @@ public sealed partial class PleasanterApiClient
     /// <param name="cancellationToken">取り消し。</param>
     public async Task<Version?> RefreshServerVersionAsync(CancellationToken cancellationToken = default)
     {
-        var options = await _optionsProvider.GetAsync(cancellationToken).ConfigureAwait(false);
+        var options = await GetOptionsAsync(cancellationToken).ConfigureAwait(false);
         return await ResolveServerVersionAsync(options, refresh: true, cancellationToken).ConfigureAwait(false);
     }
 
@@ -86,7 +86,7 @@ public sealed partial class PleasanterApiClient
     public async Task<PleasanterResponse> PostJsonAsync(string path, JsonObject? body, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrEmpty(path);
-        var options = await _optionsProvider.GetAsync(cancellationToken).ConfigureAwait(false);
+        var options = await GetOptionsAsync(cancellationToken).ConfigureAwait(false);
         var payload = body?.DeepClone().AsObject() ?? [];
         payload["ApiKey"] = options.ApiKey;
         payload["ApiVersion"] = options.ApiVersion;
@@ -107,7 +107,7 @@ public sealed partial class PleasanterApiClient
             return default;
         }
 
-        var options = await _optionsProvider.GetAsync(cancellationToken).ConfigureAwait(false);
+        var options = await GetOptionsAsync(cancellationToken).ConfigureAwait(false);
         var version = await ResolveServerVersionAsync(options, refresh: false, cancellationToken).ConfigureAwait(false);
         return e.Deserialize<T>(PleasanterJson.For(version, options.UnknownServerVersion));
     }
@@ -357,10 +357,18 @@ public sealed partial class PleasanterApiClient
         PleasanterEndpoint endpoint,
         CancellationToken cancellationToken)
     {
-        var options = await _optionsProvider.GetAsync(cancellationToken).ConfigureAwait(false);
+        var options = await GetOptionsAsync(cancellationToken).ConfigureAwait(false);
         var version = await ResolveServerVersionAsync(options, refresh: false, cancellationToken).ConfigureAwait(false);
         VersionGuard.Ensure(endpoint.Name, endpoint.Since, endpoint.Until, version, options.UnknownServerVersion);
         return (options, version, PleasanterJson.For(version, options.UnknownServerVersion));
+    }
+
+    /// <summary>接続設定を解決し、<see cref="PleasanterOptions.BaseUrl"/> を検査する（送る前。API キーも URL も例外に出さない）。</summary>
+    private async Task<PleasanterOptions> GetOptionsAsync(CancellationToken cancellationToken)
+    {
+        var options = await _optionsProvider.GetAsync(cancellationToken).ConfigureAwait(false);
+        options.Validate();
+        return options;
     }
 
     private async Task<Version?> ResolveServerVersionAsync(PleasanterOptions options, bool refresh, CancellationToken cancellationToken)

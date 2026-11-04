@@ -29,6 +29,9 @@ var records = await client.DeserializeAsync<List<IssueApiModel>>(list.Value?.Res
 API キーは、環境変数や Git 管理外の設定から読んでください。コードや設定ファイルへ書かないでください。
 
 - 結果は `PleasanterResponse` で返し、失敗は例外にせず `ErrorKind` で分類します（クライアントは再試行しません）
+- **`BaseUrl` は通信の前に検査します。** API キーが本文に載るため、次を満たさない URL は `ArgumentException` で拒否します（例外の文言に API キーも URL も出しません）
+  - `https` であること。`http` はループバック（`localhost`・`127.0.0.1`・`[::1]`）だけ使えます
+  - 資格情報（`user:pass@`）・クエリ（`?`）・フラグメント（`#`）を含まないこと（パス `https://example.com/pleasanter` は使えます）
 - 生成の対象外の口や、モデルに無い項目は `client.PostJsonAsync(path, body)` で呼べます
 
 ## Pleasanter の版
