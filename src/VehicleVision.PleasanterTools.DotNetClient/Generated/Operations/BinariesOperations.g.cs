@@ -14,16 +14,16 @@ public sealed class BinariesOperations
 {
     private readonly PleasanterApiClient _client;
 
-    private static readonly PleasanterEndpoint Endpoint0 = new("Binaries.GetAsync（POST api/binaries/{guid}/get）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint1 = new("Binaries.GetStreamAsync（POST api/binaries/{guid}/getstream）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint2 = new("Binaries.UploadAsync（POST api/binaries/upload）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint3 = new("Binaries.UploadAsync（POST api/binaries/{guid}/upload）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint0 = new("Binaries.GetAsync（POST api/binaries/{guid}/get）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint1 = new("Binaries.GetStreamAsync（POST api/binaries/{guid}/getstream）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint2 = new("Binaries.UploadAsync（POST api/binaries/upload）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint3 = new("Binaries.UploadAsync（POST api/binaries/{guid}/upload）", "1.3.0.0", null);
 
     internal BinariesOperations(PleasanterApiClient client) => _client = client;
 
     /// <summary><c>POST api/Binaries/{guid}/Get</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は ApiKey・ApiVersion だけ（辿った処理が本文を型として読んでいない）。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -31,7 +31,7 @@ public sealed class BinariesOperations
     /// <param name="guid">ルートの <c>{guid}</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> GetAsync(string guid, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint0, $"api/Binaries/{PleasanterApiClient.Segment(guid)}/Get", [], null, cancellationToken);
@@ -39,7 +39,7 @@ public sealed class BinariesOperations
 
     /// <summary><c>POST api/Binaries/{guid}/getstream</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は ApiKey・ApiVersion だけ（辿った処理が本文を型として読んでいない）。</para>
     /// <para>応答はファイル。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -47,7 +47,7 @@ public sealed class BinariesOperations
     /// <param name="guid">ルートの <c>{guid}</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterBinaryResponse> GetStreamAsync(string guid, CancellationToken cancellationToken = default)
     {
         return _client.SendForBinaryAsync(Endpoint1, $"api/Binaries/{PleasanterApiClient.Segment(guid)}/getstream", [], cancellationToken);
@@ -55,7 +55,7 @@ public sealed class BinariesOperations
 
     /// <summary><c>POST api/Binaries/upload</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>API キーを Authorization: Bearer で送り、ファイルとフォームの値を送る。1 回で送る形だけを生成している（Content-Range での分割は対象外）。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -67,7 +67,7 @@ public sealed class BinariesOperations
     /// <param name="fileHash">フォームの <c>FileHash</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> UploadAsync(PleasanterFile file, long? id = null, bool? overwrite = null, bool? verup = null, string? fileHash = null, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(file);
@@ -76,7 +76,7 @@ public sealed class BinariesOperations
 
     /// <summary><c>POST api/Binaries/{guid}/upload</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>API キーを Authorization: Bearer で送り、ファイルとフォームの値を送る。1 回で送る形だけを生成している（Content-Range での分割は対象外）。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -89,7 +89,7 @@ public sealed class BinariesOperations
     /// <param name="fileHash">フォームの <c>FileHash</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> UploadAsync(string guid, PleasanterFile file, long? id = null, bool? overwrite = null, bool? verup = null, string? fileHash = null, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(file);

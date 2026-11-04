@@ -8,9 +8,9 @@ using VehicleVision.PleasanterTools.DotNetClient.ApiSurface.Sources;
 // Pleasanter の API 面を抽出する（Issue #18）。使い方は _documents/API面の抽出.md。
 const string Usage = """
     使い方:
-      prepare --repo <作業リポジトリ> [--min 1.4.0.0] [--remote <URL>]
+      prepare --repo <作業リポジトリ> [--min 1.4.0.0] [--max <版>] [--remote <URL>]
           タグを浅く取得し、抽出に要るファイルの本体だけを取得する（ネットワークを使う）
-      run --repo <作業リポジトリ> --out-dir <出力先> [--min 1.4.0.0] [--snapshots <ディレクトリ>] [--doc-link <相対パス>]
+      run --repo <作業リポジトリ> --out-dir <出力先> [--min 1.4.0.0] [--max <版>] [--snapshots <ディレクトリ>] [--doc-link <相対パス>]
           全タグを抽出し、latest.json・history.json・history.md を書く（ネットワークを使わない）
       extract (--repo <作業リポジトリ> --tag <タグ> | --source-dir <ディレクトリ>) --out <ファイル>
           1 つの版だけを抽出する
@@ -52,7 +52,7 @@ void Prepare(Dictionary<string, string> a)
 {
     using var repo = new GitRepository(a["repo"]);
     repo.Init(a.GetValueOrDefault("remote") ?? "https://github.com/Implem/Implem.Pleasanter.git");
-    var tags = SelectTags(repo.ListRemoteTags("Pleasanter_*"), a.GetValueOrDefault("min"));
+    var tags = SelectTags(repo.ListRemoteTags("Pleasanter_*"), a.GetValueOrDefault("min"), a.GetValueOrDefault("max"));
     Console.WriteLine($"Fetching {tags.Count} tags (trees only)...");
     repo.FetchTagsTreeOnly(tags);
     var oids = new List<string>();
@@ -73,7 +73,7 @@ void Prepare(Dictionary<string, string> a)
 void RunAll(Dictionary<string, string> a)
 {
     using var repo = new GitRepository(a["repo"]);
-    var tags = SelectTags(repo.ListLocalTags("Pleasanter_*"), a.GetValueOrDefault("min"));
+    var tags = SelectTags(repo.ListLocalTags("Pleasanter_*"), a.GetValueOrDefault("min"), a.GetValueOrDefault("max"));
     if (tags.Count == 0)
     {
         throw new InvalidOperationException("対象のタグがありません。先に prepare を実行してください。");
@@ -121,12 +121,13 @@ void ExtractOne(Dictionary<string, string> a)
     Console.WriteLine($"endpoints={surface.Endpoints.Count} types={surface.Types.Count}");
 }
 
-static List<string> SelectTags(IEnumerable<string> tags, string? min)
+static List<string> SelectTags(IEnumerable<string> tags, string? min, string? max = null)
 {
     var minimum = Version.Parse(min ?? "1.4.0.0");
+    var maximum = max is null ? null : Version.Parse(max);
     return [.. tags
         .Select(t => (Tag: t, Version: TagVersion(t)))
-        .Where(x => x.Version is not null && x.Version >= minimum)
+        .Where(x => x.Version is not null && x.Version >= minimum && (maximum is null || x.Version <= maximum))
         .OrderBy(x => x.Version)
         .Select(x => x.Tag)];
 }

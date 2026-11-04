@@ -14,15 +14,15 @@ public sealed class SessionsOperations
 {
     private readonly PleasanterApiClient _client;
 
-    private static readonly PleasanterEndpoint Endpoint0 = new("Sessions.DeleteAsync（POST api/sessions/delete）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint1 = new("Sessions.GetAsync（POST api/sessions/get）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint2 = new("Sessions.SetAsync（POST api/sessions/set）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint0 = new("Sessions.DeleteAsync（POST api/sessions/delete）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint1 = new("Sessions.GetAsync（POST api/sessions/get）", "1.3.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint2 = new("Sessions.SetAsync（POST api/sessions/set）", "1.3.0.0", null);
 
     internal SessionsOperations(PleasanterApiClient client) => _client = client;
 
     /// <summary><c>POST api/Sessions/Delete</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -30,7 +30,7 @@ public sealed class SessionsOperations
     /// <param name="session">本文（<c>Pleasanter.Libraries.Requests.SessionApi</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> DeleteAsync(SessionApi? session = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint0, $"api/Sessions/Delete", [session], null, cancellationToken);
@@ -38,7 +38,7 @@ public sealed class SessionsOperations
 
     /// <summary><c>POST api/Sessions/Get</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -46,7 +46,7 @@ public sealed class SessionsOperations
     /// <param name="session">本文（<c>Pleasanter.Libraries.Requests.SessionApi</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> GetAsync(SessionApi? session = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint1, $"api/Sessions/Get", [session], null, cancellationToken);
@@ -54,7 +54,7 @@ public sealed class SessionsOperations
 
     /// <summary><c>POST api/Sessions/Set</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -62,7 +62,7 @@ public sealed class SessionsOperations
     /// <param name="session">本文（<c>Pleasanter.Libraries.Requests.SessionApi</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> SetAsync(SessionApi? session = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint2, $"api/Sessions/Set", [session], null, cancellationToken);

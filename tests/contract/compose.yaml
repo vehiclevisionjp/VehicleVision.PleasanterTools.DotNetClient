@@ -1,0 +1,70 @@
+# 実機の Pleasanter に対する契約テスト用の環境（Issue #68）。
+#
+# ・Pleasanter 本体は **公式イメージを起動するだけ**。ソースの複写・参照・リンクはしない
+# ・DB は PostgreSQL 1 つ（クライアントは DB に依存しない）
+# ・起動から試験の実行・後片付けまでは tests/contract/run.sh がまとめて行う
+# ・変数名には CONTRACT_ 接頭辞を付ける（素の名前はホスト環境に同名があると既定値を黙って上書きされる）
+# ・パスワードは run.sh が実行のたびに作る。このファイルに既定値を書かない
+#
+#   bash tests/contract/run.sh            # 起動 → 試験 → 後片付け
+#   bash tests/contract/run.sh --keep     # 後片付けをしない（画面で見たいとき）
+#
+# **Windows の Git Bash からは MSYS_NO_PATHCONV=1 を付けること（run.sh は付けている）。**
+
+name: ${CONTRACT_PROJECT:-dotnetclient-contract}
+
+x-pleasanter-environment: &pleasanter-environment
+  # Dbms は公式イメージの Rds.json が PostgreSQL を焼き込んでいる（環境変数では変えられない）。
+  # 接続文字列だけ環境変数から読まれる
+  Implem.Pleasanter_Rds_SaConnectionString: "Server=db;Port=5432;Database=postgres;UID=postgres;PWD=${CONTRACT_DB_PASSWORD:?CONTRACT_DB_PASSWORD が要る}"
+  Implem.Pleasanter_Rds_OwnerConnectionString: "Server=db;Port=5432;Database=#ServiceName#;UID=#ServiceName#_Owner;PWD=${CONTRACT_DB_PASSWORD}"
+  Implem.Pleasanter_Rds_UserConnectionString: "Server=db;Port=5432;Database=#ServiceName#;UID=#ServiceName#_User;PWD=${CONTRACT_DB_PASSWORD}"
+  TZ: Asia/Tokyo
+
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${CONTRACT_DB_PASSWORD}
+      TZ: Asia/Tokyo
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+    volumes:
+      # PostgreSQL 18 以降はマウント位置が /var/lib/postgresql（/data を付けない）
+      - db-data:/var/lib/postgresql
+
+  # スキーマ作成と 90 日トライアルの登録（項目拡張の列を有効にする）。完了して終了する
+  # **失敗しても終了コード 0 を返すことがある。** run.sh がログを確かめる
+  codedefiner:
+    image: implem/pleasanter:codedefiner
+    depends_on:
+      db:
+        condition: service_healthy
+    environment: *pleasanter-environment
+    command: ["trial", "/y"]
+    restart: "no"
+
+  pleasanter:
+    # 確認した版に固定する。版を変えるときは tests/contract/README.md の表も直す
+    image: implem/pleasanter:${CONTRACT_PLEASANTER_TAG:-1.5.9.1}
+    depends_on:
+      codedefiner:
+        condition: service_completed_successfully
+    environment: *pleasanter-environment
+    ports:
+      - "127.0.0.1:${CONTRACT_PLEASANTER_PORT:-18095}:8080"
+    healthcheck:
+      # 暖機の間は API が 503 を返すので、TCP ではなく HTTP の応答を待つ。本体イメージに curl は無いため bash の /dev/tcp で待受だけ確かめ、
+      # 暖機は run.sh が /users/login の 200 で待つ
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/8080"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 20s
+
+volumes:
+  db-data:

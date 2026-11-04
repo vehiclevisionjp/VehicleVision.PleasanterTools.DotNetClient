@@ -9,111 +9,111 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification</c>。Pleasanter 1.3.4.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.4.0")]
 public partial class Notification
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification.Expressions</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification.Expressions</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum Expressions
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Or = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         And = 2,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification.MethodTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification.MethodTypes</c>。Pleasanter 1.3.17.0 から在る。</summary>
+    [Since("1.3.17.0")]
     public enum MethodTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.17.0")]
         Get = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.17.0")]
         Post = 2,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.17.0")]
         Put = 3,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.17.0")]
         Delete = 4,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification.Types</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Notification.Types</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum Types
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Mail = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Slack = 2,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         ChatWork = 3,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Line = 4,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         LineGroup = 5,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Teams = 6,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         RocketChat = 7,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         InCircle = 8,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.17.0")]
         HttpClient = 9,
 
         [Since("1.5.1.0")]
         LineWorks = 10,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Address { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AfterBulkDelete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AfterBulkUpdate { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? AfterCondition { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AfterCopy { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AfterCreate { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AfterDelete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AfterImport { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AfterUpdate { get; set; }
 
     [Since("1.4.10.0")]
     public string? BccAddress { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? BeforeCondition { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Body { get; set; }
 
     [Since("1.4.10.0")]
@@ -122,45 +122,45 @@ public partial class Notification
     [Since("1.4.0.0")]
     public int? Delete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? Disabled { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.17.0")]
     public string? Encoding { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Notification.Expressions? Expression { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Format { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.17.0")]
     public string? Headers { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.17.0")]
     public string? MediaType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.17.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Notification.MethodTypes? MethodType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? MonitorChangesColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Prefix { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Subject { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? Token { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Notification.Types? Type { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? UseCustomFormat { get; set; }
 }

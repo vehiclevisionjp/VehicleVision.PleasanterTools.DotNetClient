@@ -204,10 +204,11 @@ internal sealed class ClientGenerator
         }
     }
 
-    private static string VersionText(HistoryItem item)
+    private string VersionText(HistoryItem item)
     {
         var since = Since(item);
-        var text = since == "1.4.0.0" ? "Pleasanter 1.4.0.0 以前から在る" : $"Pleasanter {since} から在る";
+        var first = VersionOf(_history.Tags[0]);
+        var text = since == first ? $"Pleasanter {first} 以前から在る" : $"Pleasanter {since} から在る";
         return Until(item) is { } until ? $"{text}（{until} からは無い）" : text;
     }
 

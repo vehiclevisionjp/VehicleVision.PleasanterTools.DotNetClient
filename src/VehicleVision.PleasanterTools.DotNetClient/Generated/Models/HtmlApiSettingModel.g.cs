@@ -9,21 +9,21 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.HtmlApiSettingModel</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.HtmlApiSettingModel</c>。Pleasanter 1.3.50.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.50.0")]
 public partial class HtmlApiSettingModel
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Body { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Delete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? Disabled { get; set; }
 
     [Since("1.5.7.0")]
@@ -32,48 +32,48 @@ public partial class HtmlApiSettingModel
     [Since("1.5.7.0")]
     public int? DraftOutputMode { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlAll { get; set; }
 
     [Since("1.4.1.0")]
     public bool? HtmlAnaly { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlBurnDown { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlCalendar { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlCrosstab { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlEdit { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlGantt { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlImageLib { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlIndex { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlKamban { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlNew { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? HtmlPositionType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? HtmlTimeSeries { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Title { get; set; }
 }

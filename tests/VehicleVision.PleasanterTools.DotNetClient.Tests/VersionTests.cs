@@ -13,7 +13,8 @@ public sealed class VersionTests
         bool detect = false,
         UnknownServerVersionBehavior unknown = UnknownServerVersionBehavior.Attempt) => new()
     {
-        BaseUrl = "https://example.invalid",
+        // 版の問い合わせの記憶はプロセスで共通なので、問い合わせるテストは、他のテストと接続先を分ける
+        BaseUrl = detect ? $"https://{Guid.NewGuid():N}.example.invalid" : "https://example.invalid",
         ApiKey = "secret-key",
         ServerVersion = serverVersion is null ? null : Version.Parse(serverVersion),
         DetectServerVersion = detect,
@@ -129,8 +130,93 @@ public sealed class VersionTests
         await Assert.ThrowsAsync<PleasanterVersionNotSupportedException>(() => client.Items.GetAsync(1, new Api { SsCache = true }));
         Assert.Empty(handler.Requests);
 
-        // 1.4.0.0 以前から在るものは送る
+        // 下限（1.3.0.0）以前から在るものは送る
         await client.Items.GetAsync(1, new Api { Offset = 5 });
+        Assert.Single(handler.Requests);
+    }
+
+    [Fact]
+    public void 下限の版は_1_3_0_0_で_VersionGuard_と生成した表が同じ()
+    {
+        Assert.Equal("1.3.0.0", GeneratedSurface.FirstVersion);
+        Assert.Equal(Version.Parse(GeneratedSurface.FirstVersion), VersionGuard.MinimumSupported);
+    }
+
+    [Theory]
+    [InlineData("1.3.3.1", true)]
+    [InlineData("1.3.4.0", false)]
+    [InlineData("1.4.0.0", false)]
+    public async Task 下限が_1_3_x_なので_1_3_4_0_から在る_サイトの作成は_それより前の版で例外にする(string server, bool rejected)
+    {
+        var handler = new FakeHandler();
+        var client = new PleasanterApiClient(new HttpClient(handler), Options(server));
+        var site = new SiteApiModel { Title = "t", SiteSettings = new SiteSettings { ReferenceType = "Results" } };
+
+        if (rejected)
+        {
+            var ex = await Assert.ThrowsAsync<PleasanterVersionNotSupportedException>(() => client.Items.CreateSiteAsync(0, site));
+            Assert.Equal(new Version(1, 3, 4, 0), ex.Since);
+            Assert.Empty(handler.Requests);
+        }
+        else
+        {
+            await client.Items.CreateSiteAsync(0, site);
+            Assert.Single(handler.Requests);
+        }
+    }
+
+    [Fact]
+    public async Task 版が不明で_Reject_なら_1_3_x_の途中で入ったものは例外にし_下限から在るものは送る()
+    {
+        var handler = new FakeHandler();
+        var client = new PleasanterApiClient(new HttpClient(handler), Options(null, unknown: UnknownServerVersionBehavior.Reject));
+
+        await Assert.ThrowsAsync<PleasanterVersionNotSupportedException>(
+            () => client.Items.CreateSiteAsync(0, new SiteApiModel { SiteSettings = new SiteSettings() }));
+        Assert.Empty(handler.Requests);
+
+        await client.Users.GetAsync();
+        Assert.Single(handler.Requests);
+    }
+
+    [Fact]
+    public async Task 版を取れない_1_3_x_は_ServerVersion_の明示で判定し_問い合わせない()
+    {
+        var handler = new FakeHandler();
+        var client = new PleasanterApiClient(new HttpClient(handler), Options("1.3.3.1", detect: true));
+
+        Assert.Equal(new Version(1, 3, 3, 1), await client.GetServerVersionAsync());
+        await Assert.ThrowsAsync<PleasanterVersionNotSupportedException>(
+            () => client.Items.CreateSiteAsync(0, new SiteApiModel { SiteSettings = new SiteSettings() }));
+        Assert.Empty(handler.Requests);
+    }
+
+    [Fact]
+    public async Task 版を取れない_1_3_x_の問い合わせは_404_で版は不明のまま_Attempt_は送る()
+    {
+        // 1.3.x には api/utility/GetLicenseInfo が無い（404）
+        var handler = new FakeHandler(r => r.Path == "/api/utility/GetLicenseInfo"
+            ? FakeHandler.Json(HttpStatusCode.NotFound, "{}")
+            : FakeHandler.Json(HttpStatusCode.OK, """{"Id":1,"StatusCode":200,"Message":"ok"}"""));
+        var client = new PleasanterApiClient(new HttpClient(handler), Options(null, detect: true));
+
+        Assert.Null(await client.GetServerVersionAsync());
+        var response = await client.Items.CreateSiteAsync(0, new SiteApiModel { SiteSettings = new SiteSettings() });
+
+        Assert.True(response.IsSuccess);
+        Assert.Single(handler.ApiRequests);
+    }
+
+    [Fact]
+    public async Task 下限の版の範囲で無くなった列挙値は_その版以降のサーバーへ送らず_前の版では送る()
+    {
+        var handler = new FakeHandler();
+        var newer = new PleasanterApiClient(new HttpClient(handler), Options("1.3.31.0"));
+        var older = new PleasanterApiClient(new HttpClient(handler), Options("1.3.30.0"));
+        var api = new Api { TableType = TableTypes.Match };
+
+        await Assert.ThrowsAsync<PleasanterVersionNotSupportedException>(() => newer.Items.GetAsync(1, api));
+        await older.Items.GetAsync(1, api);
         Assert.Single(handler.Requests);
     }
 

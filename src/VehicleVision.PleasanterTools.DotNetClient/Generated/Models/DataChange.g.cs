@@ -9,63 +9,63 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DataChange</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DataChange</c>。Pleasanter 1.3.13.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.13.0")]
 public partial class DataChange
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DataChange.Types</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DataChange.Types</c>。Pleasanter 1.3.13.0 から在る。</summary>
+    [Since("1.3.13.0")]
     public enum Types
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.13.0")]
         CopyValue = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.13.0")]
         CopyDisplayValue = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.13.0")]
         InputValue = 2,
 
         [Since("1.4.10.0")]
         InputValueFormula = 3,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.13.0")]
         [ValueBefore("1.4.10.0", 3)]
         InputDate = 4,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.13.0")]
         [ValueBefore("1.4.10.0", 4)]
         InputDateTime = 5,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.13.0")]
         [ValueBefore("1.4.10.0", 5)]
         InputUser = 6,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.13.0")]
         [ValueBefore("1.4.10.0", 6)]
         InputDept = 7,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.15.0")]
     public string? BaseDateTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.13.0")]
     public string? ColumnName { get; set; }
 
     [Since("1.4.0.0")]
     public int? Delete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.13.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.13.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.DataChange.Types? Type { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.13.0")]
     public string? Value { get; set; }
 
     [Since("1.4.10.0")]

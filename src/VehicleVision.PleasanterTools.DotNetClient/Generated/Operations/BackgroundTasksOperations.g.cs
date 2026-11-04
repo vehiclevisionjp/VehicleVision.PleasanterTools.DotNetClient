@@ -14,14 +14,14 @@ public sealed class BackgroundTasksOperations
 {
     private readonly PleasanterApiClient _client;
 
-    private static readonly PleasanterEndpoint Endpoint0 = new("BackgroundTasks.RebuildSearchIndexesAsync（POST api/backgroundtasks/rebuildsearchindexes）", "1.4.0.0", null);
-    private static readonly PleasanterEndpoint Endpoint1 = new("BackgroundTasks.RebuildSearchIndexesAsync（POST api/backgroundtasks/{id}/rebuildsearchindexes）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint0 = new("BackgroundTasks.RebuildSearchIndexesAsync（POST api/backgroundtasks/rebuildsearchindexes）", "1.3.32.0", null);
+    private static readonly PleasanterEndpoint Endpoint1 = new("BackgroundTasks.RebuildSearchIndexesAsync（POST api/backgroundtasks/{id}/rebuildsearchindexes）", "1.3.32.0", null);
 
     internal BackgroundTasksOperations(PleasanterApiClient client) => _client = client;
 
     /// <summary><c>POST api/BackgroundTasks/RebuildSearchIndexes</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.32.0 から在る。</para>
     /// <para>本文は ApiKey・ApiVersion だけ（辿った処理が本文を型として読んでいない）。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>ApiHeavy</c>（最新の版での指定）。</para>
@@ -29,7 +29,7 @@ public sealed class BackgroundTasksOperations
     /// <param name="noLog">クエリ文字列の <c>NoLog</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.32.0")]
     public Task<PleasanterResponse> RebuildSearchIndexesAsync(bool? noLog = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint0, $"api/BackgroundTasks/RebuildSearchIndexes", [], [new("NoLog", noLog)], cancellationToken);
@@ -37,7 +37,7 @@ public sealed class BackgroundTasksOperations
 
     /// <summary><c>POST api/BackgroundTasks/{id}/RebuildSearchIndexes</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.32.0 から在る。</para>
     /// <para>本文は ApiKey・ApiVersion だけ（辿った処理が本文を型として読んでいない）。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>ApiHeavy</c>（最新の版での指定）。</para>
@@ -46,7 +46,7 @@ public sealed class BackgroundTasksOperations
     /// <param name="noLog">クエリ文字列の <c>NoLog</c>。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.32.0")]
     public Task<PleasanterResponse> RebuildSearchIndexesAsync(long id, bool? noLog = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint1, $"api/BackgroundTasks/{PleasanterApiClient.Segment(id)}/RebuildSearchIndexes", [], [new("NoLog", noLog)], cancellationToken);

@@ -9,21 +9,21 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.ServerScriptApiSettingModel</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.ServerScriptApiSettingModel</c>。Pleasanter 1.3.50.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.50.0")]
 public partial class ServerScriptApiSettingModel
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Body { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? CalenServerScriptBeforeFormuladarGuide { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Delete { get; set; }
 
     [Since("1.4.12.0")]
@@ -32,64 +32,64 @@ public partial class ServerScriptApiSettingModel
     [Since("1.4.12.0")]
     public bool? Functionalize { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? HtmlPositionType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Name { get; set; }
 
     [Since("1.4.16.0")]
     public bool? ServerScriptAfterBulkDelete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptAfterCreate { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptAfterDelete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptAfterFormula { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptAfterUpdate { get; set; }
 
     [Since("1.4.16.0")]
     public bool? ServerScriptBeforeBulkDelete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptBeforeCreate { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptBeforeDelete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptBeforeFormula { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptBeforeOpeningPage { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptBeforeOpeningRow { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptBeforeUpdate { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptShared { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptWhenViewProcessing { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptWhenloadingRecord { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ServerScriptWhenloadingSiteSettings { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Title { get; set; }
 
     [Since("1.4.12.0")]

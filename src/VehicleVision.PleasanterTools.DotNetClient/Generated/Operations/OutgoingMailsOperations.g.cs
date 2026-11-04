@@ -14,13 +14,13 @@ public sealed class OutgoingMailsOperations
 {
     private readonly PleasanterApiClient _client;
 
-    private static readonly PleasanterEndpoint Endpoint0 = new("OutgoingMails.SendAsync（POST api/{reference}/{id}/{controller}/send）", "1.4.0.0", null);
+    private static readonly PleasanterEndpoint Endpoint0 = new("OutgoingMails.SendAsync（POST api/{reference}/{id}/{controller}/send）", "1.3.0.0", null);
 
     internal OutgoingMailsOperations(PleasanterApiClient client) => _client = client;
 
     /// <summary><c>POST api/{reference}/{id}/OutgoingMails/Send</c> を呼ぶ。</summary>
     /// <remarks>
-    /// <para>Pleasanter 1.4.0.0 以前から在る。</para>
+    /// <para>Pleasanter 1.3.0.0 以前から在る。</para>
     /// <para>本文は JSON。複数の型があれば 1 つの本文に重ねる。ApiKey・ApiVersion はクライアントが入れる。</para>
     /// <para>応答は型付けしていない（<see cref="PleasanterResponse.Body"/>）。成功・失敗の Id・Message は <see cref="PleasanterResponse.Id"/>・<see cref="PleasanterResponse.Message"/>。</para>
     /// <para>レート制限 <c>Api</c>（最新の版での指定）。</para>
@@ -30,7 +30,7 @@ public sealed class OutgoingMailsOperations
     /// <param name="outgoingMail">本文（<c>Pleasanter.Models.OutgoingMailApiModel</c>）。</param>
     /// <param name="cancellationToken">取り消し。</param>
     /// <exception cref="PleasanterVersionNotSupportedException">接続先の版では使えない。</exception>
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public Task<PleasanterResponse> SendAsync(string reference, long id, OutgoingMailApiModel? outgoingMail = null, CancellationToken cancellationToken = default)
     {
         return _client.SendJsonAsync(Endpoint0, $"api/{PleasanterApiClient.Segment(reference)}/{PleasanterApiClient.Segment(id)}/OutgoingMails/Send", [outgoingMail], null, cancellationToken);

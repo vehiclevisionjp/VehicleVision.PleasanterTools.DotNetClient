@@ -9,93 +9,93 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Models.UserApiModel</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Models.UserApiModel</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class UserApiModel : global::VehicleVision.PleasanterTools.DotNetClient.Models.BaseApiModel
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? AllowApi { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? AllowCreationAtTopSite { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? AllowGroupAdministration { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? AllowGroupCreation { get; set; }
 
     [Since("1.4.8.0")]
     public bool? AllowMovingFromTopSite { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? Birthday { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Body { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Comments { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? CreatedTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? Creator { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? DeptCode { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? DeptId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? Developer { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.2.0")]
     public bool? DisableSecondaryAuthentication { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? Disabled { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.2.0")]
     public bool? EnableSecondaryAuthentication { get; set; }
 
     [Since("1.4.2.0")]
     public bool? EnableSecretKey { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? FirstAndLastNameOrder { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? FirstName { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Gender { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? GlobalId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Language { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? LastLoginTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? LastName { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? LdapSearchRoot { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? Lockout { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? LockoutCounter { get; set; }
 
     [Since("1.4.13.0")]
@@ -104,34 +104,34 @@ public partial class UserApiModel : global::VehicleVision.PleasanterTools.DotNet
     [Since("1.4.13.0")]
     public int? LoginExpirationPeriod { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? LoginId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.16.0")]
     public global::System.Collections.Generic.List<string>? MailAddresses { get; set; }
 
     [Since("1.4.13.0")]
     public int? Manager { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Name { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? NumberOfDenial { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? NumberOfLogins { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Password { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? PasswordChangeTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? PasswordExpirationTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? PasswordHistries { get; set; }
 
     [Since("1.5.8.0")]
@@ -143,31 +143,31 @@ public partial class UserApiModel : global::VehicleVision.PleasanterTools.DotNet
     [Since("1.5.8.0")]
     public bool? ScimSync { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? SecondaryAuthenticationCode { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? SecondaryAuthenticationCodeExpirationTime { get; set; }
 
     [Since("1.4.2.0")]
     public string? SecretKey { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? ServiceManager { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? SynchronizedTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? TenantId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? TenantManager { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? Theme { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? TimeZone { get; set; }
 
     [Since("1.5.8.0")]
@@ -185,21 +185,21 @@ public partial class UserApiModel : global::VehicleVision.PleasanterTools.DotNet
     [Since("1.5.8.0")]
     public string? UiType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.DateTime? UpdatedTime { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? Updator { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? UserCode { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? UserId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? UserSettings { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? Ver { get; set; }
 }

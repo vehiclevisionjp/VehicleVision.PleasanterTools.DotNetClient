@@ -9,21 +9,21 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.ScriptApiSettingModel</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Models.ApiSiteSettings.ScriptApiSettingModel</c>。Pleasanter 1.3.50.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.50.0")]
 public partial class ScriptApiSettingModel
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Body { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Delete { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? Disabled { get; set; }
 
     [Since("1.5.7.0")]
@@ -32,48 +32,48 @@ public partial class ScriptApiSettingModel
     [Since("1.5.7.0")]
     public int? DraftOutputMode { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? HtmlPositionType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public int? Id { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptAll { get; set; }
 
     [Since("1.4.1.0")]
     public bool? ScriptAnaly { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptBurnDown { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptCalendar { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptCrosstab { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptEdit { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptGantt { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptImageLib { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptIndex { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptKamban { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptNew { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? ScriptTimeSeries { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public string? Title { get; set; }
 }

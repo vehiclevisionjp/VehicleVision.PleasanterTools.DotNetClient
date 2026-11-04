@@ -3,7 +3,7 @@ namespace VehicleVision.PleasanterTools.DotNetClient;
 /// <summary>Pleasanter のその版から在る機能（メソッド・型・メンバー・列挙値）。</summary>
 /// <remarks>
 /// <para>版は <c>api-surface/history.json</c>（ソースからの抽出）による。実機では確かめていない。</para>
-/// <para>**<c>1.4.0.0</c> は「1.4.0.0 以前から在る」**という意味（抽出の対象の最初の版のため）。</para>
+/// <para>**抽出の対象の最初の版（<c>GeneratedSurface.FirstVersion</c>、1.3.0.0）は「その版以前から在る」**という意味（対象の最初の版のため。1.4.0.0 までは下限が 1.4.0.0 だった）。</para>
 /// </remarks>
 [AttributeUsage(
     AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Property | AttributeTargets.Field,

@@ -9,56 +9,56 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Link</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.Link</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class Link
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? AddSource { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? ColumnName { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.30.0")]
     public bool? ExcludeMe { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? JsonFormat { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.LinkAction>? LinkActions { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Lookup>? Lookups { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? MembersOnly { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public bool? NoAddButton { get; set; }
 
     [Since("1.4.10.0")]
     public bool? NotReturnParentRecord { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.40.0")]
     public int? Priority { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? SearchFormat { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.36.0")]
     public bool? SelectNewLink { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public long? SiteId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public string? TableName { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.View? View { get; set; }
 }

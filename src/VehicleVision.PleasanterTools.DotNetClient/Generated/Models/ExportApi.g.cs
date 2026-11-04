@@ -9,17 +9,17 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Requests.ExportApi</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Requests.ExportApi</c>。Pleasanter 1.3.0.0 以前から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.0.0")]
 public partial class ExportApi : global::VehicleVision.PleasanterTools.DotNetClient.Models.Api
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.Export? Export { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.0.0")]
     public int? ExportId { get; set; }
 }

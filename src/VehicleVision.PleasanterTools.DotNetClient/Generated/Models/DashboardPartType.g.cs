@@ -9,23 +9,23 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DashboardPartType</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-[Since("1.4.0.0")]
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.DashboardPartType</c>。Pleasanter 1.3.44.0 から在る。</summary>
+[Since("1.3.44.0")]
 public enum DashboardPartType
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     QuickAccess = 0,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     TimeLine = 1,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     Custom = 2,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     CustomHtml = 3,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     Calendar = 4,
 
     [Since("1.4.0.0")]

@@ -9,16 +9,16 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Models.Versions.AutoVerUpTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-[Since("1.4.0.0")]
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Models.Versions.AutoVerUpTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+[Since("1.3.4.0")]
 public enum AutoVerUpTypes
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Default = 1,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Always = 2,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Disabled = 3,
 }

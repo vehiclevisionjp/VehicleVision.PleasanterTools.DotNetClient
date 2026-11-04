@@ -9,87 +9,87 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings</c>。Pleasanter 1.3.4.0 から在る。</summary>
 /// <remarks>
 /// <para>すべてのメンバーは null を取れる。null のメンバーは送らない（サーバー側の既定値に任せる）。</para>
 /// <para>値の入ったメンバーが接続先の版で使えなければ、送る前に <see cref="PleasanterVersionNotSupportedException"/> になる。</para>
 /// </remarks>
-[Since("1.4.0.0")]
+[Since("1.3.4.0")]
 public partial class SiteSettings
 {
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.CalendarTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.CalendarTypes</c>。Pleasanter 1.3.46.0 から在る。</summary>
+    [Since("1.3.46.0")]
     public enum CalendarTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.46.0")]
         Standard = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.46.0")]
         FullCalendar = 2,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.GridEditorTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.GridEditorTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum GridEditorTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         None = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Grid = 10,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Dialog = 20,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.RoundingTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.RoundingTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum RoundingTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         AwayFromZero = 10,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Ceiling = 20,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Truncate = 30,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Floor = 40,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         ToEven = 50,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.SaveViewTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.SaveViewTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum SaveViewTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         None = 0,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Session = 1,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         User = 2,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.SearchTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.SearchTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum SearchTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         FullText = 10,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         PartialMatch = 15,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         MatchInFrontOfTitle = 20,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         BroadMatchOfTitle = 30,
     }
 
@@ -107,21 +107,21 @@ public partial class SiteSettings
         Editor = 2,
     }
 
-    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.TextAlignTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-    [Since("1.4.0.0")]
+    /// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Settings.SiteSettings.TextAlignTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+    [Since("1.3.4.0")]
     public enum TextAlignTypes
     {
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Left = 10,
 
         [Since("1.4.1.0")]
         Center = 15,
 
-        [Since("1.4.0.0")]
+        [Since("1.3.4.0")]
         Right = 20,
     }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? AddressBook { get; set; }
 
     [Since("1.4.23.0")]
@@ -130,10 +130,10 @@ public partial class SiteSettings
     [Since("1.4.23.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.AfterUpdateActionTypes? AfterUpdateActionType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Aggregation>? AggregationCollection { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Aggregation>? Aggregations { get; set; }
 
     [Since("1.5.8.0")]
@@ -142,139 +142,139 @@ public partial class SiteSettings
     [Since("1.5.8.0")]
     public bool? AiProvidersAllDisabled { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowCopy { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowEditingComments { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowLockTable { get; set; }
 
     [Since("1.4.16.0")]
     public bool? AllowMigrationMode { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowPhysicalDeleteHistories { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowReferenceCopy { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowRestoreHistories { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowSeparate { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.11.0")]
     public bool? AllowStandardExport { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AllowViewReset { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? AlwaysRequestSearchCondition { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.AutoVerUpTypes? AutoVerUpType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.BulkUpdateColumn>? BulkUpdateColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.46.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.SiteSettings.CalendarTypes? CalendarType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? CharToAddWhenCopying { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Column>? ColumnCollection { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Column>? Columns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.ColumnAccessControl>? CreateColumnAccessControls { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.44.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.DashboardPart>? DashboardParts { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.50.0")]
     public bool? DashboardPartsAsynchronousLoading { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.11.0")]
     public string? DefaultImportKey { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.11.0")]
     public bool? DeleteImageWhenDeleting { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.34.0")]
     public bool? DisableLinkToEdit { get; set; }
 
     [Since("1.4.14.0")]
     public bool? DisableSiteConditions { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EditInDialog { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? EditScript { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? EditStyle { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.Dictionary<string, global::System.Collections.Generic.List<string>>? EditorColumnHash { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? EditorColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? EditorColumnsOrder { get; set; }
 
     [Since("1.4.1.0")]
     public bool? EnableAnaly { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EnableBurnDown { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EnableCalendar { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EnableCrosstab { get; set; }
 
     [Since("1.4.12.0")]
     public bool? EnableExpandLinkPath { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EnableGantt { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EnableImageLib { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EnableKamban { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? EnableTimeSeries { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Export>? Exports { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? ExtendedHeader { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? FilterColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? FilterColumnsOrder { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? FirstDayOfWeek { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? FirstMonth { get; set; }
 
     [Since("1.4.23.0")]
@@ -289,49 +289,49 @@ public partial class SiteSettings
     [Since("1.4.23.0")]
     public string? FormUnavailableMessage { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.Dictionary<string, global::VehicleVision.PleasanterTools.DotNetClient.Models.Formula>? FormulaHash { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.FormulaSet>? Formulas { get; set; }
 
     [Since("1.5.1.0")]
     public bool? FormulasGetErrorDetails { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? FullTextIncludeBreadcrumb { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? FullTextIncludeSiteId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? FullTextIncludeSiteTitle { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? FullTextNumberOfMails { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? GeneralTabLabelText { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? GridColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? GridColumnsOrder { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.SiteSettings.GridEditorTypes? GridEditorType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? GridPageSize { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? GridScript { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? GridStyle { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? GridView { get; set; }
 
     [Since("1.4.4.0")]
@@ -340,148 +340,148 @@ public partial class SiteSettings
     [Since("1.4.4.0")]
     public string? GuideExpand { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? HideLink { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? HistoryColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? HistoryColumnsOrder { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? HistoryOnGrid { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.45.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Html>? Htmls { get; set; }
 
     [Since("1.4.14.0")]
     public bool? HtmlsAllDisabled { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? ImageLibPageSize { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? ImportEncoding { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? IntegratedSites { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Link>? LinkCollection { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.Dictionary<string, long>? LinkColumnSiteIdHash { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? LinkColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? LinkColumnsOrder { get; set; }
 
     [Since("1.4.18.0")]
     public int? LinkPageSize { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? LinkTableView { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Link>? Links { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? MailBccDefault { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? MailCcDefault { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? MailToDefault { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<long>? MoveTargets { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public decimal? NearCompletionTimeAfterDays { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public decimal? NearCompletionTimeBeforeDays { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? NewScript { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? NewStyle { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? NoDisplayCrosstabGraph { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? NoDisplayIfReadOnly { get; set; }
 
     [Since("1.4.13.0")]
     public bool? NotInheritPermissionsWhenCreatingSite { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Notification>? Notifications { get; set; }
 
     [Since("1.4.8.0")]
     public bool? OpenEditInNewTab { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? OutputFormulaLogs { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.Dictionary<string, global::VehicleVision.PleasanterTools.DotNetClient.Models.PermissionsTypes>? PermissionForCreating { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.17.0")]
     public global::System.Collections.Generic.Dictionary<string, global::VehicleVision.PleasanterTools.DotNetClient.Models.PermissionsTypes>? PermissionForUpdating { get; set; }
 
     [Since("1.4.10.0")]
     public bool? ProcessOutputFormulaLogs { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Process>? Processes { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.ColumnAccessControl>? ReadColumnAccessControls { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? ReferenceType { get; set; }
 
     [Since("1.4.15.0")]
     public bool? RejectNullImport { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.RelatingColumn>? RelatingColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Reminder>? Reminders { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? Responsive { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.SiteSettings.SaveViewTypes? SaveViewType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Script>? Scripts { get; set; }
 
     [Since("1.4.14.0")]
     public bool? ScriptsAllDisabled { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.SiteSettings.SearchTypes? SearchType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? SectionLatestId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Section>? Sections { get; set; }
 
     [Since("1.5.6.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.ServerScriptModelRow? ServerScriptModelRowCache1 { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.ServerScript>? ServerScripts { get; set; }
 
     [Since("1.4.14.0")]
@@ -490,93 +490,93 @@ public partial class SiteSettings
     [Since("1.5.1.0")]
     public bool? ServerScriptsGetErrorDetails { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? ShowGanttProgressRate { get; set; }
 
     [Since("1.5.2.0")]
     public global::VehicleVision.PleasanterTools.DotNetClient.Models.SiteSettings.StandardExportTypes? StandardExportType { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.12.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.StatusControl>? StatusControls { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Style>? Styles { get; set; }
 
     [Since("1.4.14.0")]
     public bool? StylesAllDisabled { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Summary>? Summaries { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Summary>? SummaryCollection { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? SwitchCommandButtonsAutoPostBack { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? SwitchRecordWithAjax { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? TabLatestId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.Tab>? Tabs { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? TitleColumns { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<string>? TitleColumnsOrder { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public string? TitleSeparator { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? UpdatableImport { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.ColumnAccessControl>? UpdateColumnAccessControls { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.6.0")]
     public bool? UseDelayFilter { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? UseFilterButton { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? UseFiltersArea { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? UseGridHeaderFilters { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.5.0")]
     public bool? UseIncompleteFilter { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.5.0")]
     public bool? UseNearCompletionTimeFilter { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.21.0")]
     public bool? UseNegativeFilters { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.5.0")]
     public bool? UseOverdueFilter { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.5.0")]
     public bool? UseOwnFilter { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public bool? UseRelatingColumnsOnFilter { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.5.0")]
     public bool? UseSearchFilter { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public decimal? Version { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public int? ViewLatestId { get; set; }
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     public global::System.Collections.Generic.List<global::VehicleVision.PleasanterTools.DotNetClient.Models.View>? Views { get; set; }
 }

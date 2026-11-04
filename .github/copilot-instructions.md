@@ -7,7 +7,7 @@
 
 1. 応答、Issue、PR、コミット、レビュー、コメントとドキュメントは日本語で書く。CLI の進行メッセージだけは英語でよい。
 2. 作業ブランチは `develop` から分岐し、PR の base も `develop` とする。`master` はリリース確定用。
-3. Issue を作ってから変更し、PR 本文に `Closes #N` を書く。初期リポジトリ作成のみ直接配置する。
+3. 作業に着手する前に、これからやること・やるべきこと（作業中に見つけたものを含む）を、先に Issue にする。会話の「残りの作業」も Issue に起こし、リポジトリをまたぐ作業は、中心のリポジトリに親の Issue を起こして各リポジトリの Issue から参照する。Issue を作ってから変更し、PR 本文に `Closes #N` を書く。初期リポジトリ作成のみ直接配置する。
 4. 作業中の PR は Draft とし、タイトルに `WIP:` を付ける。Draft 解除はレビュー可能、WIP 除去はマージ可能の合図。
 5. CI をスキップするコミット指定を使わない。実装変更後は Release ビルドと影響するテストを実行する。
 6. Pleasanter 本体は AGPL v3 の参照専用ソース。必要時に取得し、Git では追跡しない。
@@ -23,7 +23,7 @@
 ## プロジェクト
 
 Pleasanter の標準 Web API を呼ぶ **.NET 向けのクライアントライブラリ**（NuGet パッケージ `VehicleVision.PleasanterTools.DotNetClient`）。C#／.NET 10。
-**ライセンスは 3 層**（個人・非営利団体・教育機関は LGPL-3.0-or-later。それ以外の法人は AGPL-3.0-or-later か商用ライセンス。[LICENSING.md](../LICENSING.md)）。
+**ライセンスは 3 層**（個人・非営利団体・教育機関が営利事業に使わない場合は LGPL-3.0-or-later。営利事業に使う場合と公的機関は AGPL-3.0-or-later か商用ライセンス。[LICENSING.md](../LICENSING.md)）。
 Core（VehicleVision.PleasanterTools.Core）には現在依存せず、依存を加えるときはライセンスの整合を見直す。
 現状と未決定事項は [アーキテクチャ方針](../_documents/アーキテクチャ方針.md) を確認する。
 
@@ -35,7 +35,7 @@ Issue → `develop` から作業ブランチ → 実装と検証 → push → Dr
 
 共通規約の編集元はこのファイル。`scripts/sync-agents.sh` で AGENTS.md を再生成し、`--check` で確認する。Claude のローカル許可や秘密は追跡しない。
 
-Claude や Codex が外部記憶を必要とするときは、本リポジトリ名に `.ClaudeMemory` を付けた Internal リポジトリ（例: `<リポジトリ名>.ClaudeMemory`）を作って管理する。本体へ記憶ファイルを置かない。正式な規約は常にこのファイルへ残し、記憶と食い違ったら記憶側を直す。規約を変えたら記憶に古い記述が無いか確認する。
+Claude や Codex が外部記憶を必要とするときは、個別のリポジトリを作らず、Internal の `VehicleVision.PleasanterTools.ClaudeMemory` に `DotNetClient/` フォルダを作って管理する。本体へ記憶ファイルを置かない。正式な規約は常にこのファイルへ残し、記憶と食い違ったら記憶側を直す。規約を変えたら記憶に古い記述が無いか確認する。
 
 Pleasanter の挙動を確かめる前に、`bash scripts/sync-reference.sh` で
 `_reference/Implem.Pleasanter` を上流の `main` の先頭へ更新する。

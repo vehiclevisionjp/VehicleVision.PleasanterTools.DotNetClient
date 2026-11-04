@@ -9,25 +9,25 @@ using System.Text.Json.Serialization;
 
 namespace VehicleVision.PleasanterTools.DotNetClient.Models;
 
-/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Server.Times.RepeatTypes</c>。Pleasanter 1.4.0.0 以前から在る。</summary>
-[Since("1.4.0.0")]
+/// <summary>Pleasanter の型 <c>Pleasanter.Libraries.Server.Times.RepeatTypes</c>。Pleasanter 1.3.4.0 から在る。</summary>
+[Since("1.3.4.0")]
 public enum RepeatTypes
 {
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Daily = 10,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Weekly = 20,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     NumberWeekly = 30,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Monthly = 40,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     EndOfMonth = 50,
 
-    [Since("1.4.0.0")]
+    [Since("1.3.4.0")]
     Yearly = 60,
 }
