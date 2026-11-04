@@ -40,6 +40,14 @@ public record PleasanterResponse(
     public bool IsSuccess => ErrorKind is PleasanterErrorKind.None;
 
     /// <summary>
+    /// 応答の HTTP ヘッダ <c>Retry-After</c> が示す、再送までに待つ長さ。429・503 などで付く。
+    /// 秒指定も HTTP-date も読み（日時は受け取った時点の現在時刻との差）、負の秒・過去の日時は <see cref="TimeSpan.Zero"/>。
+    /// ヘッダが無い・読めない、応答が返らなかったときは <c>null</c>。上限の丸めはしない（待たせる上限は呼び出し側が決める）。
+    /// ステータスには依らず、ヘッダがあれば読む（<see cref="StatusCode"/>・<see cref="ErrorKind"/> の意味は変えない）。クライアントは再試行しない。
+    /// </summary>
+    public TimeSpan? RetryAfter { get; init; }
+
+    /// <summary>
     /// 応答の本文にある <c>StatusCode</c>（Pleasanter のアプリケーションのステータス）。本文に無い・整数でなければ <c>null</c>。
     /// HTTP が 200 でも、これが 200 以外なら <see cref="ErrorKind"/> は失敗の分類になる（<see cref="StatusCode"/> は HTTP のまま）。
     /// </summary>
@@ -82,6 +90,9 @@ public sealed record PleasanterBinaryResponse(
 {
     /// <summary>成功したか。</summary>
     public bool IsSuccess => ErrorKind is PleasanterErrorKind.None;
+
+    /// <summary><see cref="PleasanterResponse.RetryAfter"/> と同じ（HTTP ヘッダ <c>Retry-After</c> が示す待ち時間）。</summary>
+    public TimeSpan? RetryAfter { get; init; }
 }
 
 /// <summary>
