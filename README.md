@@ -58,6 +58,7 @@ services.AddTransient(sp => new PleasanterApiClient(
 （この登録例は、ビルドと単体テストでは確かめていません。`Microsoft.Extensions.Http` は本ライブラリの依存ではありません）
 
 - 3xx を受けたときは再送せず、`StatusCode` が 3xx、`ErrorKind` が `Permanent` の結果で返ります。`BaseUrl` が正しい最終の URL か（https の入口か）を見直してください
+- HTTP が 200 でも、応答の本文の `StatusCode` が 200 以外なら、その値で `ErrorKind` を分類して失敗として返します（`IsSuccess` は `false`）。`StatusCode` は HTTP のまま、本文の値は `ApplicationStatusCode` で読めます。本文に `StatusCode` が無い応答は成功のままです
 - 別のハンドラーを使う場合も、`HttpClientHandler.AllowAutoRedirect = false`（`SocketsHttpHandler` なら `AllowAutoRedirect = false`）にしてください
 
 ## Pleasanter の版

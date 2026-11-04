@@ -38,6 +38,15 @@ public record PleasanterResponse(
 {
     /// <summary>成功したか（エラーの分類が <see cref="PleasanterErrorKind.None"/>）。</summary>
     public bool IsSuccess => ErrorKind is PleasanterErrorKind.None;
+
+    /// <summary>
+    /// 応答の本文にある <c>StatusCode</c>（Pleasanter のアプリケーションのステータス）。本文に無い・整数でなければ <c>null</c>。
+    /// HTTP が 200 でも、これが 200 以外なら <see cref="ErrorKind"/> は失敗の分類になる（<see cref="StatusCode"/> は HTTP のまま）。
+    /// </summary>
+    public int? ApplicationStatusCode => ReadApplicationStatusCode(Body);
+
+    internal static int? ReadApplicationStatusCode(JsonNode? body)
+        => body is JsonObject o && o["StatusCode"] is JsonValue v && v.TryGetValue<int>(out var value) ? value : null;
 }
 
 /// <summary>型付きの Pleasanter 呼び出しの結果。</summary>
