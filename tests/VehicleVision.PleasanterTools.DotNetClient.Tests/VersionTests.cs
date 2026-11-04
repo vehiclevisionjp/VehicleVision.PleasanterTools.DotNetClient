@@ -13,7 +13,8 @@ public sealed class VersionTests
         bool detect = false,
         UnknownServerVersionBehavior unknown = UnknownServerVersionBehavior.Attempt) => new()
     {
-        BaseUrl = "https://example.invalid",
+        // 版の問い合わせの記憶はプロセスで共通なので、問い合わせるテストは、他のテストと接続先を分ける
+        BaseUrl = detect ? $"https://{Guid.NewGuid():N}.example.invalid" : "https://example.invalid",
         ApiKey = "secret-key",
         ServerVersion = serverVersion is null ? null : Version.Parse(serverVersion),
         DetectServerVersion = detect,

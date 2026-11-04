@@ -25,18 +25,25 @@ public sealed partial class PleasanterApiClient
     private readonly HttpClient _httpClient;
     private readonly IPleasanterOptionsProvider _optionsProvider;
 
-    // 接続先（BaseUrl）ごとの版。値が null は「問い合わせたが分からなかった」
-    private readonly ConcurrentDictionary<string, Version?> _detectedVersions = new(StringComparer.OrdinalIgnoreCase);
+    // 接続先（BaseUrl）ごとの版の記憶。既定はプロセスで共通（インスタンスを作り直しても、AddTransient でも、問い合わせ直さない）
+    private readonly ServerVersionCache _versionCache;
 
     /// <summary>接続設定を呼び出しのたびに解決して作る。</summary>
     /// <param name="httpClient">通信に使う <see cref="HttpClient"/>。</param>
     /// <param name="optionsProvider">接続設定。</param>
     public PleasanterApiClient(HttpClient httpClient, IPleasanterOptionsProvider optionsProvider)
+        : this(httpClient, optionsProvider, ServerVersionCache.Shared)
+    {
+    }
+
+    internal PleasanterApiClient(HttpClient httpClient, IPleasanterOptionsProvider optionsProvider, ServerVersionCache versionCache)
     {
         ArgumentNullException.ThrowIfNull(httpClient);
         ArgumentNullException.ThrowIfNull(optionsProvider);
+        ArgumentNullException.ThrowIfNull(versionCache);
         _httpClient = httpClient;
         _optionsProvider = optionsProvider;
+        _versionCache = versionCache;
     }
 
     /// <summary>固定の接続設定で作る。</summary>
@@ -58,7 +65,7 @@ public sealed partial class PleasanterApiClient
 
     /// <summary>
     /// 接続先の版を返す。<see cref="PleasanterOptions.ServerVersion"/> があればそれ、
-    /// 無ければ <c>api/utility/GetLicenseInfo</c> へ問い合わせた結果（接続先ごとに覚える）。分からなければ <c>null</c>。
+    /// 無ければ <c>api/utility/GetLicenseInfo</c> へ問い合わせた結果（接続先ごとに、プロセスで共通に覚える）。分からなければ <c>null</c>。
     /// </summary>
     /// <remarks>版が取れるのは Pleasanter 1.4.21.0 以降。それより前（1.3.x を含む）は <c>null</c> になる。</remarks>
     /// <param name="cancellationToken">取り消し。</param>
@@ -68,7 +75,7 @@ public sealed partial class PleasanterApiClient
         return await ResolveServerVersionAsync(options, refresh: false, cancellationToken).ConfigureAwait(false);
     }
 
-    /// <summary>覚えている版を捨て、もう一度問い合わせる。</summary>
+    /// <summary>覚えている版を捨て、もう一度問い合わせる。取れなかったときは、覚えていた版を残して返す。</summary>
     /// <param name="cancellationToken">取り消し。</param>
     public async Task<Version?> RefreshServerVersionAsync(CancellationToken cancellationToken = default)
     {
@@ -376,44 +383,85 @@ public sealed partial class PleasanterApiClient
         }
 
         var key = options.BaseUrl.TrimEnd('/');
-        if (!refresh && _detectedVersions.TryGetValue(key, out var known))
+        if (!refresh && _versionCache.TryGet(key, out var known))
         {
             return known;
         }
 
+        // 同じ接続先への問い合わせは、同時に 1 つだけ（待っていた呼び出しは、結果を覚えたものを使う）
+        var gate = _versionCache.GateFor(key);
+        await gate.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            if (!refresh && _versionCache.TryGet(key, out known))
+            {
+                return known;
+            }
+
+            var outcome = await QueryServerVersionAsync(options, cancellationToken).ConfigureAwait(false);
+            if (outcome.Conclusive)
+            {
+                _versionCache.SetConclusive(key, outcome.Version);
+                return outcome.Version;
+            }
+
+            // 取れなかった（到達不能・認証失敗・5xx など）。短い間だけ覚え、その間は問い合わせない。
+            // 更新のときは、覚えていた版があればそれを残す
+            return _versionCache.SetFailure(key, options.ServerVersionRetryInterval, keepConclusive: refresh);
+        }
+        finally
+        {
+            gate.Release();
+        }
+    }
+
+    /// <summary>
+    /// <c>api/utility/GetLicenseInfo</c> を 1 回呼ぶ。結論が出たか（<c>Conclusive</c>）と、取れた版を返す。
+    /// 版が取れた・版の無い 200・404（1.4.12.0 以前）は結論。応答が無い・JSON でない・ほかのステータスは結論ではない。
+    /// </summary>
+    private async Task<(bool Conclusive, Version? Version)> QueryServerVersionAsync(PleasanterOptions options, CancellationToken cancellationToken)
+    {
         var payload = new JsonObject
         {
             ["ApiKey"] = options.ApiKey,
             ["ApiVersion"] = options.ApiVersion,
         };
-        var (response, raw) = await SendAsync(options, VersionPath, null, () => JsonContent(payload), bearer: false, cancellationToken).ConfigureAwait(false);
+        var timeout = options.ServerVersionTimeout < options.Timeout ? options.ServerVersionTimeout : options.Timeout;
+        var (response, raw) = await SendAsync(options, VersionPath, null, () => JsonContent(payload), bearer: false, cancellationToken, timeout: timeout).ConfigureAwait(false);
         if (response is null)
         {
-            // 応答が返らなかった。分からないまま、覚えずに次の呼び出しで試し直す
-            return null;
+            return (false, null);
         }
 
-        Version? detected = null;
+        if (response.Value.Status == HttpStatusCode.NotFound)
+        {
+            // この版には GetLicenseInfo が無い。何度聞いても同じ
+            return (true, null);
+        }
+
+        if (response.Value.Status != HttpStatusCode.OK)
+        {
+            return (false, null);
+        }
+
         try
         {
-            if (response.Value.Status == HttpStatusCode.OK
-                && raw.Text is { Length: > 0 } text
-                && JsonNode.Parse(text) is JsonObject root
-                && root["Response"] is JsonObject inner
-                && inner["Version"] is JsonValue v
-                && v.TryGetValue<string>(out var s)
-                && Version.TryParse(s, out var parsed))
+            if (raw.Text is { Length: > 0 } text && JsonNode.Parse(text) is JsonObject root)
             {
-                detected = VersionGuard.Normalize(parsed);
+                return (true, root["Response"] is JsonObject inner
+                    && inner["Version"] is JsonValue v
+                    && v.TryGetValue<string>(out var s)
+                    && Version.TryParse(s, out var parsed)
+                        ? VersionGuard.Normalize(parsed)
+                        : null);
             }
         }
         catch (JsonException)
         {
-            // JSON でなければ分からない
+            // JSON でない（経路の途中の応答かもしれない）。結論にしない
         }
 
-        _detectedVersions[key] = detected;
-        return detected;
+        return (false, null);
     }
 
     private async Task<(ResponseHead? Response, RawBody Raw)> SendAsync(
@@ -423,7 +471,8 @@ public sealed partial class PleasanterApiClient
         Func<HttpContent> content,
         bool bearer,
         CancellationToken cancellationToken,
-        bool readBytes = false)
+        bool readBytes = false,
+        TimeSpan? timeout = null)
     {
         var url = new StringBuilder(options.BaseUrl.TrimEnd('/')).Append('/').Append(path.TrimStart('/'));
         var separator = '?';
@@ -447,10 +496,10 @@ public sealed partial class PleasanterApiClient
         HttpResponseMessage response;
         try
         {
-            using var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-            timeout.CancelAfter(options.Timeout);
+            using var timeoutSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            timeoutSource.CancelAfter(timeout ?? options.Timeout);
             response = await _httpClient
-                .SendAsync(request, HttpCompletionOption.ResponseContentRead, timeout.Token)
+                .SendAsync(request, HttpCompletionOption.ResponseContentRead, timeoutSource.Token)
                 .ConfigureAwait(false);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
