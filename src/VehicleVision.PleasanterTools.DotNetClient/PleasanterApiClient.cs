@@ -332,8 +332,15 @@ public sealed partial class PleasanterApiClient
             // Pleasanter は JSON を返す。返らないなら経路の問題とみなす
         }
 
+        // HTTP が 200 でも、本文の StatusCode が 200 以外なら失敗として扱う（成功と記録してしまうのを防ぐ）
+        var kind = Classify(response.Value.Status);
+        if (kind is PleasanterErrorKind.None && PleasanterResponse.ReadApplicationStatusCode(node) is { } applicationStatus && applicationStatus != 200)
+        {
+            kind = Classify((HttpStatusCode)applicationStatus);
+        }
+
         return new PleasanterResponse(
-            Classify(response.Value.Status),
+            kind,
             (int)response.Value.Status,
             ReadLong(node, "Id"),
             ReadString(node, "Message"),

@@ -25,6 +25,39 @@ public sealed class PleasanterApiClientTests
     public void Classify_はステータスを扱い方へ分類する(HttpStatusCode status, PleasanterErrorKind expected)
         => Assert.Equal(expected, PleasanterApiClient.Classify(status));
 
+    [Theory]
+    [InlineData(500, PleasanterErrorKind.Transient)]
+    [InlineData(401, PleasanterErrorKind.Unauthorized)]
+    [InlineData(404, PleasanterErrorKind.Permanent)]
+    [InlineData(429, PleasanterErrorKind.Transient)]
+    public async Task PostJsonAsync_は_HTTP_200_でも本文の_StatusCode_が失敗なら失敗として扱う(int bodyStatus, PleasanterErrorKind expected)
+    {
+        var handler = new FakeHandler(_ => FakeHandler.Json(HttpStatusCode.OK, $$"""{"StatusCode":{{bodyStatus}},"Message":"fixture-only"}"""));
+        var client = new PleasanterApiClient(new HttpClient(handler), Options());
+
+        var response = await client.PostJsonAsync("api/items/100/get", null);
+
+        Assert.False(response.IsSuccess);
+        Assert.Equal(expected, response.ErrorKind);
+        Assert.Equal(200, response.StatusCode);
+        Assert.Equal(bodyStatus, response.ApplicationStatusCode);
+        Assert.Equal("fixture-only", response.Message);
+    }
+
+    [Theory]
+    [InlineData("""{"Id":42,"Message":"ok"}""")]
+    [InlineData("""{"Id":42,"StatusCode":200,"Message":"ok"}""")]
+    [InlineData("""{"StatusCode":"x"}""")]
+    public async Task PostJsonAsync_は本文に_StatusCode_が無いか_200_なら成功のまま(string json)
+    {
+        var handler = new FakeHandler(_ => FakeHandler.Json(HttpStatusCode.OK, json));
+        var client = new PleasanterApiClient(new HttpClient(handler), Options());
+
+        var response = await client.PostJsonAsync("api/items/100/get", null);
+
+        Assert.True(response.IsSuccess);
+    }
+
     [Fact]
     public async Task Items_CreateAsync_は_ApiKey_と_ApiVersion_とモデルの値を本文へ載せる()
     {

@@ -28,6 +28,41 @@ public sealed class BaseUrlTests
         Options(baseUrl).Validate();
     }
 
+    private static PleasanterOptions InsecureOptions(string baseUrl) => new()
+    {
+        BaseUrl = baseUrl,
+        ApiKey = ApiKey,
+        DetectServerVersion = false,
+        AllowInsecureHttp = true,
+    };
+
+    [Theory]
+    [InlineData("http://pleasanter:8080")]
+    [InlineData("http://pleasanter.example.com")]
+    [InlineData("http://192.0.2.10")]
+    public void AllowInsecureHttp_を有効にするとループバック以外の_http_も通る(string baseUrl)
+    {
+        InsecureOptions(baseUrl).Validate();
+    }
+
+    [Theory]
+    [InlineData("http://user:pass@pleasanter:8080")]
+    [InlineData("http://pleasanter:8080?x=1")]
+    [InlineData("http://pleasanter:8080#f")]
+    [InlineData("ftp://pleasanter")]
+    public void AllowInsecureHttp_を有効にしても資格情報_クエリ_フラグメント_別スキームは拒否する(string baseUrl)
+    {
+        var ex = Assert.Throws<ArgumentException>(() => InsecureOptions(baseUrl).Validate());
+        Assert.DoesNotContain(ApiKey, ex.Message);
+    }
+
+    [Fact]
+    public void AllowInsecureHttp_の既定は無効()
+    {
+        Assert.False(Options("https://pleasanter.example.com").AllowInsecureHttp);
+        Assert.Throws<ArgumentException>(() => Options("http://pleasanter:8080").Validate());
+    }
+
     [Theory]
     [InlineData("http://pleasanter.example.com")]
     [InlineData("http://192.0.2.10")]
