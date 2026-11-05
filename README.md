@@ -29,6 +29,11 @@ var records = await client.DeserializeAsync<List<IssueApiModel>>(list.Value?.Res
 API キーは、環境変数や Git 管理外の設定から読んでください。コードや設定ファイルへ書かないでください。
 
 - 結果は `PleasanterResponse` で返し、失敗は例外にせず `ErrorKind` で分類します（クライアントは再試行しません）
+- **`Retry-After`**: 応答の HTTP ヘッダ `Retry-After`（429・503 などで付く）を `PleasanterResponse.RetryAfter`（`TimeSpan?`）で読めます。再送するか・いつ送るかは、これまでどおり呼び出し側が決めます
+  - 秒指定も HTTP-date も読みます。日時は応答を受け取った時点の現在時刻との差で、負の秒・過去の日時は `TimeSpan.Zero` です
+  - ヘッダが無い・読めない値・応答が返らなかった（`Unknown`）ときは `null` です。**上限の丸めはしません**（待たせる上限は呼び出し側で決めます）
+  - ステータスには依らず、ヘッダがあれば読みます（3xx・200 でも付いていれば入ります）。応答の本文の `StatusCode` 由来の失敗でも、見るのは HTTP ヘッダだけです。`StatusCode`・`ErrorKind` の意味は変わりません
+  - 一覧のような型付きの応答（`PleasanterResponse<T>`）とファイルの応答（`PleasanterBinaryResponse`）にも入ります
 - **`BaseUrl` は通信の前に検査します。** API キーが本文に載るため、次を満たさない URL は `ArgumentException` で拒否します（例外の文言に API キーも URL も出しません）
   - `https` であること。`http` はループバック（`localhost`・`127.0.0.1`・`[::1]`）だけ使えます
   - 資格情報（`user:pass@`）・クエリ（`?`）・フラグメント（`#`）を含まないこと（パス `https://example.com/pleasanter` は使えます）
