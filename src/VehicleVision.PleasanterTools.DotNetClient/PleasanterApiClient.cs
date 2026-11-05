@@ -28,6 +28,9 @@ public sealed partial class PleasanterApiClient
     // 接続先（BaseUrl）ごとの版の記憶。既定はプロセスで共通（インスタンスを作り直しても、AddTransient でも、問い合わせ直さない）
     private readonly ServerVersionCache _versionCache;
 
+    // Retry-After が HTTP-date のとき、現在時刻との差を取るのに使う（テストで差し替える）
+    private readonly TimeProvider _time;
+
     /// <summary>接続設定を呼び出しのたびに解決して作る。</summary>
     /// <param name="httpClient">通信に使う <see cref="HttpClient"/>。</param>
     /// <param name="optionsProvider">接続設定。</param>
@@ -36,7 +39,11 @@ public sealed partial class PleasanterApiClient
     {
     }
 
-    internal PleasanterApiClient(HttpClient httpClient, IPleasanterOptionsProvider optionsProvider, ServerVersionCache versionCache)
+    internal PleasanterApiClient(
+        HttpClient httpClient,
+        IPleasanterOptionsProvider optionsProvider,
+        ServerVersionCache versionCache,
+        TimeProvider? timeProvider = null)
     {
         ArgumentNullException.ThrowIfNull(httpClient);
         ArgumentNullException.ThrowIfNull(optionsProvider);
@@ -44,6 +51,7 @@ public sealed partial class PleasanterApiClient
         _httpClient = httpClient;
         _optionsProvider = optionsProvider;
         _versionCache = versionCache;
+        _time = timeProvider ?? TimeProvider.System;
     }
 
     /// <summary>固定の接続設定で作る。</summary>
@@ -183,7 +191,10 @@ public sealed partial class PleasanterApiClient
             (int)response.Value.Status,
             kind is PleasanterErrorKind.None ? bytes : null,
             response.Value.ContentType,
-            response.Value.FileName);
+            response.Value.FileName)
+        {
+            RetryAfter = response.Value.RetryAfter,
+        };
     }
 
     /// <summary>フォームの <c>parameters</c> に JSON、ファイルを添付して呼ぶ（<c>Import</c>。生成したメソッドが使う）。</summary>
@@ -312,7 +323,10 @@ public sealed partial class PleasanterApiClient
             }
         }
 
-        return new PleasanterResponse<T>(response.ErrorKind, response.StatusCode, response.Id, response.Message, response.Body, value);
+        return new PleasanterResponse<T>(response.ErrorKind, response.StatusCode, response.Id, response.Message, response.Body, value)
+        {
+            RetryAfter = response.RetryAfter,
+        };
     }
 
     private static PleasanterResponse ToResponse(ResponseHead? response, RawBody raw)
@@ -344,7 +358,10 @@ public sealed partial class PleasanterApiClient
             (int)response.Value.Status,
             ReadLong(node, "Id"),
             ReadString(node, "Message"),
-            node);
+            node)
+        {
+            RetryAfter = response.Value.RetryAfter,
+        };
     }
 
     private static long? ReadLong(JsonNode? node, string name)
@@ -532,7 +549,8 @@ public sealed partial class PleasanterApiClient
             var head = new ResponseHead(
                 response.StatusCode,
                 response.Content.Headers.ContentType?.ToString(),
-                response.Content.Headers.ContentDisposition?.FileNameStar ?? response.Content.Headers.ContentDisposition?.FileName?.Trim('"'));
+                response.Content.Headers.ContentDisposition?.FileNameStar ?? response.Content.Headers.ContentDisposition?.FileName?.Trim('"'),
+                ParseRetryAfter(response.Headers.RetryAfter, _time.GetUtcNow()));
             if (readBytes)
             {
                 var bytes = await response.Content.ReadAsByteArrayAsync(cancellationToken).ConfigureAwait(false);
@@ -544,7 +562,27 @@ public sealed partial class PleasanterApiClient
         }
     }
 
-    private readonly record struct ResponseHead(HttpStatusCode Status, string? ContentType, string? FileName);
+    private readonly record struct ResponseHead(HttpStatusCode Status, string? ContentType, string? FileName, TimeSpan? RetryAfter);
+
+    /// <summary>
+    /// <c>Retry-After</c> を、待つ長さへ直す。秒（delta-seconds）と HTTP-date のどちらも読む。
+    /// 負の秒・過去の日時は <see cref="TimeSpan.Zero"/>、ヘッダが無い・読めないときは <c>null</c>。上限の丸めはしない。
+    /// </summary>
+    internal static TimeSpan? ParseRetryAfter(System.Net.Http.Headers.RetryConditionHeaderValue? header, DateTimeOffset now)
+    {
+        if (header?.Delta is { } delta)
+        {
+            return delta < TimeSpan.Zero ? TimeSpan.Zero : delta;
+        }
+
+        if (header?.Date is { } date)
+        {
+            var wait = date - now;
+            return wait < TimeSpan.Zero ? TimeSpan.Zero : wait;
+        }
+
+        return null;
+    }
 
     private readonly record struct RawBody(string? Text, byte[]? Bytes);
 
