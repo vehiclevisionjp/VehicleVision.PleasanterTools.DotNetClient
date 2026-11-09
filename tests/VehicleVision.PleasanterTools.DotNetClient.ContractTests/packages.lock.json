@@ -53,6 +53,11 @@
           "Microsoft.TestPlatform.ObjectModel": "18.11.0"
         }
       },
+      "VehicleVision.PleasanterTools.Core.Contracts": {
+        "type": "Transitive",
+        "resolved": "0.2.0",
+        "contentHash": "x80azCZFjd8FQfP7Nude6CNFVCXjhaCSzIHuBcQj2pXY2TaXnxkOMPIGRnZ51OhHdHK3SKcOJLpWq5cFBfT6DA=="
+      },
       "xunit.abstractions": {
         "type": "Transitive",
         "resolved": "2.0.3",
@@ -94,7 +99,10 @@
         }
       },
       "vehiclevision.pleasantertools.dotnetclient": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "VehicleVision.PleasanterTools.Core.Contracts": "[0.2.0, )"
+        }
       }
     }
   }

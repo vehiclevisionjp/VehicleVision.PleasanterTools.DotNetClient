@@ -1,6 +1,13 @@
 {
   "version": 1,
   "dependencies": {
-    "net10.0": {}
+    "net10.0": {
+      "VehicleVision.PleasanterTools.Core.Contracts": {
+        "type": "Direct",
+        "requested": "[0.2.0, )",
+        "resolved": "0.2.0",
+        "contentHash": "x80azCZFjd8FQfP7Nude6CNFVCXjhaCSzIHuBcQj2pXY2TaXnxkOMPIGRnZ51OhHdHK3SKcOJLpWq5cFBfT6DA=="
+      }
+    }
   }
 }
