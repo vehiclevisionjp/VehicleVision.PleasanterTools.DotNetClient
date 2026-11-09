@@ -156,21 +156,20 @@ Core は寛容ライセンスではなく、**AGPL-3.0-or-later と商用ライ�
 - **B（AGPL）を選ぶ場合**: 組み込まれた Core を、本ソフトウェアと一体として、B の条件で利用できます
 - **C（商用）を選ぶ場合**: 本ソフトウェアの商用ライセンスは、本ソフトウェアに組み込まれた Core を含みます
 
-本ソフトウェアを当社のアプリケーション（VehicleVision.PleasanterTools の各ツール）以外へ組み込む場合と、Core を単体で利用する場合は、
-Core の条件によります。
+Core を単体で利用する場合は、Core の条件によります。
+本ソフトウェアを VehicleVision.PleasanterTools 以外へ組み込む場合も、組み込まれた Core は、上のとおり本ソフトウェアと一体として扱います。
 
 Core の条件は、次を参照してください。
 [Core の LICENSING.md](https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.Core/blob/develop/LICENSING.md)
 <!-- license:end core -->
 
 <!-- license:begin dotnetclient=library -->
-### 当社のアプリケーションに組み込まれた場合
+### VehicleVision.PleasanterTools の各ツール・各共通部品に組み込まれた場合
 
-本ソフトウェアは、当社のアプリケーション（VehicleVision.PleasanterTools の各ツール）へ組み込まれて使われます。
-**当社のアプリケーションの利用条件に従って、組み込まれた本ソフトウェアを、そのアプリケーションと一体として扱います。**
-当社のアプリケーションの商用ライセンスの契約を結んだ方には、そのアプリケーションに組み込まれた本ソフトウェアを、
-そのアプリケーションと同じ条件で提供します。
-本ソフトウェアを単体で利用する場合と、当社のアプリケーション以外へ組み込む場合は、上の A・B・C の条件によります。
+本ソフトウェアは、VehicleVision.PleasanterTools の各ツール・各共通部品に組み込まれて使われます。
+**組み込み先の利用条件に従って、組み込まれた本ソフトウェアを、組み込み先と一体として扱います。**
+組み込み先の商用ライセンスの契約を結んだ方には、組み込まれた本ソフトウェアを、その組み込み先と同じ条件で提供します。
+本ソフトウェアを単体で利用する場合と、VehicleVision.PleasanterTools 以外へ組み込む場合は、上の A・B・C の条件によります。
 <!-- license:end dotnetclient -->
 
 ## 当社の共通部品との組み合わせ
