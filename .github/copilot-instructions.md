@@ -24,7 +24,7 @@
 
 Pleasanter の標準 Web API を呼ぶ **.NET 向けのクライアントライブラリ**（NuGet パッケージ `VehicleVision.PleasanterTools.DotNetClient`）。C#／.NET 10。
 **ライセンスは 3 層**（個人・非営利団体・教育機関が営利事業に使わない場合は LGPL-3.0-or-later。営利事業に使う場合と公的機関は AGPL-3.0-or-later か商用ライセンス。[LICENSING.md](../LICENSING.md)）。
-Core（VehicleVision.PleasanterTools.Core）には現在依存せず、依存を加えるときはライセンスの整合を見直す。
+Core のうち `VehicleVision.PleasanterTools.Core.Contracts`（環境変数名などの定数だけ）に依存する。ほかの Core のパッケージへ依存を加えるときは、ライセンスの整合を見直す。
 現状と未決定事項は [アーキテクチャ方針](../_documents/アーキテクチャ方針.md) を確認する。
 
 ## 作業の進め方
