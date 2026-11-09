@@ -143,16 +143,24 @@ B・C の提供や、利用者が選ぶ層の自由が崩れます。** 依存�
 <!-- license:begin sni=off -->
 <!-- license:end sni -->
 
-<!-- license:begin core=none -->
-## Core との関係
+<!-- license:begin core=on -->
+### 例外: 当社の共通部品 Core（AGPL／商用のデュアルライセンス）
 
-当社の共通部品 **VehicleVision.PleasanterTools.Core** とは、現時点で**依存関係がありません**。
-本ソフトウェアのライセンスは、Core のライセンスとは独立しています。
+本ソフトウェアは、当社の共通部品 Core（`VehicleVision.PleasanterTools.Core.*` の NuGet パッケージ）を利用します。
+Core は寛容ライセンスではなく、**AGPL-3.0-or-later と商用ライセンスのデュアルライセンス**で提供されます。
+著作権者は本ソフトウェアと同じ、当社です。
 
-今後、複数のツールで共有する処理は Core に置く方針です（先回りの注記です）。
-**Core のパッケージへ依存を加える時点で、ライセンスの整合を見直します。**
-たとえば、Core 側の商用ライセンスとの関係や、必要なら Core 側での例外許諾を確認します。
-それまでは、Core のライセンスを本ソフトウェアへ及ぼす仕組みは設けていません。
+本ソフトウェアが Core を利用する場合、**組み込まれた Core は本ソフトウェアと一体として扱い**ます（当社の共通部品どうしの組み合わせの扱いです）。
+
+- **A（LGPL）を選ぶ場合**: 組み込まれた Core を、本ソフトウェアと一体として、A の条件で利用できます
+- **B（AGPL）を選ぶ場合**: 組み込まれた Core を、本ソフトウェアと一体として、B の条件で利用できます
+- **C（商用）を選ぶ場合**: 本ソフトウェアの商用ライセンスは、本ソフトウェアに組み込まれた Core を含みます
+
+本ソフトウェアを当社のアプリケーション（VehicleVision.PleasanterTools の各ツール）以外へ組み込む場合と、Core を単体で利用する場合は、
+Core の条件によります。
+
+Core の条件は、次を参照してください。
+[Core の LICENSING.md](https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.Core/blob/develop/LICENSING.md)
 <!-- license:end core -->
 
 <!-- license:begin dotnetclient=library -->
