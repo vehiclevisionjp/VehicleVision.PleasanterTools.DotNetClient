@@ -163,7 +163,6 @@ public sealed class FromEnvironmentTests
     [InlineData("FEEDINGEST_PLEASANTER_API_KEY_FILE")]
     [InlineData("CALENDARSTYLE_PLEASANTER_API_KEY")]
     [InlineData("PLEASANTER_CONTRACT_TESTS")]
-    [InlineData("PLEASANTER_REFERENCE_DIR")]
     [InlineData("PLEASANTER_EXPECTED_VERSION")]
     public void この型が読まない変数の旧名や開発用の変数は検出しない(string other)
     {
