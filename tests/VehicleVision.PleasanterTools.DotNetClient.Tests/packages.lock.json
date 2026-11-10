@@ -56,7 +56,7 @@
       "VehicleVision.PleasanterTools.Core.Contracts": {
         "type": "Transitive",
         "resolved": "0.2.0",
-        "contentHash": "x80azCZFjd8FQfP7Nude6CNFVCXjhaCSzIHuBcQj2pXY2TaXnxkOMPIGRnZ51OhHdHK3SKcOJLpWq5cFBfT6DA=="
+        "contentHash": "7ovFjBrC3E/6yuo63Vh2S8EkZdq/Pb9u3wow+5KOg7mBYye560MQ/xnkidugl5/0WaLkT+DmbuGr6ubNb+sXwg=="
       },
       "xunit.abstractions": {
         "type": "Transitive",
