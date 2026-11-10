@@ -14,7 +14,7 @@ using VehicleVision.PleasanterTools.DotNetClient.Models;
 var options = new PleasanterOptions
 {
     BaseUrl = "https://pleasanter.example.com",
-    ApiKey = Environment.GetEnvironmentVariable("PLEASANTER_API_KEY")!,
+    ApiKey = Environment.GetEnvironmentVariable("VVPT_PLEASANTER_API_KEY")!,
 };
 var client = new PleasanterApiClient(new HttpClient(), options);
 
@@ -28,6 +28,9 @@ var records = await client.DeserializeAsync<List<IssueApiModel>>(list.Value?.Res
 
 API キーは、環境変数や Git 管理外の設定から読んでください。コードや設定ファイルへ書かないでください。
 
+- **環境変数から作る**: `PleasanterOptions.FromEnvironment()` は、`VVPT_PLEASANTER_BASE_URL`・`VVPT_PLEASANTER_API_KEY`（必須）、`VVPT_PLEASANTER_SERVER_VERSION`・`VVPT_PLEASANTER_ALLOW_INSECURE_HTTP`（任意。後者は `true`、大文字小文字を問わない、だけが真）を読みます。空の変数は未設定として扱います
+  - **旧名（`PLEASANTER_BASE_URL`・`PLEASANTER_API_KEY`・`PLEASANTER_SERVER_VERSION`・`PLEASANTER_ALLOW_INSECURE_HTTP`）は受け付けません。** 設定されていれば（新名との併用を含む）`InvalidOperationException` を投げ、新名を案内します。旧名を消して新名へ書き換えてください
+
 - 結果は `PleasanterResponse` で返し、失敗は例外にせず `ErrorKind` で分類します（クライアントは再試行しません）
 - **`Retry-After`**: 応答の HTTP ヘッダ `Retry-After`（429・503 などで付く）を `PleasanterResponse.RetryAfter`（`TimeSpan?`）で読めます。再送するか・いつ送るかは、これまでどおり呼び出し側が決めます
   - 秒指定も HTTP-date も読みます。日時は応答を受け取った時点の現在時刻との差で、負の秒・過去の日時は `TimeSpan.Zero` です
@@ -37,7 +40,7 @@ API キーは、環境変数や Git 管理外の設定から読んでくださ�
 - **`BaseUrl` は通信の前に検査します。** API キーが本文に載るため、次を満たさない URL は `ArgumentException` で拒否します（例外の文言に API キーも URL も出しません）
   - `https` であること。`http` はループバック（`localhost`・`127.0.0.1`・`[::1]`）だけ使えます
   - 資格情報（`user:pass@`）・クエリ（`?`）・フラグメント（`#`）を含まないこと（パス `https://example.com/pleasanter` は使えます）
-  - **検証用の環境（コンテナ間の通信など）だけ**、`PleasanterOptions.AllowInsecureHttp = true`（環境変数 `PLEASANTER_ALLOW_INSECURE_HTTP=true`）で、ループバック以外の `http` も使えます。既定は無効です。**有効にすると API キーが平文で流れるので、本番では有効にしません。** 資格情報・クエリ・フラグメント・`http`／`https` 以外のスキームは、有効にしても拒否します
+  - **検証用の環境（コンテナ間の通信など）だけ**、`PleasanterOptions.AllowInsecureHttp = true`（環境変数 `VVPT_PLEASANTER_ALLOW_INSECURE_HTTP=true`）で、ループバック以外の `http` も使えます。既定は無効です。**有効にすると API キーが平文で流れるので、本番では有効にしません。** 資格情報・クエリ・フラグメント・`http`／`https` 以外のスキームは、有効にしても拒否します
 - 生成の対象外の口や、モデルに無い項目は `client.PostJsonAsync(path, body)` で呼べます
 
 ## HttpClient の作り方（リダイレクトを辿らない）
