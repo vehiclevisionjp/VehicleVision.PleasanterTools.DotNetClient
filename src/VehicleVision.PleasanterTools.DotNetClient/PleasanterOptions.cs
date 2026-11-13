@@ -1,3 +1,5 @@
+using VehicleVision.PleasanterTools.Core.Contracts;
+
 namespace VehicleVision.PleasanterTools.DotNetClient;
 
 /// <summary>Pleasanter の接続設定を呼び出し時に解決する。</summary>
@@ -60,7 +62,7 @@ public sealed class PleasanterOptions
     /// <remarks>
     /// 有効にすると、API キーを含むリクエストの本文が**平文**で流れる。本番では有効にしない。
     /// 資格情報（<c>user:pass@</c>）・クエリ・フラグメント・<c>http</c>／<c>https</c> 以外のスキームは、有効にしても拒否する。
-    /// 環境変数 <c>PLEASANTER_ALLOW_INSECURE_HTTP</c> が <c>true</c> のとき、<see cref="FromEnvironment"/> が有効にする。
+    /// 環境変数 <c>VVPT_PLEASANTER_ALLOW_INSECURE_HTTP</c> が <c>true</c> のとき、<see cref="FromEnvironment()"/> が有効にする。
     /// </remarks>
     public bool AllowInsecureHttp { get; init; }
 
@@ -158,23 +160,40 @@ public sealed class PleasanterOptions
     }
 
     /// <summary>
-    /// 環境変数 <c>PLEASANTER_BASE_URL</c> / <c>PLEASANTER_API_KEY</c> から作る。
-    /// <c>PLEASANTER_SERVER_VERSION</c> があれば <see cref="ServerVersion"/> にする。
+    /// 環境変数 <c>VVPT_PLEASANTER_BASE_URL</c> / <c>VVPT_PLEASANTER_API_KEY</c> から作る。
+    /// <c>VVPT_PLEASANTER_SERVER_VERSION</c> があれば <see cref="ServerVersion"/> に、
+    /// <c>VVPT_PLEASANTER_ALLOW_INSECURE_HTTP</c> が <c>true</c>（大文字小文字を問わない）なら <see cref="AllowInsecureHttp"/> にする。
+    /// 空の環境変数は、設定されていないものとして扱う。
     /// </summary>
-    public static PleasanterOptions FromEnvironment() => new()
-    {
-        BaseUrl = Required("PLEASANTER_BASE_URL"),
-        ApiKey = Required("PLEASANTER_API_KEY"),
-        ServerVersion = Environment.GetEnvironmentVariable("PLEASANTER_SERVER_VERSION") is { Length: > 0 } version
-            ? Version.Parse(version)
-            : null,
-        AllowInsecureHttp = string.Equals(Environment.GetEnvironmentVariable("PLEASANTER_ALLOW_INSECURE_HTTP"), "true", StringComparison.OrdinalIgnoreCase),
-    };
+    /// <remarks>
+    /// <para>旧名（<c>PLEASANTER_BASE_URL</c>・<c>PLEASANTER_API_KEY</c>・<c>PLEASANTER_SERVER_VERSION</c>・<c>PLEASANTER_ALLOW_INSECURE_HTTP</c>）は読まない（設定されていても無視する）。
+    /// 旧名だけが設定された環境は、新名が未設定として扱われ、必須の変数なら例外になる。
+    /// 例外の文言は英語・ASCII で、API キーなどの値を含めない。</para>
+    /// <para><c>VVPT_PLEASANTER_API_KEY_FILE</c> は読まない（API キーをファイルから読む場合は、呼び出し側が読んで <see cref="ApiKey"/> へ渡す）。</para>
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">必須の環境変数（旧名ではなく新名）が設定されていない。</exception>
+    public static PleasanterOptions FromEnvironment() => FromEnvironment(Environment.GetEnvironmentVariable);
 
-    private static string Required(string name) =>
-        Environment.GetEnvironmentVariable(name) is { Length: > 0 } value
+    /// <summary><see cref="FromEnvironment()"/> の、環境変数の取得を差し替えられる版（試験用）。</summary>
+    internal static PleasanterOptions FromEnvironment(Func<string, string?> getEnvironmentVariable)
+    {
+        ArgumentNullException.ThrowIfNull(getEnvironmentVariable);
+
+        return new()
+        {
+            BaseUrl = Required(getEnvironmentVariable, PleasanterEnvironmentNames.BaseUrl),
+            ApiKey = Required(getEnvironmentVariable, PleasanterEnvironmentNames.ApiKey),
+            ServerVersion = getEnvironmentVariable(PleasanterEnvironmentNames.ServerVersion) is { Length: > 0 } version
+                ? Version.Parse(version)
+                : null,
+            AllowInsecureHttp = string.Equals(getEnvironmentVariable(PleasanterEnvironmentNames.AllowInsecureHttp), "true", StringComparison.OrdinalIgnoreCase),
+        };
+    }
+
+    private static string Required(Func<string, string?> getEnvironmentVariable, string name) =>
+        getEnvironmentVariable(name) is { Length: > 0 } value
             ? value
-            : throw new InvalidOperationException($"環境変数 {name} が設定されていません。");
+            : throw new InvalidOperationException($"Environment variable {name} is not set.");
 }
 
 /// <summary>固定した Pleasanter 接続設定を返す。</summary>
