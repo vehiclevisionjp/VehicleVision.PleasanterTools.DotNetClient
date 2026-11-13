@@ -29,7 +29,7 @@ var records = await client.DeserializeAsync<List<IssueApiModel>>(list.Value?.Res
 API キーは、環境変数や Git 管理外の設定から読んでください。コードや設定ファイルへ書かないでください。
 
 - **環境変数から作る**: `PleasanterOptions.FromEnvironment()` は、`VVPT_PLEASANTER_BASE_URL`・`VVPT_PLEASANTER_API_KEY`（必須）、`VVPT_PLEASANTER_SERVER_VERSION`・`VVPT_PLEASANTER_ALLOW_INSECURE_HTTP`（任意。後者は `true`、大文字小文字を問わない、だけが真）を読みます。空の変数は未設定として扱います
-  - **旧名（`PLEASANTER_BASE_URL`・`PLEASANTER_API_KEY`・`PLEASANTER_SERVER_VERSION`・`PLEASANTER_ALLOW_INSECURE_HTTP`）は受け付けません。** 設定されていれば（新名との併用を含む）`InvalidOperationException` を投げ、新名を案内します。旧名を消して新名へ書き換えてください
+  - **旧名（`PLEASANTER_BASE_URL`・`PLEASANTER_API_KEY`・`PLEASANTER_SERVER_VERSION`・`PLEASANTER_ALLOW_INSECURE_HTTP`）は読みません（設定されていても無視します）。** 旧名だけの環境は、新名が未設定として `InvalidOperationException` で失敗します。新名へ書き換えてください
 
 - 結果は `PleasanterResponse` で返し、失敗は例外にせず `ErrorKind` で分類します（クライアントは再試行しません）
 - **`Retry-After`**: 応答の HTTP ヘッダ `Retry-After`（429・503 などで付く）を `PleasanterResponse.RetryAfter`（`TimeSpan?`）で読めます。再送するか・いつ送るかは、これまでどおり呼び出し側が決めます

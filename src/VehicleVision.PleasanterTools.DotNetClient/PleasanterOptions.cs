@@ -166,20 +166,18 @@ public sealed class PleasanterOptions
     /// 空の環境変数は、設定されていないものとして扱う。
     /// </summary>
     /// <remarks>
-    /// <para>旧名（<c>PLEASANTER_BASE_URL</c>・<c>PLEASANTER_API_KEY</c>・<c>PLEASANTER_SERVER_VERSION</c>・<c>PLEASANTER_ALLOW_INSECURE_HTTP</c>）は受け付けない。
-    /// 旧名が 1 つでも設定されていれば、新名が同時に設定されていても例外を投げる（旧名を値として使わない）。
-    /// 旧名と新名の対応は <see cref="PleasanterEnvironmentNames.Legacy"/>（<c>VehicleVision.PleasanterTools.Core.Contracts</c>）を使う。
+    /// <para>旧名（<c>PLEASANTER_BASE_URL</c>・<c>PLEASANTER_API_KEY</c>・<c>PLEASANTER_SERVER_VERSION</c>・<c>PLEASANTER_ALLOW_INSECURE_HTTP</c>）は読まない（設定されていても無視する）。
+    /// 旧名だけが設定された環境は、新名が未設定として扱われ、必須の変数なら例外になる。
     /// 例外の文言は英語・ASCII で、API キーなどの値を含めない。</para>
     /// <para><c>VVPT_PLEASANTER_API_KEY_FILE</c> は読まない（API キーをファイルから読む場合は、呼び出し側が読んで <see cref="ApiKey"/> へ渡す）。</para>
     /// </remarks>
-    /// <exception cref="InvalidOperationException">旧名が設定されている。または、必須の環境変数が設定されていない。</exception>
+    /// <exception cref="InvalidOperationException">必須の環境変数（旧名ではなく新名）が設定されていない。</exception>
     public static PleasanterOptions FromEnvironment() => FromEnvironment(Environment.GetEnvironmentVariable);
 
     /// <summary><see cref="FromEnvironment()"/> の、環境変数の取得を差し替えられる版（試験用）。</summary>
     internal static PleasanterOptions FromEnvironment(Func<string, string?> getEnvironmentVariable)
     {
         ArgumentNullException.ThrowIfNull(getEnvironmentVariable);
-        ThrowIfLegacyNamesAreSet(getEnvironmentVariable);
 
         return new()
         {
@@ -191,41 +189,6 @@ public sealed class PleasanterOptions
             AllowInsecureHttp = string.Equals(getEnvironmentVariable(PleasanterEnvironmentNames.AllowInsecureHttp), "true", StringComparison.OrdinalIgnoreCase),
         };
     }
-
-    /// <summary>この型が読む 4 つの新名に対応する旧名（<c>PLEASANTER_*</c>）が設定されていれば、すべてを 1 つの例外にして投げる。</summary>
-    private static void ThrowIfLegacyNamesAreSet(Func<string, string?> getEnvironmentVariable)
-    {
-        List<string>? messages = null;
-        foreach (var (oldName, newName) in PleasanterEnvironmentNames.Legacy)
-        {
-            // ツール固有の旧名（FEEDINGEST_* など）と、この型が読まない API_KEY_FILE の旧名は、各ツールが扱う。
-            if (!oldName.StartsWith(LegacyPrefix, StringComparison.Ordinal) || !ReadVariables.Contains(newName))
-            {
-                continue;
-            }
-
-            if (!string.IsNullOrEmpty(getEnvironmentVariable(oldName)))
-            {
-                (messages ??= []).Add($"Environment variable {oldName} is no longer supported. Use {newName}.");
-            }
-        }
-
-        if (messages is not null)
-        {
-            throw new InvalidOperationException(string.Join(' ', messages));
-        }
-    }
-
-    private const string LegacyPrefix = "PLEASANTER_";
-
-    /// <summary><see cref="FromEnvironment()"/> が読む環境変数（新名）。</summary>
-    private static readonly HashSet<string> ReadVariables =
-    [
-        PleasanterEnvironmentNames.BaseUrl,
-        PleasanterEnvironmentNames.ApiKey,
-        PleasanterEnvironmentNames.ServerVersion,
-        PleasanterEnvironmentNames.AllowInsecureHttp,
-    ];
 
     private static string Required(Func<string, string?> getEnvironmentVariable, string name) =>
         getEnvironmentVariable(name) is { Length: > 0 } value
