@@ -22,7 +22,7 @@ https://github.com/Implem/Implem.Pleasanter
 .NET — MIT
 https://github.com/dotnet/runtime/blob/main/LICENSE.TXT
 
-当社の共通部品（配布物に含む。環境変数名と旧名の対応の定数だけで、BCL のみに依存）:
+当社の共通部品（配布物に含む。環境変数名の定数だけで、BCL のみに依存）:
 VehicleVision.PleasanterTools.Core.Contracts — 当社（AGPL-3.0-or-later と商用のデュアル。条件は同リポジトリの LICENSING.md）
 https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.Core
 PleasanterTools 内の組み込みは、呼び出し元と一体として扱う（LICENSING.md を参照）。

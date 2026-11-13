@@ -12,7 +12,7 @@
     <None Include="../../README.md;../../LICENSING.md;../../LICENSE-COMMERCIAL.md;../../LICENSE;../../COPYING;../../LICENSE-AGPL;../../NOTICE" Pack="true" PackagePath="" Visible="false" />
   </ItemGroup>
 
-  <!-- 共通の環境変数名と旧名の対応（定数だけ。BCL のみに依存）。nuget.org に公開された版を参照する -->
+  <!-- 共通の環境変数名（定数だけ。BCL のみに依存）。nuget.org に公開された版を参照する -->
   <ItemGroup>
     <PackageReference Include="VehicleVision.PleasanterTools.Core.Contracts" Version="0.2.0" />
   </ItemGroup>
