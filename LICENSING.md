@@ -132,8 +132,9 @@ API 面の抽出ツール（`tools/`、配布しない）は、Pleasanter のソ
 `packages.lock.json` を置いているリポジトリでは、推移的依存と実際の版もそこで確認できます。
 
 <!-- license:begin deps-note=free -->
-NuGet パッケージの依存は、標準ライブラリだけです。`Microsoft.Data.SqlClient.SNI.runtime` など、
-第三者の独自の許諾を要する部品は配布しません。
+NuGet パッケージが依存する第三者の部品は、標準ライブラリだけです。当社の共通部品 `VehicleVision.PleasanterTools.Core.Contracts`
+（環境変数名などの定数だけ）にも依存します。その扱いは、下の「例外: 当社の共通部品 Core」を参照してください。
+`Microsoft.Data.SqlClient.SNI.runtime` など、第三者の独自の許諾を要する部品は配布しません。
 <!-- license:end deps-note -->
 
 これは意図的な制約です。**コピーレフト系（GPL / AGPL / SSPL 等）の依存が 1 つでも入ると、
