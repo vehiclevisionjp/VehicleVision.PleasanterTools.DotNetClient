@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Roslyn の構文解析だけを使う（MIT）。https://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp/5.9.0 -->
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.9.0" />
+    <!-- Roslyn の構文解析だけを使う（MIT）。https://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp/5.12.0 -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.12.0" />
   </ItemGroup>
 
   <ItemGroup>
