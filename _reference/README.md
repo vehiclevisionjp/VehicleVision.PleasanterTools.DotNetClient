@@ -75,13 +75,11 @@ AI の参照専用で CI は使わないため、ポインタ更新 PR や参照
 
 実機の応答・実運用の権限は未検証であり、このソース確認だけでは保証しない。
 
-取得仕様の一次情報（2026-10-27 参照、承認済み Template 手順の参照元を継承）:
+取得仕様の一次情報（2026-10-27 参照）:
 
 - [git clone](https://git-scm.com/docs/git-clone)（浅い clone とブランチ指定）
 - [git fetch](https://git-scm.com/docs/git-fetch)（`--depth` と `FETCH_HEAD`）
-- [承認済みの配布手順][distribution]（Template SHA `3312f003fbe9827090e20bc643800824bdf30e22`）
 
 [context]: https://github.com/Implem/Implem.Pleasanter/blob/664c833b144d9da9b6bb58e60f7e48eb01141e58/Implem.Pleasanter/Libraries/Requests/Context.cs#L497-L504
 [binaries]: https://github.com/Implem/Implem.Pleasanter/blob/664c833b144d9da9b6bb58e60f7e48eb01141e58/Implem.Pleasanter/Controllers/Api/BinariesController.cs#L92-L103
 [project]: https://github.com/Implem/Implem.Pleasanter/blob/664c833b144d9da9b6bb58e60f7e48eb01141e58/Implem.Pleasanter/Implem.Pleasanter.csproj#L3-L10
-[distribution]: https://github.com/vehiclevisionjp/VehicleVision.PleasanterTools.Template/blob/3312f003fbe9827090e20bc643800824bdf30e22/_documents/参照ソースのオンデマンド取得への配布手順.md
