@@ -28,7 +28,7 @@ internal sealed class LoopbackServer : IDisposable
 
     public string BaseUrl => $"http://127.0.0.1:{Port}";
 
-    /// <summary>受け取ったリクエスト（呼び出した時点の写し）。</summary>
+    /// <summary>受け取ったリクエスト（呼び出した時点のコピー）。</summary>
     public IReadOnlyList<ReceivedRequest> Requests
     {
         get
